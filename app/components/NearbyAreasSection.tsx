@@ -1,70 +1,42 @@
-
 import Link from "next/link";
 import { nearbyAreasMap } from "@/app/data/nearbyAreas";
 
 type Props = {
   serviceName: string;
+  serviceSlug: string;
   areaName: string;
 };
-
 
 const slugify = (text: string) =>
   text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
-export default function NearbyAreasSection({ serviceName, areaName }: Props) {
-
-    const key = slugify(areaName);
-    const nearbyAreas = nearbyAreasMap[key] || nearbyAreasMap["DEFAULT"];
-
+export default function NearbyAreasSection({ serviceName, serviceSlug, areaName }: Props) {
+  const key = slugify(areaName);
+  const nearbyAreas = nearbyAreasMap[key] || nearbyAreasMap["DEFAULT"];
 
   return (
-    <section className="relative py-10 px-6 overflow-hidden">
-
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Heading */}
-        <h2
-          className="text-3xl md:text-5xl font-extrabold mb-6 text-center
-          bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946] 
-          bg-clip-text text-transparent"
-        >
-          Nearby Areas Around {areaName}
+    <section className="bg-[#F8FAFC] px-5 py-16 md:px-10 md:py-20">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-center text-3xl font-extrabold tracking-tight text-[#111827] md:text-4xl">
+          Nearby service areas
         </h2>
-
-        {/* Description */}
-        <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
-          We provide {serviceName.toLowerCase()} services in {areaName} and nearby
-          locations across Bangalore. Our team ensures fast installation and
-          reliable service in all surrounding areas.
+        <p className="mx-auto mt-5 max-w-2xl text-center leading-8 text-[#475569]">
+          We also handle {serviceName.toLowerCase()} requests around {areaName}
+          when scheduling and site access are practical.
         </p>
 
-        {/* Areas Grid (IMPORTANT: internal linking 🔥) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-5">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {nearbyAreas.map((area) => (
             <Link
+              prefetch={false}
               key={area}
-              href={`/bangalore/${slugify(area)}/${slugify(serviceName)}`}
-              className="p-4 rounded-xl text-center 
-              bg-white/5 border border-white/10 
-              text-gray-300 hover:text-white 
-              hover:border-[#E78946] transition"
+              href={`/bangalore/${slugify(area)}/${serviceSlug}`}
+              className="rounded-lg border border-slate-200 bg-white p-4 text-center font-medium text-[#334155] shadow-sm transition hover:border-[#0F766E] hover:text-[#0F766E]"
             >
               {serviceName} in {area}
             </Link>
           ))}
         </div>
-
-        {/* Intent Text */}
-        <p className="text-gray-300 text-center">
-          If you are searching for{" "}
-          <strong>{serviceName} near me</strong> or{" "}
-          <strong>{serviceName} near {areaName}</strong>, Servani Safety Nets
-          provides trusted and affordable solutions across all nearby areas.
-        </p>
-
       </div>
     </section>
   );

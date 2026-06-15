@@ -1,5 +1,5 @@
-
 import React from "react";
+import { businessProfile } from "../data/businessProfile";
 
 type MapSectionProps = {
   area: string;
@@ -7,31 +7,17 @@ type MapSectionProps = {
 
 const MapSection: React.FC<MapSectionProps> = ({ area }) => {
   return (
-    <section className="relative px-6 overflow-hidden">
-
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Heading */}
-        <h2
-          className="text-3xl md:text-5xl font-extrabold mb-6 text-center
-          bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946] 
-          bg-clip-text text-transparent"
-        >
-          {area} Service Location
+    <section className="bg-white px-5 py-16 md:px-10 md:py-20">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-center text-3xl font-extrabold tracking-tight text-[#111827] md:text-4xl">
+          Service location
         </h2>
-
-        {/* Description */}
-        <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
-          Servani Safety Nets provides professional safety net installation
-          services in {area}, Bangalore and nearby locations. We ensure fast
-          service, affordable pricing, and reliable protection for your home.
+        <p className="mx-auto mt-5 max-w-2xl text-center leading-8 text-[#475569]">
+          Servani Safety Nets provides installation support in {area}, Bangalore
+          and nearby apartments, villas, offices, and commercial spaces.
         </p>
 
-        {/* Map */}
-        <div className="w-full h-80 md:h-96 rounded-2xl overflow-hidden border border-white/10">
+        <div className="mt-10 h-80 w-full overflow-hidden rounded-lg border border-slate-200 bg-[#F8FAFC] shadow-sm md:h-96">
           <iframe
             title={`Map of ${area}`}
             width="100%"
@@ -45,13 +31,24 @@ const MapSection: React.FC<MapSectionProps> = ({ area }) => {
           />
         </div>
 
-        {/* Intent Text (SEO Boost) */}
-        <p className="text-gray-300 text-center mt-3">
-          Looking for <strong>safety nets in {area}</strong> or{" "}
-          <strong>nearby areas in Bangalore</strong>? Servani Safety Nets offers
-          trusted and affordable solutions near you.
-        </p>
-
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <a
+            href={businessProfile.mapDirectionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#C2410C] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9A3412]"
+          >
+            Get Directions
+          </a>
+          <a
+            href={businessProfile.googleBusinessUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-[#0F766E] bg-white px-5 py-2 text-sm font-semibold text-[#0F766E] shadow-sm transition hover:bg-teal-50"
+          >
+            Google Profile
+          </a>
+        </div>
       </div>
     </section>
   );

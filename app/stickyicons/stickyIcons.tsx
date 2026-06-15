@@ -1,10 +1,10 @@
 import React from "react";
-import { FiPhone, FiMail } from "react-icons/fi";
+import { FiPhone } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
 const StickyContactIcons = () => {
   return (
-    <div className="fixed bottom-6 right-6 space-y-4 z-50 flex flex-col">
+    <div className="fixed right-4 top-[60%] z-50 flex -translate-y-1/2 flex-col gap-4 sm:right-6">
       <a
         href="tel:+917995792953"
         aria-label="Call us at +91 79957 92953"

@@ -29,11 +29,6 @@ export const servicesData = {
     description: "Modern invisible grills for balconies and windows with high safety and style.",
     image: "/cards/invisible-grills-in-bangalore.webp",
   },
-  "coconut-tree-safety-nets": {
-    title: "Coconut Tree Safety Nets",
-    description: "Safety nets installed for coconut trees to prevent falling coconuts.",
-    image: "/cards/coconut-tree-safety-nets-in-bangalore.webp",
-  },
   "open-area-safety-nets": {
     title: "Open Area Safety Nets",
     description: "Cover open spaces with durable safety nets for complete protection.",

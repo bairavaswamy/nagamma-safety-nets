@@ -1,39 +1,64 @@
-import { Metadata } from "next";
-import dynamic from "next/dynamic";
 import {
   cardsData,
   testimonials,
   galleryData,
 } from "./data/homeData";
+import HeroSection from "./components/HeroSection";
+import SafetySolutions from "./components/SafetySolutions";
+import Gallery from "./components/Gallery";
+import Testimonials from "./components/Testimonials";
+import CTASection from "./components/CTASection";
+import MissionSection from "./components/MissionSection";
+import OfferMarquee from "./components/OfferMarquee";
 
-const HeroSection = dynamic(() => import("./components/HeroSection"));
-const SafetySolutions = dynamic(() => import("./components/SafetySolutions"));
-const Gallery = dynamic(() => import("./components/Gallery"));
-const Testimonials = dynamic(() => import("./components/Testimonials"));
-const CTASection = dynamic(() => import("./components/CTASection"));
-const MissionSection = dynamic(() => import("./components/MissionSection"));
-const LocalBusinessSchema = dynamic(() => import("./components/LocalBusinessSchema"));
+const featuredCardTitles = [
+  "Balcony Safety Nets",
+  "Pigeon Safety Nets",
+  "Cloth Hangers",
+  "Sports Safety Nets",
+  "Invisible Safety Nets",
+  "Invisible Grills",
+  "Cat Safety Nets",
+  "Bird Spikes",
+  "Residential Safety Nets",
+];
 
+const homeCards = featuredCardTitles
+  .map((title) => cardsData.find((card) => card.title === title))
+  .filter((card): card is (typeof cardsData)[number] => Boolean(card))
+  .map((card) => ({
+    ...card,
+    image: card.image.replace("/cards/", "/home-optimized/cards/"),
+  }));
 
-
-export const metadata: Metadata = {
-  title: "Best Safety Nets & Invisible Grills in Bengaluru",
-  description:
-    "Professional balcony safety nets, pigeon nets, and invisible grills in Bengaluru.",
-};
+const homeGallery = galleryData.slice(0, 10).map((item) => ({
+  ...item,
+  image: item.image.replace("/images/", "/home-optimized/gallery/"),
+}));
 
 export default function HomePage() {
   return (
     <>
-      <LocalBusinessSchema />
+      <link
+        rel="preload"
+        as="image"
+        href="/home-optimized/hero-balcony.webp"
+        fetchPriority="high"
+      />
 
-      <main className="min-h-screen bg-gradient-to-br from-secondary to-primary text-white">
+      <main className="min-h-screen bg-[#F8FAFC] text-[#111827]">
 
-        <HeroSection title="Balcony Safety Nets" description="Protect your family with our premium safety nets in Bengaluru." image="" />
+        <HeroSection
+          title="Balcony Safety Nets"
+          description="Protect your family with measured safety net installation for balconies, windows, and open spaces."
+          image="/home-optimized/hero-balcony.webp"
+        />
 
-        <SafetySolutions cards={cardsData} />
+        <OfferMarquee />
 
-        <Gallery images={galleryData} />
+        <SafetySolutions cards={homeCards} />
+
+        <Gallery images={homeGallery} />
 
         <Testimonials testimonials={testimonials} />
 

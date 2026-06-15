@@ -2,96 +2,77 @@ import Image from "next/image";
 
 type Props = {
   serviceName: string;
+  serviceSlug?: string;
   areaName: string;
   image: string;
 };
 
-export default function Solution({ serviceName, areaName, image }: Props) {
-  return (
-    <section className="relative py-10 sm:py-14 md:py-20 px-4 sm:px-6 overflow-hidden">
-      
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+type SolutionContent = {
+  body: string;
+  points: string[];
+};
 
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-        
-        {/* TEXT CONTENT */}
-        <div className="text-center md:text-left">
-          
-          {/* Heading */}
-          <h2 className="text-3xl sm:text-3xl md:text-5xl font-extrabold mb-4 sm:mb-6 leading-snug 
-            bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946] 
-            bg-clip-text text-transparent">
-            {serviceName} in {areaName} – Complete Solutions
+const serviceContent: Record<string, SolutionContent> = {
+  "cloth-hangers": {
+    body:
+      "We plan cloth hanger placement around the actual balcony or utility area, not just the product name. Rod length, ceiling height, wall strength, window movement, appliance clearance, and daily reach all affect the right setup.",
+    points: [
+      "Balcony and utility drying layout",
+      "Ceiling, wall, and window clearance checks",
+      "Fixed rod, pulley, or retractable hanger options",
+      "Stable fixing based on surface strength",
+    ],
+  },
+};
+
+const defaultContent: SolutionContent = {
+  body:
+    "We match the material and fixing method to the space, not just the service name. Balconies, windows, utility areas, shafts, ledges, and terrace openings each need a different finish.",
+  points: [
+    "Balcony, window, duct, and open-space protection",
+    "Child and pet safety for apartment homes",
+    "Bird and pigeon entry control where needed",
+    "Measured fixing based on actual site access",
+  ],
+};
+
+export default function Solution({ serviceName, serviceSlug, areaName, image }: Props) {
+  const content = (serviceSlug && serviceContent[serviceSlug]) || defaultContent;
+
+  return (
+    <section className="bg-[#F8FAFC] px-5 py-16 md:px-10 md:py-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
+            Service Fit
+          </p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#111827] md:text-4xl">
+            {serviceName} in {areaName}
           </h2>
 
-          {/* Description */}
-          <p className=" md:text-lg text-gray-300 mb-5 sm:mb-6 leading-relaxed">
-            We provide complete{" "}
-            <span className="text-white font-medium">
-              {serviceName.toLowerCase()}
-            </span>{" "}
-            solutions in {areaName}, including balcony safety nets, window nets,
-            duct area nets, and open space protection.
+          <p className="mt-5 text-base leading-8 text-[#475569] md:text-lg">
+            {content.body}
           </p>
 
-          {/* FEATURES */}
-          <div className="text-2xl md:text-lg space-y-3 mb-6">
-            {[
-              "Child safety in apartments",
-              "Pet protection (cats & dogs)",
-              "Bird control (pigeons, crows)",
-              "High-rise balcony safety",
-              "Industrial safety solutions",
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-3 p-3 sm:p-4 rounded-xl 
-                bg-white/5 border border-white/10 
-                hover:border-[#E78946] hover:bg-white/10 
-                transition-all duration-300"
-              >
-                <span className="w-2 h-2 mt-2 rounded-full bg-[#E78946]" />
-                <span className="text-xs sm:text-sm md:text-base text-gray-300">
-                  {item}
-                </span>
+          <div className="mt-7 grid gap-3">
+            {content.points.map((item) => (
+              <div key={item} className="rounded-lg border border-slate-200 bg-white p-4 text-[#334155] shadow-sm">
+                {item}
               </div>
             ))}
           </div>
-
-          {/* SEO Intent */}
-          <p className=" sm:text-sm md:text-base text-gray-400 leading-relaxed">
-            Looking for{" "}
-            <strong className="text-white">
-              {serviceName} near you
-            </strong>
-            ,{" "}
-            <strong className="text-white">
-              {serviceName} cost in {areaName}
-            </strong>{" "}
-            or{" "}
-            <strong className="text-white">
-              best {serviceName} in {areaName}
-            </strong>
-            ?{" "}
-            <span className="text-[#E78946] font-semibold">
-              Servani Safety Nets
-            </span>{" "}
-            is your trusted choice.
-          </p>
         </div>
 
-        {/* IMAGE SECTION */}
-        <div className="relative w-full h-[240px] sm:h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-lg border border-white/10">
+        <div className="rounded-lg border border-slate-200 bg-white p-2 shadow-sm">
           <Image
             src={image}
             alt={`${serviceName} in ${areaName}`}
-            fill
-            className="object-cover hover:scale-105 transition duration-500"
-            priority
+            width={760}
+            height={560}
+            sizes="(max-width: 768px) 92vw, 520px"
+            className="aspect-[4/3] w-full rounded-md object-cover"
           />
         </div>
-
       </div>
     </section>
   );

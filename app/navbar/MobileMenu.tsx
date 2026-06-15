@@ -5,12 +5,11 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { RxCross2 } from 'react-icons/rx'; // ✅ Correct package
-import { ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
+import { RxCross2 } from 'react-icons/rx';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { servicesData as originalServices } from '../data/serviceData';
 import { areas } from '../data/areasData';
 
-// Merge areas into services for easy access
 const servicesData = Object.fromEntries(
   Object.entries(originalServices).map(([key, service]) => [
     key,
@@ -25,7 +24,15 @@ const links = [
   { href: '/contactUs', label: 'Contact' },
 ];
 
-const MobileMenu = ({ isOpen, setIsOpen }: any) => {
+type MobileMenuProps = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+};
+
+const slugify = (text: string) =>
+  text.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/--+/g, '-');
+
+const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
   const pathname = usePathname();
   const [activeService, setActiveService] = useState<string | null>(null);
 
@@ -37,122 +44,96 @@ const MobileMenu = ({ isOpen, setIsOpen }: any) => {
 
   return (
     <>
-      {/* Hamburger */}
-      <button onClick={() => setIsOpen(!isOpen)} className="md:hidden" aria-label="Open menu">
+      <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-800" aria-label="Open menu">
         {isOpen ? <RxCross2 size={24} /> : <GiHamburgerMenu size={24} />}
       </button>
 
-      {/* Overlay */}
-      <div
-        onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-30 transition-opacity duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-      />
-
-      {/* Drawer */}
-      <aside
-        className={`fixed top-0 left-0 h-full w-[85%] max-w-xs z-40 transform transition-transform duration-300 bg-black/90 backdrop-blur-xl border-r border-white/10 shadow-2xl flex flex-col ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        {/* Header */}
-        <div className="relative flex flex-col items-center pt-16 pb-5 border-b border-white/10">
-          <div className="relative w-14 h-14 mb-2">
-            <Image
-              src="/servani-logo.webp"
-              alt="Servani Safety Nets"
-              fill
-              className="object-contain rounded-full border border-white/20"
-            />
-          </div>
-
-          <h1 className="text-base font-bold bg-gradient-to-r from-[#E78946] to-orange-300 bg-clip-text text-transparent">
-            Servani Safety Nets
-          </h1>
-          <p className="text-[11px] text-gray-400 mt-1">Trust • Safety • Quality</p>
-
-          <button
+      {isOpen && (
+        <>
+          <div
             onClick={() => setIsOpen(false)}
-            className="absolute top-5 right-4 text-gray-400 hover:text-red-400"
-            aria-label="Close menu"
-          >
-            <RxCross2 size={22} />
-          </button>
-        </div>
+            className="fixed inset-0 z-30 bg-[#0F172A]/45"
+          />
 
-        {/* Navigation */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-2 pb-28">
-          {/* Main Links */}
-          {links.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${
-                isActive(link.href)
-                  ? 'bg-white/10 text-[#E78946]'
-                  : 'text-gray-300 hover:bg-white/5 hover:text-white'
-              }`}
-              style={{
-                transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
-                opacity: isOpen ? 1 : 0,
-                transitionDelay: `${i * 70}ms`,
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <aside className="fixed left-0 top-0 z-40 flex h-full w-[85%] max-w-xs flex-col border-r border-slate-200 bg-white shadow-lg">
+            <div className="relative flex flex-col items-center pt-16 pb-5 border-b border-teal-100">
+              <div className="relative w-14 h-14 mb-2">
+                <Image
+                  src="/servani-logo.webp"
+                  alt="Servani Safety Nets"
+                  fill
+                  className="object-contain rounded-full border border-teal-100"
+                />
+              </div>
 
-          {/* Services Section */}
-          <p className="text-xs text-gray-400 px-4 mt-4 mb-1">Our Services</p>
+              <p className="text-base font-bold bg-gradient-to-r from-[#0F766E] to-teal-400 bg-clip-text text-transparent">
+                Servani Safety Nets
+              </p>
+              <p className="text-[11px] text-gray-500 mt-1">Trust | Safety | Quality</p>
 
-          {Object.entries(servicesData).map(([key, service]) => {
-            const isOpenService = activeService === key;
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-5 right-4 text-gray-500 hover:text-[#F97316]"
+                aria-label="Close menu"
+              >
+                <RxCross2 size={22} />
+              </button>
+            </div>
 
-            return (
-              <div key={key} className="border-b border-white/10 pb-3">
-                {/* Service Header */}
-                <button
-                  onClick={() => toggleService(key)}
-                  className="flex justify-between items-center w-full px-4 py-3 rounded-lg text-gray-300 hover:bg-white/5 transition font-medium"
-                >
-                  <span>{service.title}</span>
-                  {isOpenService ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                </button>
-
-                {/* Areas (Collapsible) */}
-                <div
-                  className={`overflow-y-auto transition-all duration-300 ${
-                    isOpenService ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-2 pb-28">
+              {links.map((link) => (
+                <Link
+                  prefetch={false}
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                    isActive(link.href)
+                      ? 'bg-teal-50 text-[#0F766E]'
+                      : 'text-gray-700 hover:bg-teal-50 hover:text-[#0F766E]'
                   }`}
                 >
-                  <div className="ml-4 mt-2 space-y-2 border-l border-white/10 pl-3">
-                    {service.areas.map((area) => (
-                      <Link
-                        key={`${key}-${area}`}
-                        href={`/bangalore/${area.toLowerCase().replace(/\s+/g, '-')}/${key}/`}
-                        onClick={() => setIsOpen(false)}
-                        className="block text-sm font-medium text-gray-300 hover:text-[#E78946] hover:bg-white/5 px-3 py-1.5 rounded-md transition-all duration-200"
-                      >
-                        {service.title} in {area}
-                      </Link>
-                    ))}
+                  {link.label}
+                </Link>
+              ))}
 
-                    <Link
-                      href={`/bangalore/${key}`}
-                      onClick={() => setIsOpen(false)}
-                      className="block text-sm font-semibold text-[#E78946] hover:underline mt-2"
+              <p className="text-xs text-gray-500 px-4 mt-4 mb-1">Our Services</p>
+
+              {Object.entries(servicesData).map(([key, service]) => {
+                const isOpenService = activeService === key;
+
+                return (
+                  <div key={key} className="border-b border-teal-100 pb-3">
+                    <button
+                      onClick={() => toggleService(key)}
+                      className="flex justify-between items-center w-full px-4 py-3 rounded-lg text-gray-700 hover:bg-teal-50 hover:text-[#0F766E] transition font-medium"
                     >
-                      View All →
-                    </Link>
+                      <span>{service.title}</span>
+                      {isOpenService ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    </button>
+
+                    {isOpenService && (
+                      <div className="ml-4 mt-2 max-h-[500px] space-y-2 overflow-y-auto border-l border-teal-100 pl-3">
+                        {service.areas.map((area) => (
+                          <Link
+                            prefetch={false}
+                            key={`${key}-${area}`}
+                            href={`/bangalore/${slugify(area)}/${key}/`}
+                            onClick={() => setIsOpen(false)}
+                            className="block text-sm font-medium text-gray-600 hover:text-[#0F766E] hover:bg-teal-50 px-3 py-1.5 rounded-md transition-all duration-200"
+                          >
+                            {service.title} in {area}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </aside>
+                );
+              })}
+            </div>
+          </aside>
+        </>
+      )}
     </>
   );
 };

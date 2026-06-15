@@ -1,56 +1,34 @@
 const AboutIntro = () => {
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
-      
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
-
-      {/* Glow effects */}
-      <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[#E78946]/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-120px] left-[-80px] w-[300px] h-[300px] bg-orange-500/10 blur-[120px] pointer-events-none" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
-        
-        {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight
-          bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946]
-          bg-clip-text text-transparent">
+    <section className="bg-white px-6 py-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
+          About
+        </p>
+        <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#111827] md:text-5xl">
           About Us
         </h2>
 
-        {/* Divider */}
-        <div className="w-16 h-[2px] mx-auto mb-6 bg-gradient-to-r from-transparent via-[#E78946] to-transparent" />
-
-        {/* Paragraph 1 */}
-        <p className="text-lg md:text-xl leading-relaxed text-gray-300 mb-4">
+        <p className="mt-6 text-lg leading-8 text-[#475569] md:text-xl">
           Welcome to{" "}
-          <span className="text-[#E78946] font-semibold">
+          <span className="font-semibold text-[#0F766E]">
             Servani Safety Nets
           </span>
-          , your trusted partner in creating{" "}
-          <span className="text-white font-medium">
-            safe, hygienic, and worry-free environments
-          </span>{" "}
-          for families and workplaces.
+          , your trusted partner in creating safe, hygienic, and worry-free
+          environments for families and workplaces.
         </p>
 
-        {/* Paragraph 2 */}
-        <p className="text-lg md:text-xl leading-relaxed text-gray-300">
+        <p className="mt-4 text-lg leading-8 text-[#475569] md:text-xl">
           Our belief is:{" "}
-          <em className="text-white italic">
+          <em className="font-medium text-[#111827]">
             safety should never be a compromise
           </em>
-          . We specialize in protecting your spaces from{" "}
-          <span className="text-[#E78946] font-semibold">
-            accidents, pests, and hazards
-          </span>{" "}
-          while maintaining elegance, comfort, and modern aesthetics.
+          . We specialize in protecting your spaces from accidents, pests, and
+          hazards while maintaining comfort and modern aesthetics.
         </p>
 
-        {/* Trust line */}
-        <p className="mt-6 text-sm text-gray-500">
-          Protection • Comfort • Modern Living
+        <p className="mt-6 text-sm text-[#64748B]">
+          Protection | Comfort | Modern living
         </p>
       </div>
     </section>

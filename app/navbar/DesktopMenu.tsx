@@ -27,18 +27,19 @@ export default function DesktopMenu() {
   }));
 
   return (
-    <ul className="hidden md:flex items-center gap-8 font-medium text-gray-300 relative">
+    <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700 relative">
       {/* Home first */}
       <li className="relative group">
         <Link
+      prefetch={false}
           href="/"
           className={`relative py-1 transition duration-300 ${
-            pathname === '/' ? 'text-white' : 'hover:text-white'
+            pathname === '/' ? 'text-[#0F766E]' : 'hover:text-[#0F766E]'
           }`}
         >
           Home
           <span
-            className={`absolute left-0 -bottom-1 h-[2px] bg-[#E78946] transition-all duration-300 ${
+            className={`absolute left-0 -bottom-1 h-[2px] bg-[#0F766E] transition-all duration-300 ${
               pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'
             }`}
           />
@@ -56,12 +57,12 @@ export default function DesktopMenu() {
       >
         <button
           className={`relative py-1 transition duration-300 ${
-            pathname.startsWith('/bangalore') ? 'text-white' : 'text-gray-300'
+            pathname.startsWith('/bangalore') ? 'text-[#0F766E]' : 'text-gray-700'
           } group`}
         >
           Services
           <span
-            className={`absolute left-0 -bottom-1 h-[2px] bg-[#E78946] transition-all duration-300 ${
+            className={`absolute left-0 -bottom-1 h-[2px] bg-[#0F766E] transition-all duration-300 ${
               isDropdownOpen || pathname.startsWith('/bangalore') ? 'w-full' : 'w-0 group-hover:w-full'
             }`}
           />
@@ -72,7 +73,7 @@ export default function DesktopMenu() {
           <div className="absolute top-full left-0 mt-2 flex gap-2 z-50">
             {/* First Dropdown: Services */}
             {/* First Dropdown: Services */}
-<div className="w-60 max-h-[500px] overflow-y-auto scrollbar-hide bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg p-2">
+<div className="scrollbar-hide w-60 max-h-[500px] overflow-y-auto rounded-lg border border-slate-200 bg-white p-2 shadow-sm">
   {servicesArray.map((service) => {
     const isActiveService = hoveredService === service.key;
     return (
@@ -80,7 +81,7 @@ export default function DesktopMenu() {
         key={service.key}
         onMouseEnter={() => setHoveredService(service.key)}
         className={`px-4 py-2 text-sm cursor-pointer transition-colors duration-300 ${
-          isActiveService ? 'text-orange-500 font-semibold' : 'text-white hover:text-orange-500'
+          isActiveService ? 'text-[#0F766E] font-semibold bg-teal-50' : 'text-gray-700 hover:text-[#0F766E] hover:bg-teal-50'
         }`}
       >
         {service.title}
@@ -90,13 +91,14 @@ export default function DesktopMenu() {
 </div>
             {/* Second Dropdown: Areas */}
             {hoveredService && (
-              <div className="w-80 max-h-[500px] overflow-y-auto scrollbar-hide bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg p-2">
+              <div className="scrollbar-hide w-80 max-h-[500px] overflow-y-auto rounded-lg border border-slate-200 bg-white p-2 shadow-sm">
                 <ul>
                   {areas.map((area) => (
                     <li key={`${hoveredService}-${area}`}>
                       <Link
+      prefetch={false}
                         href={`/bangalore/${slugify(area)}/${hoveredService}`}
-                        className="block px-6 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5"
+                        className="block px-6 py-2 rounded-lg text-sm text-gray-600 hover:text-[#0F766E] hover:bg-teal-50"
                       >
                         {servicesData[hoveredService as keyof typeof servicesData].title} in {area.replace(/-/g, ' ')}
                       </Link>
@@ -113,14 +115,15 @@ export default function DesktopMenu() {
       {links.map((link) => (
         <li key={link.href} className="relative group">
           <Link
+      prefetch={false}
             href={link.href}
             className={`relative py-1 transition duration-300 ${
-              pathname === link.href ? 'text-white' : 'hover:text-white'
+              pathname === link.href ? 'text-[#0F766E]' : 'hover:text-[#0F766E]'
             }`}
           >
             {link.label}
             <span
-              className={`absolute left-0 -bottom-1 h-[2px] bg-[#E78946] transition-all duration-300 ${
+              className={`absolute left-0 -bottom-1 h-[2px] bg-[#0F766E] transition-all duration-300 ${
                 pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
               }`}
             />
@@ -132,7 +135,7 @@ export default function DesktopMenu() {
       <li>
         <a
           href="tel:7995792953"
-          className="ml-4 px-5 py-2 rounded-full bg-gradient-to-r from-[#E78946] to-orange-500 text-white text-sm font-semibold shadow-lg hover:shadow-orange-500/40 hover:scale-105 transition-all duration-300"
+          className="ml-4 rounded-lg bg-[#C2410C] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9A3412]"
         >
           Call Now
         </a>

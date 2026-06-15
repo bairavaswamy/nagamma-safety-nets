@@ -1,80 +1,56 @@
+const fieldClass =
+  "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-[#111827] placeholder-slate-400 outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20";
+
 const ContactForm = () => {
   return (
-    <div className="bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/10 text-gray-300">
-      
-      <h2 className="text-2xl font-bold mb-6 text-center
-        bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946]
-        bg-clip-text text-transparent">
+    <div className="text-[#475569]">
+      <h2 className="mb-6 text-center text-2xl font-bold text-[#111827]">
         Send Us a Message
       </h2>
 
       <form className="space-y-5">
-        
-        {/* Full Name */}
         <div>
-          <label className="block text-gray-400 font-medium mb-1">
+          <label className="mb-1 block font-medium text-[#334155]">
             Full Name
           </label>
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="w-full px-4 py-3 rounded-xl border border-white/10
-            bg-white/5 text-white placeholder-gray-500
-            focus:ring-2 focus:ring-[#E78946] outline-none"
-          />
+          <input type="text" placeholder="Your Name" className={fieldClass} />
         </div>
 
-        {/* Email */}
         <div>
-          <label className="block text-gray-400 font-medium mb-1">
+          <label className="mb-1 block font-medium text-[#334155]">
             Email
           </label>
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="w-full px-4 py-3 rounded-xl border border-white/10
-            bg-white/5 text-white placeholder-gray-500
-            focus:ring-2 focus:ring-[#E78946] outline-none"
-          />
+          <input type="email" placeholder="Your Email" className={fieldClass} />
         </div>
 
-        {/* Phone */}
         <div>
-          <label className="block text-gray-400 font-medium mb-1">
+          <label className="mb-1 block font-medium text-[#334155]">
             Phone Number
           </label>
           <input
             type="tel"
             placeholder="Your Phone Number"
-            className="w-full px-4 py-3 rounded-xl border border-white/10
-            bg-white/5 text-white placeholder-gray-500
-            focus:ring-2 focus:ring-[#E78946] outline-none"
+            className={fieldClass}
           />
         </div>
 
-        {/* Message */}
         <div>
-          <label className="block text-gray-400 font-medium mb-1">
+          <label className="mb-1 block font-medium text-[#334155]">
             Message
           </label>
           <textarea
             rows={4}
             placeholder="Write your message here..."
-            className="w-full px-4 py-3 rounded-xl border border-white/10
-            bg-white/5 text-white placeholder-gray-500
-            focus:ring-2 focus:ring-[#E78946] outline-none"
+            className={fieldClass}
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="button"
-          className="w-full py-3 bg-[#E78946] text-white font-bold rounded-xl shadow-lg
-          hover:scale-[1.02] hover:shadow-orange-400/40 transition duration-300"
+          className="min-h-[44px] w-full rounded-lg bg-[#C2410C] py-3 font-bold text-white shadow-sm transition hover:bg-[#9A3412]"
         >
           Send Message
         </button>
-
       </form>
     </div>
   );

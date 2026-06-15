@@ -79,6 +79,32 @@ export const cardsData = [
   },
 
   {
+    image: "/cards/pigeon-safety-nets-in-bangalore.webp",
+    title: "Pigeon Safety Nets",
+    description:
+      "Pigeon safety nets in Bangalore keep balconies, windows, and utility areas cleaner by blocking bird entry without cutting off light or airflow. A measured installation closes corner gaps and pipe spaces so pigeons do not keep returning.",
+    readMoreLink: "/services/pigeon-safety-nets-in-bangalore",
+    callNumber: "+917995792953",
+    rating: 4.9,
+    reviews: 150,
+    badge: "Pigeon Control",
+    tags: ["Pigeon", "Balcony", "Clean Home"],
+  },
+
+  {
+    image: "/cards/cloth-hanger-in-bangalore.webp",
+    title: "Cloth Hangers",
+    description:
+      "Cloth hangers in Bangalore help make balcony and utility drying space easier to use every day. We plan fixed, ceiling, pulley, or retractable hanger placement around airflow, appliance access, ceiling strength, and comfortable reach.",
+    readMoreLink: "/bangalore/cloth-hangers",
+    callNumber: "+917995792953",
+    rating: 4.8,
+    reviews: 120,
+    badge: "Utility Upgrade",
+    tags: ["Cloth Hanger", "Balcony", "Utility"],
+  },
+
+  {
     image: "/cards/sports-safety-nets-in-bangalore.webp",
     title: "Sports Safety Nets",
     description:
@@ -182,18 +208,6 @@ export const cardsData = [
     tags: ["Industrial", "Safety", "Nets"],
   },
 
-  {
-    image: "/cards/pigeon-safety-nets-in-bangalore.webp",
-    title: "Pigeon Safety Nets",
-    description:
-      "Pigeon safety nets in Bangalore are the best solution to keep pigeons away from your balcony and windows. Maintain hygiene and protect your home easily.",
-    readMoreLink: "/services/pigeon-safety-nets-in-bangalore",
-    callNumber: "+917995792953",
-    rating: 4.9,
-    reviews: 150,
-    badge: "Pigeon Control",
-    tags: ["Pigeon", "Safety", "Nets"],
-  },
 ];
 
 export const testimonials = [

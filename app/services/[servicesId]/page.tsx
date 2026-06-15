@@ -1,7 +1,8 @@
 import { Metadata } from "next";
-import Script from "next/script";
+import { notFound } from "next/navigation";
 import { servicesData } from "@/app/servicesData/servicesData";
 import { servicesContent } from "@/app/servicesData/servicesContent";
+import { richServiceContent } from "@/app/servicesData/richServiceContent";
 import Navbar from "@/app/navbar/Navbar";
 import Footer from "@/app/footer/Footer";
 import StickyContactIcons from "@/app/stickyicons/stickyIcons";
@@ -9,19 +10,21 @@ import HeroSection from "./components/HeroSection";
 import DetailedDescription from "./components/DetailedDescription";
 import InfoSection from "./components/InfoSection";
 import FAQSection from "./components/FAQSection";
+import RichServiceContent from "./components/RichServiceContent";
+import { businessProfile, businessReference } from "@/app/data/businessProfile";
 
 type Params = {
   params: { servicesId: string };
 };
 
-// ✅ Static paths
+// Static service paths.
 export const generateStaticParams = () => {
   return Object.keys(servicesData).map((servicesId) => ({
     servicesId,
   }));
 };
 
-// ✅ Metadata (SEO Optimized)
+// Service metadata.
 export const generateMetadata = async ({ params }: Params): Promise<Metadata> => {
   const { servicesId } = await params;
 
@@ -38,13 +41,15 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
 
 
   const cleanName = service.title;
-   const title = `${cleanName} in Bangalore | Servani Safety Nets`;
+  const richContent = richServiceContent[servicesId];
+  const title = richContent?.metaTitle || `${cleanName} | Servani Safety Nets`;
   const description =
+    richContent?.metaDescription ||
     service.description ||
-    `Looking for ${cleanName.toLowerCase()} in Bangalore? Servani Safety Nets offers expert installation, durable materials, and affordable pricing. Call now for a free quote!`;
+    `${cleanName} in Bangalore with measured installation, suitable material, and clean fixing for homes, apartments, and commercial spaces.`;
 
-  const image = service.image || "/default-image.jpg";
-  const url = `https://servanisafetynets.com/service/${servicesId}`;
+  const image = service.image || "/og-image.webp";
+  const url = `https://servanisafetynets.com/services/${servicesId}`;
 
   return {
     title,
@@ -53,7 +58,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
     keywords: [
       `${cleanName} in Bangalore`,
       `${servicesId.replaceAll("-", " ")}`,
-      `${cleanName} near me`,
+      `${cleanName} installation Bangalore`,
       `${cleanName} price Bangalore`,
       "safety nets Bangalore",
       "balcony nets Bangalore",
@@ -105,7 +110,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
   };
 };
 
-// ✅ Page Component
+// Page component.
 const ServiceDetailsPage = async({ params }: Params) => {
   const { servicesId } = await params;
 
@@ -113,20 +118,25 @@ const ServiceDetailsPage = async({ params }: Params) => {
     servicesData[servicesId as keyof typeof servicesData];
 
   const content = servicesContent[servicesId];
+  const richContent = richServiceContent[servicesId];
 
-  // ❌ If service not found
+  // If service is not found.
   if (!service) {
-    return <div>Service not found</div>;
+    notFound();
   }
 
-  // ✅ Fallback content (VERY IMPORTANT for SEO)
-  const fallbackDescription = `We provide ${service.title} in Bangalore with professional installation. Our solutions are safe, durable, and suitable for homes, apartments, and commercial spaces. Contact Servani Safety Nets for the best service.`;
+  // Fallback content for services without a detailed entry.
+  const fallbackDescription = `We provide ${service.title} in Bangalore with measured installation, suitable material, and clean fixing for homes, apartments, and commercial spaces.`;
 
   const finalDescription =
-    content?.detailedDescription || fallbackDescription;
+    richContent?.detailedDescription ||
+    content?.detailedDescription ||
+    fallbackDescription;
 
   const finalFaqs =
-    content?.faqs && content.faqs.length > 0
+    richContent?.faqs && richContent.faqs.length > 0
+      ? richContent.faqs
+      : content?.faqs && content.faqs.length > 0
       ? content.faqs
       : [
           {
@@ -144,15 +154,10 @@ const ServiceDetailsPage = async({ params }: Params) => {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `https://servanisafetynets.com/service/${servicesId}#service`,
+      "@id": `https://servanisafetynets.com/services/${servicesId}#service`,
       name: service.title,
       description: finalDescription,
-      provider: {
-        "@type": "HomeAndConstructionBusiness",
-        name: "Servani Safety Nets",
-        url: "https://servanisafetynets.com",
-        telephone: "+91-7995792953",
-      },
+      provider: businessReference,
       areaServed: {
         "@type": "City",
         name: "Bangalore",
@@ -161,28 +166,8 @@ const ServiceDetailsPage = async({ params }: Params) => {
     },
 
     {
-      "@type": "LocalBusiness",
-      "@id": "https://servanisafetynets.com/#business",
-      name: "Servani Safety Nets",
-      url: "https://servanisafetynets.com",
-      telephone: "+91-7995792953",
-
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Bangalore",
-        addressRegion: "Karnataka",
-        addressCountry: "IN",
-      },
-
-      sameAs: [
-        "https://g.page/r/CagMjrUK8tRuEBM",
-        "https://www.instagram.com/servanisafetynets/",
-        "https://www.facebook.com/p/Servani-Enterprise-61576734022219/",
-      ],
-    },
-
-    {
       "@type": "FAQPage",
+      "@id": `https://servanisafetynets.com/services/${servicesId}#faq`,
       mainEntity: finalFaqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,
@@ -200,19 +185,19 @@ const ServiceDetailsPage = async({ params }: Params) => {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://servanisafetynets.com",
+          item: businessProfile.baseUrl,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Services",
-          item: "https://servanisafetynets.com/service",
+          item: `${businessProfile.baseUrl}/#services`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: service.title,
-          item: `https://servanisafetynets.com/service/${servicesId}`,
+          item: `https://servanisafetynets.com/services/${servicesId}`,
         },
       ],
     },
@@ -223,7 +208,7 @@ const ServiceDetailsPage = async({ params }: Params) => {
     <>
       <Navbar />
 <main>
-      <Script
+      <script
         id="service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -235,6 +220,10 @@ const ServiceDetailsPage = async({ params }: Params) => {
         description={finalDescription}
         title={service.title}
       />
+
+      {richContent && (
+        <RichServiceContent content={richContent} serviceTitle={service.title} />
+      )}
 
       <FAQSection faqs={finalFaqs} />
 

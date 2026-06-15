@@ -1,14 +1,16 @@
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
-import Script from "next/script";
 import type { Metadata } from "next";
+import { buildBusinessJsonLd } from "./data/businessProfile";
+
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://servanisafetynets.com"),
 
   title: {
-    default: "Servani Safety Nets Bangalore | Balcony, Pigeon & Invisible Grills",
-    template: "%s |",
+    default: "Servani Safety Nets Bangalore | Balcony Nets, Pigeon Nets & Invisible Grills",
+    template: "%s | Servani Safety Nets",
   },
 
   description:
@@ -48,12 +50,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Servani Safety Nets Bangalore",
     description:
-      "Top safety net services in Bangalore – balcony nets, pigeon nets, invisible grills & more. Call now for installation.",
+      "Top safety net services in Bangalore - balcony nets, pigeon nets, invisible grills and more. Call now for installation.",
     url: "https://servanisafetynets.com",
     siteName: "Servani Safety Nets",
     images: [
       {
-        url: "https://servanisafetynets.com/og-image.png", // 🔥 replace with your image
+        url: "https://servanisafetynets.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Servani Safety Nets Bangalore",
@@ -68,11 +70,11 @@ export const metadata: Metadata = {
     title: "Servani Safety Nets Bangalore",
     description:
       "Balcony safety nets, pigeon nets & invisible grills installation in Bangalore.",
-    images: ["https://servanisafetynets.com/og-image.png"],
+    images: ["https://servanisafetynets.com/og-image.webp"],
   },
 
   icons: {
-    icon: "/servani-logo.webp",
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
@@ -83,169 +85,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-
-  "@id": "https://servanisafetynets.com/#business",
-  name: "Servani Safety Nets",
-  alternateName: "Servani Enterprise",
-
-  url: "https://servanisafetynets.com",
-  telephone: "+91-7995792953",
-  priceRange: "15-50000 INR",
-
-  description:
-    "Servani Safety Nets is a leading safety equipment supplier in Bangalore offering balcony safety nets, pigeon nets, invisible grills, duct area nets, and industrial safety net solutions for homes, apartments, and commercial spaces.",
-
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Bangalore",
-    addressRegion: "Karnataka",
-    addressCountry: "IN",
-  },
-
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 13.144899046337086,
-    longitude: 77.68418210468273,
-  },
-
-  areaServed: [
-    {
-      "@type": "City",
-      name: "Bangalore",
-    },
-  ],
-
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "00:00",
-      closes: "23:00",
-    },
-  ],
-
-  sameAs: [
-    "https://g.page/r/CagMjrUK8tRuEBM",
-    "https://www.instagram.com/servanisafetynets/",
-    "https://www.facebook.com/p/Servani-Enterprise-61576734022219/",
-  ],
-
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Safety Net Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Balcony Safety Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Anti Bird Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Pigeon Safety Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Invisible Grills",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Duct Area Safety Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Window Safety Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Staircase Safety Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Industrial Safety Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Sports Nets",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Building Safety Nets",
-        },
-      },
-    ],
-  },
-
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+91-7995792953",
-    contactType: "customer service",
-    areaServed: "IN",
-    availableLanguage: ["English", "Hindi", "Telugu", "Kannada"],
-  },
-
-  keywords: [
-    "Safety Nets Bangalore",
-    "Balcony Safety Nets Bangalore",
-    "Pigeon Nets Bangalore",
-    "Invisible Grills Bangalore",
-    "Bird Protection Nets Bangalore",
-    "Safety Equipment Supplier Bangalore",
-  ],
-};
+  const schemaData = buildBusinessJsonLd();
 
   return (
-    <html lang="en">
-      <title>Servani Safety Nets - Bangalore</title>
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
-        {/* ✅ Google Tag Manager */}
-        <GoogleTagManager gtmId="GTM-KF7QZNGN" />
+        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
 
-        {/* ✅ SEO Schema */}
-        <Script
-          id="schema-local-business"
+        {/* SEO Schema */}
+        <script
+          id="schema-business"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />

@@ -144,22 +144,6 @@ export const servicesData: Record<string, Service> = {
     category: "General Safety Nets",
   },
 
-  "car-parking-safety-nets": {
-    id: "car-parking-safety-nets",
-    title: "Car Parking Safety Nets",
-    description:
-      "Car parking safety nets from Servani Safety Nets protect vehicles from falling debris, birds, and other hazards. These nets help maintain clean and safe parking areas in apartments and offices.",
-    detailedContent: `
-      Our nets are transparent, strong, and weather resistant.
-      Protects vehicles from damage  
-      Minimal visual impact  
-      Long lasting materials  
-      Suitable for open and multi level parking  
-    `,
-    image: "/images/car-parking.webp",
-    category: "General Safety Nets",
-  },
-
   "children-safety-nets": {
     id: "children-safety-nets",
     title: "Children Safety Nets",
@@ -301,22 +285,6 @@ export const servicesData: Record<string, Service> = {
       Low maintenance  
     `,
     image: "/images/monkey-safety-nets.webp",
-    category: "Special Purpose Nets",
-  },
-
-  "coconut-tree-safety-nets": {
-    id: "coconut-tree-safety-nets",
-    title: "Coconut Tree Safety Nets",
-    description:
-      "Coconut tree safety nets from Servani Safety Nets prevent injuries and property damage caused by falling coconuts. These nets are ideal for homes, parks, and public places.",
-    detailedContent: `
-      Made from impact resistant material.
-      Stops falling coconuts  
-      Suitable for tall trees  
-      Weather resistant  
-      Easy to maintain  
-    `,
-    image: "/solutions/coconut-tree-safety-nets.webp",
     category: "Special Purpose Nets",
   },
 

@@ -1,119 +1,116 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "@/app/navbar/Navbar";
 import Footer from "@/app/footer/Footer";
 import StickyContactIcons from "@/app/stickyicons/stickyIcons";
 import { blogsData } from "@/app/data/blogsData";
+
+export const metadata: Metadata = {
+  title: { absolute: "Safety Nets Blog Bangalore | Servani" },
+  description:
+    "Read Bangalore safety net guides for balcony nets, pigeon control, invisible grills, pet safety, pricing, and installation planning.",
+  alternates: {
+    canonical: "https://servanisafetynets.com/blogs/",
+  },
+  openGraph: {
+    title: "Safety Nets Blog Bangalore | Servani",
+    description:
+      "Guides for balcony safety nets, pigeon nets, invisible grills, pet safety, and installation planning in Bangalore.",
+    url: "https://servanisafetynets.com/blogs/",
+    siteName: "Servani Safety Nets",
+    type: "website",
+    locale: "en_IN",
+  },
+};
 
 const BlogsPage = () => {
   return (
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-gradient-to-b from-black via-gray-950 to-black text-white">
-
-        {/* 🔥 HERO */}
-        <section className="relative py-20 px-6 text-center overflow-hidden">
-          
-          <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[500px] h-[400px] bg-[#E78946]/20 blur-[120px]" />
-
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6
-            bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946]
-            bg-clip-text text-transparent">
+      <main className="min-h-screen bg-[#F8FAFC] text-[#111827]">
+        <section className="px-6 py-20 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
+            Articles
+          </p>
+          <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-[#111827] md:text-6xl">
             Safety Nets Blog
           </h1>
 
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Expert tips, guides, and insights on balcony safety nets, pigeon protection,
+          <p className="mx-auto mt-5 max-w-2xl leading-8 text-[#475569]">
+            Expert tips and insights on balcony safety nets, pigeon protection,
             invisible grills, and modern home safety solutions in Bangalore.
           </p>
 
-          {/* Trust */}
-          <p className="mt-4 text-sm text-gray-500">
-            Updated regularly • Trusted by 1000+ customers
+          <p className="mt-4 text-sm text-[#64748B]">
+            Updated regularly | Trusted by Bangalore customers
           </p>
         </section>
 
-        {/* 📚 BLOG GRID */}
-        <div className="max-w-7xl mx-auto px-6 pb-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-          {blogsData.map((blog, index) => (
-            <div
-              key={index}
-              className="group relative rounded-2xl overflow-hidden 
-              bg-white/5 border border-white/10 backdrop-blur-xl
-              shadow-lg transition duration-500 hover:-translate-y-2
-              hover:shadow-[0_20px_60px_rgba(231,137,70,0.25)]"
+        <section className="mx-auto grid max-w-7xl gap-8 px-6 pb-20 sm:grid-cols-2 lg:grid-cols-3">
+          {blogsData.map((blog) => (
+            <article
+              key={blog.slug}
+              className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-[#0F766E]/40"
             >
-              {/* IMAGE */}
               <div className="relative h-56 overflow-hidden">
                 <Image
                   src={blog.image}
                   alt={blog.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition duration-700"
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
 
-                {/* Badge */}
-                <span className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold 
-                  bg-[#E78946] text-white rounded-full shadow">
+                <span className="absolute left-3 top-3 rounded-full bg-[#C2410C] px-3 py-1 text-xs font-semibold text-white shadow-sm">
                   {blog.badge}
                 </span>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>
 
-              {/* CONTENT */}
-              <div className="p-5 flex flex-col justify-between h-[260px]">
-
+              <div className="flex min-h-[260px] flex-col justify-between p-5">
                 <div>
-                  <h2 className="text-lg font-bold mb-2 group-hover:text-[#E78946] transition">
+                  <h2 className="mb-2 text-lg font-bold text-[#111827]">
                     {blog.title}
                   </h2>
 
-                  <p className="text-xs text-gray-400 mb-2">{blog.displayDate}</p>
+                  <p className="mb-2 text-xs text-[#64748B]">
+                    {blog.displayDate}
+                  </p>
 
-                  <p className="text-sm text-gray-300 line-clamp-3">
+                  <p className="line-clamp-3 text-sm leading-6 text-[#475569]">
                     {blog.description}
                   </p>
                 </div>
 
-                {/* CTA */}
                 <Link
+      prefetch={false}
                   href={`/blogs/${blog.slug}`}
-                  className="mt-4 inline-flex items-center justify-center 
-                  px-4 py-2 rounded-full text-sm font-semibold
-                  bg-gradient-to-r from-[#E78946] to-orange-500
-                  hover:scale-105 transition"
+                  className="mt-4 inline-flex min-h-[40px] items-center justify-center rounded-lg bg-[#C2410C] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#9A3412]"
                 >
-                  Read Article →
+                  Read Article
                 </Link>
               </div>
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
 
-        {/* 🚀 CTA SECTION */}
-        <div className="text-center pb-20">
-          <h3 className="text-2xl font-bold mb-3">
+        <section className="px-6 pb-20 text-center">
+          <h3 className="mb-3 text-2xl font-bold text-[#111827]">
             Need Safety Solutions for Your Home?
           </h3>
-          <p className="text-gray-400 mb-6">
+          <p className="mb-6 text-[#475569]">
             Get expert consultation and installation from Servani Safety Nets.
           </p>
 
           <a
             href="tel:+917995792953"
-            className="inline-flex items-center px-6 py-3 rounded-full 
-            bg-gradient-to-r from-[#E78946] to-orange-500 
-            font-semibold hover:scale-105 transition"
+            className="inline-flex min-h-[44px] items-center rounded-lg bg-[#C2410C] px-6 py-3 font-semibold text-white transition hover:bg-[#9A3412]"
           >
-            📞 Call Now
+            Call Now
           </a>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <StickyContactIcons />
       <Footer />

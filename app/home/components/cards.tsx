@@ -1,5 +1,3 @@
-"use client";
-
 import { BookOpen, Phone, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,8 +8,6 @@ interface SafetyCardProps {
   description: string;
   readMoreLink: string;
   callNumber: string;
-
-  // 🔥 NEW PROPS
   rating?: number;
   reviews?: number;
   badge?: string;
@@ -30,70 +26,43 @@ const SafetyCard = ({
   tags = [],
 }: SafetyCardProps) => {
   return (
-    <div
-      className="group relative rounded-2xl overflow-hidden 
-      bg-white/5 backdrop-blur-xl border border-white/10
-      shadow-[0_10px_40px_rgba(0,0,0,0.5)]
-      transition-all duration-500 hover:-translate-y-2 
-      hover:shadow-[0_20px_60px_rgba(231,137,70,0.25)]"
-    >
-      {/* 🔥 Gradient border glow */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 
-        bg-gradient-to-r from-[#E78946]/20 via-transparent to-[#E78946]/20 pointer-events-none" />
-
-      {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+    <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:border-[#0F766E]/40">
+      <div className="relative h-52 overflow-hidden">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition duration-700 group-hover:scale-110"
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-        {/* 🏷️ Servani Badge */}
-        <div className="absolute top-3 left-3 px-3 py-1 rounded-full 
-          bg-black/60 backdrop-blur-md border border-white/10 
-          text-[11px] text-white">
+        <div className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-[#0F766E] shadow-sm">
           Servani
         </div>
 
-        {/* ⭐ Dynamic Rating */}
-        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full 
-          bg-black/60 backdrop-blur-md border border-white/10 text-[11px] text-white">
-          
-          <Star size={10} fill="#E78946" stroke="none" />
-          <span className="text-[10px]">{rating}</span>
-          <span className="text-[9px] text-gray-300">({reviews})</span>
+        <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-white px-2 py-1 text-[11px] font-semibold text-[#111827] shadow-sm">
+          <Star size={10} fill="#F97316" stroke="none" />
+          <span>{rating}</span>
+          <span className="text-[#64748B]">({reviews})</span>
         </div>
 
-        {/* 🔥 Optional Badge */}
         {badge && (
-          <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full 
-            bg-[#E78946] text-[10px] font-semibold text-white shadow-md">
+          <div className="absolute bottom-3 left-3 rounded-full bg-[#C2410C] px-3 py-1 text-[10px] font-semibold text-white shadow-sm">
             {badge}
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-5 flex flex-col justify-between h-[270px]">
-        
-        {/* Title */}
+      <div className="flex min-h-[270px] flex-col justify-between p-5">
         <div>
-          <h2 className="text-lg font-semibold text-white">
-            {title}
-          </h2>
+          <h2 className="text-lg font-semibold text-[#111827]">{title}</h2>
 
-          {/* 🔥 Tags */}
           {tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {tags.map((tag, i) => (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {tags.map((tag) => (
                 <span
-                  key={i}
-                  className="text-[10px] px-2 py-1 rounded-full bg-white/10 text-gray-300"
+                  key={tag}
+                  className="rounded-full bg-[#ECFDF5] px-2 py-1 text-[10px] font-medium text-[#0F766E]"
                 >
                   {tag}
                 </span>
@@ -101,41 +70,35 @@ const SafetyCard = ({
             </div>
           )}
 
-          <p className="mt-2 text-gray-400 text-sm leading-relaxed line-clamp-3">
+          <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#475569]">
             {description}
           </p>
         </div>
 
-        {/* CTA */}
-        <div className="mt-4 flex items-center justify-between gap-3">
-          
+        <div className="mt-5 flex items-center justify-between gap-3">
           <Link
+      prefetch={false}
             href={readMoreLink}
-            className="flex items-center gap-1 text-sm text-[#E78946] hover:text-orange-300 transition"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-[#0F766E] transition hover:text-[#115E59]"
           >
             <BookOpen className="size-4" />
             Details
           </Link>
 
           <a
-            href={callNumber ? `tel:${callNumber}` : "#"}
-            className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full 
-            text-sm font-semibold text-white
-            bg-gradient-to-r from-[#E78946] to-orange-500
-            shadow-lg hover:shadow-orange-500/50
-            hover:scale-105 transition-all duration-300 overflow-hidden"
+            href={callNumber ? `tel:${callNumber}` : "tel:+917995792953"}
+            className="inline-flex min-h-[40px] items-center gap-2 rounded-lg bg-[#C2410C] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9A3412]"
           >
-            <Phone className="size-4 relative z-10" />
-            <span className="relative z-10">Call</span>
+            <Phone className="size-4" />
+            Call
           </a>
         </div>
 
-        {/* Trust line */}
-        <p className="mt-3 text-[11px] text-gray-500">
-          Trusted Installation • Long Lasting • Bangalore Service
+        <p className="mt-4 text-[11px] text-[#64748B]">
+          Trusted installation | Long lasting | Bangalore service
         </p>
       </div>
-    </div>
+    </article>
   );
 };
 

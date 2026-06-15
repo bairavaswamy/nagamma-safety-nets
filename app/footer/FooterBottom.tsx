@@ -1,79 +1,54 @@
 "use client";
 
 import React from "react";
-import { FaFacebookF, FaWhatsapp, FaInstagram, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebookF, FaGoogle, FaInstagram, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { businessProfile } from "../data/businessProfile";
 
 const FooterBottom: React.FC = () => {
   return (
-    <section
-      aria-label="Footer bottom section"
-      className="relative mt-14 pt-8"
-    >
-      {/* Premium Divider */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
-
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-
-        {/* Left Content */}
+    <section aria-label="Footer bottom section">
+      <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
         <div>
-          <p className="text-sm text-gray-400 tracking-wide">
-            © {new Date().getFullYear()}{" "}
-            <span className="bg-gradient-to-r from-[#E78946] to-orange-400 bg-clip-text text-transparent font-semibold">
-              Servani Safety Nets
-            </span>
-            . All rights reserved.
+          <p className="text-sm tracking-wide text-[#475569]">
+            &copy; {new Date().getFullYear()}{" "}
+            <span className="font-semibold text-[#111827]">Servani Safety Nets</span>.
+            All rights reserved.
           </p>
 
-          {/* 🔥 SEO + Location */}
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-[#64748B]">
             Safety Nets & Invisible Grills in Bangalore
           </p>
         </div>
 
-        {/* 🔥 Quick Contact (High Conversion) */}
-        <div className="flex items-center gap-4">
-
-          {/* Call */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <a
             href="tel:+917995792953"
-            className="flex items-center gap-2 px-4 py-2 rounded-full 
-            bg-[#E78946]/10 border border-[#E78946]/30
-            text-[#E78946] text-sm font-medium
-            hover:bg-[#E78946]/20 transition"
+            className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[#0F766E]/30 bg-white px-4 py-2 text-sm font-medium text-[#0F766E] transition hover:bg-[#0F766E] hover:text-white"
           >
-            <FaPhoneAlt className="w-3 h-3" />
+            <FaPhoneAlt className="h-3 w-3" />
             Call Now
           </a>
 
-          {/* WhatsApp */}
           <a
             href="https://wa.me/917995792953"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full 
-            bg-green-500/10 border border-green-500/30
-            text-green-400 text-sm font-medium
-            hover:bg-green-500/20 transition"
+            className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-emerald-500/30 bg-white px-4 py-2 text-sm font-medium text-emerald-700 transition hover:bg-emerald-600 hover:text-white"
           >
-            <FaWhatsapp className="w-4 h-4" />
+            <FaWhatsapp className="h-4 w-4" />
             WhatsApp
           </a>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex items-center gap-4">
-          
+        <div className="flex items-center gap-3">
           <a
-            href="https://www.facebook.com/share/177w7231SD/"
+            href={businessProfile.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="group p-3 rounded-full 
-            bg-white/10 backdrop-blur-md border border-white/10
-            shadow-lg transition-all duration-300 
-            hover:scale-110 hover:bg-blue-600 hover:shadow-blue-500/40"
+            className="rounded-lg border border-slate-200 bg-white p-3 text-[#0F766E] shadow-sm transition hover:border-[#0F766E]"
           >
-            <FaFacebookF className="text-white w-4 h-4" />
+            <FaFacebookF className="h-4 w-4" />
           </a>
 
           <a
@@ -81,38 +56,48 @@ const FooterBottom: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
-            className="group p-3 rounded-full 
-            bg-white/10 backdrop-blur-md border border-white/10
-            shadow-lg transition-all duration-300 
-            hover:scale-110 hover:bg-green-500 hover:shadow-green-400/50"
+            className="rounded-lg border border-slate-200 bg-white p-3 text-emerald-700 shadow-sm transition hover:border-emerald-600"
           >
-            <FaWhatsapp className="text-white w-4 h-4" />
+            <FaWhatsapp className="h-4 w-4" />
           </a>
 
           <a
-            href="https://www.instagram.com/servanisafetynets"
+            href={businessProfile.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="group p-3 rounded-full 
-            bg-white/10 backdrop-blur-md border border-white/10
-            shadow-lg transition-all duration-300 
-            hover:scale-110 hover:bg-pink-500 hover:shadow-pink-400/40"
+            className="rounded-lg border border-slate-200 bg-white p-3 text-[#0F766E] shadow-sm transition hover:border-[#0F766E]"
           >
-            <FaInstagram className="text-white w-4 h-4" />
+            <FaInstagram className="h-4 w-4" />
+          </a>
+
+          <a
+            href={businessProfile.googleBusinessUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Business Profile"
+            className="rounded-lg border border-slate-200 bg-white p-3 text-[#0F766E] shadow-sm transition hover:border-[#0F766E]"
+          >
+            <FaGoogle className="h-4 w-4" />
           </a>
         </div>
       </div>
 
-      {/* 🔥 Trust + Conversion Line */}
-      <div className="mt-8 text-center space-y-2">
-        <p className="text-xs text-gray-500">
-          Trusted by 5000+ customers • 4.9★ rating • Professional Installation
+      <div className="mt-8 space-y-2 text-center">
+        <p className="text-xs text-[#64748B]">
+          Trusted by 5000+ customers | 4.9 rating | Professional installation
         </p>
 
-        {/* Hidden Conversion CTA */}
-        <p className="text-xs text-[#E78946] font-medium">
-          Need safety nets in Bangalore? Call now for quick installation.
+        <p className="text-xs font-medium text-[#0F766E]">
+          Sister service site:{" "}
+          <a
+            href="https://eversafesafetynets.com/areas/bangalore/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:text-[#F97316]"
+          >
+            Eversafe Safety Nets Bangalore
+          </a>
         </p>
       </div>
     </section>

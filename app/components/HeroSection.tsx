@@ -10,44 +10,40 @@ type HeroSectionProps = {
 
 const HeroSection = ({ title, description, image }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
+    <section className="bg-[#F8FAFC] px-5 pb-16 pt-28 md:px-10">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
+            Servani Safety Nets
+          </p>
+          <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#111827] md:text-6xl">
+            {title}
+          </h1>
+          <p className="mt-6 text-base leading-8 text-[#475569] md:text-lg">
+            {description}
+          </p>
 
-      {/* Background */}
-      <Image
-        src={image}
-        alt={title}
-        fill
-        priority
-        className="object-cover brightness-50"
-      />
+          <a
+            href="https://wa.me/7995792953?text=Hi%20Servani%20Safety%20Nets,%20I%20need%20a%20quote"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#C2410C] px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-[#9A3412]"
+          >
+            Get Quote
+          </a>
+        </div>
 
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black" />
-
-      {/* Glow */}
-      <div className="absolute w-[600px] h-[400px] bg-[#E78946]/10 blur-[120px] top-[-100px] left-1/2 -translate-x-1/2" />
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-3xl">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight 
-        bg-gradient-to-r from-[#E78946] via-orange-300 to-[#E78946] 
-        bg-clip-text text-transparent">
-          {title}
-        </h1>
-
-        <p className="mt-6 text-gray-300 text-lg leading-relaxed">
-          {description}
-        </p>
-
-        <a
-          href="https://wa.me/7995792953"
-          target="_blank"
-          className="inline-block mt-8 px-8 py-3 rounded-xl 
-          bg-gradient-to-r from-[#E78946] to-orange-500
-          text-white font-semibold shadow-lg hover:scale-105 transition"
-        >
-          Get Free Quote
-        </a>
+        <div className="rounded-lg border border-slate-200 bg-white p-2 shadow-sm">
+          <Image
+            src={image}
+            alt={title}
+            width={900}
+            height={640}
+            sizes="(max-width: 1024px) 92vw, 520px"
+            priority
+            className="aspect-[4/3] w-full rounded-md object-cover"
+          />
+        </div>
       </div>
     </section>
   );

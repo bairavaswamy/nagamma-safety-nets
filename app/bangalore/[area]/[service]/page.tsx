@@ -1,7 +1,7 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { areas } from "@/app/data/areasData";
 import { servicesData } from "@/app/data/serviceData";
-import Script from "next/script";
 
 import Navbar from "@/app/navbar/Navbar";
 import Footer from "@/app/footer/Footer";
@@ -14,6 +14,13 @@ import MapSection from "@/app/components/MapSection";
 import Solution from "@/app/components/Solution";
 import PriceSection from "@/app/components/PriceSection";
 import NearbyAreasSection from "@/app/components/NearbyAreasSection";
+import AreaRichContent from "@/app/components/AreaRichContent";
+import { richAreaContent } from "@/app/data/richAreaContent";
+import {
+  buildAreaServiceMetadata,
+  formatAreaName,
+} from "@/app/data/areaServiceSeo";
+import { businessProfile, businessReference } from "@/app/data/businessProfile";
 
 type Params = {
   params: Promise<{ area: string; service: string }>;
@@ -21,31 +28,42 @@ type Params = {
 
 
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+const areaNamesBySlug = new Map(areas.map((area) => [slugify(area), area]));
+const validAreaSlugs = new Set(areaNamesBySlug.keys());
+const serviceAliases: Record<string, keyof typeof servicesData> = {
+  "building-covering-safety-nets": "building-covering-nets",
+  "invisible-safety-nets": "invisible-nets",
+};
+const serviceRouteSlugs = Array.from(
+  new Set([...Object.keys(servicesData), ...Object.keys(serviceAliases)])
+);
+const resolveServiceSlug = (service: string) => serviceAliases[service] || service;
 
-// ✅ Content Variations (Uniqueness Engine)
+// Fallback copy for pages without a dedicated rich content entry.
 const introVariants = [
-  `Looking for reliable {service} in {area}? Servani Safety Nets offers expert installation with premium materials and long-lasting protection.`,
-  `Servani Safety Nets provides professional {service} services in {area}, Bangalore for homes, apartments, and commercial spaces.`,
-  `Get high-quality {service} in {area} with our experienced team ensuring safety, durability, and affordability.`,
+  `Need {service} in {area}? Servani Safety Nets measures the space and installs a suitable net with a clean finish.`,
+  `Servani Safety Nets provides {service} in {area}, Bangalore for homes, apartments, and commercial spaces that need practical protection.`,
+  `Get measured {service} in {area} with material and fixing planned around your balcony, window, shaft, or open space.`,
 ];
 
 const trustVariants = [
-  `Our trained technicians ensure secure and clean installation.`,
-  `We use UV-resistant, high-strength materials for durability.`,
-  `Every installation is customized based on your space.`,
+  `Our technicians check fixing points before installation.`,
+  `We use weather-resistant material selected for the opening.`,
+  `Each installation is sized after checking access and surface condition.`,
 ];
 
 const closingVariants = [
-  `Contact Servani Safety Nets today for fast service in {area}.`,
-  `Book your {service} installation in {area} at the best price.`,
-  `Get a free quote for {service} near you in {area}.`,
+  `Contact Servani Safety Nets for a measured quote in {area}.`,
+  `Schedule your {service} installation in {area} after site measurement.`,
+  `Share your location and opening size for {service} support in {area}.`,
 ];
 
-// ✅ Generate Unique Description
+// Generate a stable fallback description.
 function generateDescription(service: string, area: string) {
-  const intro = introVariants[Math.floor(Math.random() * introVariants.length)];
-  const trust = trustVariants[Math.floor(Math.random() * trustVariants.length)];
-  const closing = closingVariants[Math.floor(Math.random() * closingVariants.length)];
+  const seed = `${service}-${area}`.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const intro = introVariants[seed % introVariants.length];
+  const trust = trustVariants[(seed + 1) % trustVariants.length];
+  const closing = closingVariants[(seed + 2) % closingVariants.length];
 
   return `
 ${intro.replace(/{service}/g, service).replace(/{area}/g, area)}
@@ -58,49 +76,48 @@ ${closing.replace(/{service}/g, service).replace(/{area}/g, area)}
   `;
 }
 
-// ✅ Generate ALL pages
+// Generate all area-service pages.
 export const generateStaticParams = () => {
   return areas.flatMap((area) =>
-    Object.keys(servicesData).map((service) => ({
+    serviceRouteSlugs.map((service) => ({
       area: slugify(area),
       service,
     }))
   );
 };
 
-// ✅ SEO Metadata (Improved)
+// SEO metadata.
 export const generateMetadata = async ({ params }: Params): Promise<Metadata> => {
-  const { area, service } =await params;
-  const serviceData = servicesData[service as keyof typeof servicesData];
+  const { area, service } = await params;
+  const canonicalService = resolveServiceSlug(service);
+  const serviceData = servicesData[canonicalService as keyof typeof servicesData];
 
-  if (!serviceData) {
+  if (!serviceData || !validAreaSlugs.has(area)) {
     return {
-      title: "Service Not Found | Servani Safety Nets",
+      title: "Page Not Found | Servani Safety Nets",
+      robots: { index: false, follow: false },
     };
   }
 
-  const areaName = area.replace(/-/g, " ");
-  const url = `https://servanisafetynets.com/bangalore/${area}/${service}`;
-  const title = `${serviceData.title} in ${areaName} Bangalore | Servani Safety Nets`;
-
-  const description = `Looking for ${serviceData.title.toLowerCase()} in ${areaName}, Bangalore? Servani Safety Nets provides expert installation with affordable pricing and durable materials. Call now for a free quote.`;
+  const areaName = formatAreaName(area, areaNamesBySlug);
+  const url = `https://servanisafetynets.com/bangalore/${area}/${canonicalService}`;
+  const seo = buildAreaServiceMetadata({
+    areaName,
+    areaSlug: area,
+    serviceSlug: service,
+    serviceTitle: serviceData.title,
+  });
 
   return {
-    title,
-    description,
-    keywords: [
-      `${serviceData.title} in ${areaName}`,
-      `${serviceData.title} Bangalore`,
-      `${serviceData.title} near me`,
-      "Safety Nets Bangalore",
-      "Servani Safety Nets",
-    ],
+    title: { absolute: `${seo.title} | Servani` },
+    description: seo.description,
+    keywords: seo.keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title,
-      description,
+      title: seo.ogTitle,
+      description: seo.description,
       url,
       siteName: "Servani Safety Nets",
       images: [
@@ -108,7 +125,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
           url: serviceData.image,
           width: 1200,
           height: 630,
-          alt: `${serviceData.title} in ${areaName}`,
+          alt: seo.imageAlt,
         },
       ],
       locale: "en_IN",
@@ -116,8 +133,8 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
     },
       twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: seo.ogTitle,
+      description: seo.description,
       images: [serviceData.image],
     },
 
@@ -126,32 +143,54 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
 
 
 
-// ✅ Page Component
+// Page component.
 const AreaServicePage = async ({ params }: Params) => {
   const { area, service } = await params;
-  const serviceData = servicesData[service as keyof typeof servicesData];
+  const canonicalService = resolveServiceSlug(service);
+  const serviceData = servicesData[canonicalService as keyof typeof servicesData];
 
-  if (!serviceData) return <div>Service "{service}" Not Found</div>;
+  if (!serviceData || !validAreaSlugs.has(area)) notFound();
 
-  const areaName = area.replace(/-/g, " ");
+  const areaName = formatAreaName(area, areaNamesBySlug);
   const serviceName = serviceData.title;
+  const richContent = richAreaContent[`${area}/${canonicalService}`];
 
-  const dynamicDescription = generateDescription(serviceName, areaName);
+  const dynamicDescription =
+    richContent?.description || generateDescription(serviceName, areaName);
+
+  const finalFaqs =
+    richContent?.faqs || [
+      {
+        question: `Do you provide ${serviceName} in ${areaName}?`,
+        answer: `Yes, Servani Safety Nets offers ${serviceName.toLowerCase()} services in ${areaName}, Bangalore with professional installation.`,
+      },
+      {
+        question: `What is the cost of ${serviceName} in ${areaName}?`,
+        answer: `The cost depends on measured area, material, access, and fixing requirements. Contact us for a quote after measurement.`,
+      },
+      {
+        question: `How long does installation take in ${areaName}?`,
+        answer: `Most ${serviceName.toLowerCase()} installations are completed within a few hours after measurement, depending on access and site size.`,
+      },
+      {
+        question: `Is it safe for children and pets?`,
+        answer: `Yes, when the material, mesh size, and edge fixing are chosen for children or pets specifically.`,
+      },
+      {
+        question: `Do you offer service near ${areaName}?`,
+        answer: `Yes, we also serve nearby areas around ${areaName}.`,
+      },
+    ];
 
   const schemaData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Service",
-      "@id": `https://servanisafetynets.com/bangalore/${area}/${service}#service`,
+      "@id": `https://servanisafetynets.com/bangalore/${area}/${canonicalService}#service`,
       name: `${serviceName} in ${areaName}`,
       description: dynamicDescription,
-      provider: {
-        "@type": "HomeAndConstructionBusiness",
-        name: "Servani Safety Nets",
-        url: "https://servanisafetynets.com",
-        telephone: "+91-7995792953",
-      },
+      provider: businessReference,
       areaServed: {
         "@type": "Place",
         name: areaName,
@@ -160,50 +199,38 @@ const AreaServicePage = async ({ params }: Params) => {
     },
 
     {
-      "@type": "LocalBusiness",
-      "@id": "https://servanisafetynets.com/#business",
-      name: "Servani Safety Nets",
-      url: "https://servanisafetynets.com",
-      telephone: "+91-7995792953",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Bangalore",
-        addressRegion: "Karnataka",
-        addressCountry: "IN",
-      },
-      sameAs: [
-        "https://g.page/r/CagMjrUK8tRuEBM",
-        "https://www.instagram.com/servanisafetynets/",
-        "https://www.facebook.com/p/Servani-Enterprise-61576734022219/",
-      ],
-    },
-
-    {
       "@type": "FAQPage",
-      mainEntity: [
+      "@id": `https://servanisafetynets.com/bangalore/${area}/${canonicalService}#faq`,
+      mainEntity: finalFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${businessProfile.baseUrl}/bangalore/${area}/${canonicalService}#breadcrumb`,
+      itemListElement: [
         {
-          "@type": "Question",
-          name: `Do you provide ${serviceName} in ${areaName}?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `Yes, Servani Safety Nets offers ${serviceName.toLowerCase()} services in ${areaName}, Bangalore.`,
-          },
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: businessProfile.baseUrl,
         },
         {
-          "@type": "Question",
-          name: `What is the cost of ${serviceName} in ${areaName}?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `Pricing depends on size and requirements. Contact us for a free quote.`,
-          },
+          "@type": "ListItem",
+          position: 2,
+          name: `${serviceName} Service Areas`,
+          item: `${businessProfile.baseUrl}/bangalore/${canonicalService}/`,
         },
         {
-          "@type": "Question",
-          name: `Is it safe for children and pets?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `Yes, our safety nets are designed for maximum safety and durability.`,
-          },
+          "@type": "ListItem",
+          position: 3,
+          name: `${serviceName} in ${areaName}`,
+          item: `${businessProfile.baseUrl}/bangalore/${area}/${canonicalService}`,
         },
       ],
     },
@@ -214,32 +241,39 @@ const AreaServicePage = async ({ params }: Params) => {
     <>
       <Navbar />
 <main>
-      <Script
+      <script
         id="area-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      {/* 🔥 Hero (Improved SEO + Conversion) */}
       <HeroSection
         title={`${serviceName} in ${areaName}`}
-        description={`Top-rated ${serviceName.toLowerCase()} installation in ${areaName}, Bangalore for homes, apartments & commercial spaces. Affordable pricing & fast service.`}
+        description={
+          richContent?.opening ||
+          `${serviceName} installation in ${areaName}, Bangalore for homes, apartments, and commercial spaces with measured fitting and clean handover.`
+        }
         image={serviceData.image}
       />
 
-      {/* 🔥 Detailed Description (Dynamic Unique Content) */}
       <DetailedDescription
         title={`${serviceName} in ${areaName}`}
         description={dynamicDescription}
       />
 
-      <Solution serviceName={serviceName} areaName={areaName} image={serviceData.image} />
+      {richContent && <AreaRichContent content={richContent} />}
 
-      <PriceSection serviceName={serviceName} areaName={areaName} />
+      <Solution
+        serviceName={serviceName}
+        serviceSlug={canonicalService}
+        areaName={areaName}
+        image={serviceData.image}
+      />
 
-      <NearbyAreasSection serviceName={serviceName} areaName={areaName} />
+      <PriceSection serviceName={serviceName} serviceSlug={canonicalService} areaName={areaName} />
 
-      {/* 🔥 Info Section (Trust + Keywords) */}
+      <NearbyAreasSection serviceName={serviceName} serviceSlug={canonicalService} areaName={areaName} />
+
       <InfoSection
         title={`Why Choose ${serviceName} in ${areaName}?`}
         description={`Servani Safety Nets is a trusted provider of ${serviceName.toLowerCase()} in ${areaName}, Bangalore. We offer high-quality materials, expert installation, and customized solutions for complete safety. Our services are ideal for child safety, pet protection, and bird control.`}
@@ -249,31 +283,7 @@ const AreaServicePage = async ({ params }: Params) => {
 
       <MapSection area={areaName} />
       
-      {/* 🔥 FAQ (Expanded for SEO) */}
-      <FAQSection
-        faqs={[
-          {
-            question: `Do you provide ${serviceName} in ${areaName}?`,
-            answer: `Yes, Servani Safety Nets offers ${serviceName.toLowerCase()} services in ${areaName}, Bangalore with professional installation.`,
-          },
-          {
-            question: `What is the cost of ${serviceName} in ${areaName}?`,
-            answer: `The cost depends on the area size and requirements. Contact us for a free quote.`,
-          },
-          {
-            question: `How long does installation take in ${areaName}?`,
-            answer: `Most ${serviceName.toLowerCase()} installations are completed within a few hours.`,
-          },
-          {
-            question: `Is it safe for children and pets?`,
-            answer: `Yes, our nets are designed for maximum safety and durability.`,
-          },
-          {
-            question: `Do you offer service near ${areaName}?`,
-            answer: `Yes, we also serve nearby areas around ${areaName}.`,
-          },
-        ]}
-      />
+      <FAQSection faqs={finalFaqs} />
 </main>
       <StickyContactIcons />
       <Footer />

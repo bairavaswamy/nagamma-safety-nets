@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface GalleryItem {
@@ -14,126 +14,113 @@ interface GalleryItem {
 export default function Gallery({ images }: { images: GalleryItem[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [preview, setPreview] = useState<GalleryItem | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
-
-  // 🔥 Auto Scroll
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const interval = setInterval(() => {
-      if (!isHovering) {
-        container.scrollBy({ left: 1, behavior: "smooth" });
-
-        // Infinite loop feel
-        if (
-          container.scrollLeft + container.clientWidth >=
-          container.scrollWidth - 5
-        ) {
-          container.scrollTo({ left: 0, behavior: "smooth" });
-        }
-      }
-    }, 20);
-
-    return () => clearInterval(interval);
-  }, [isHovering]);
 
   const scroll = (dir: "left" | "right") => {
     scrollRef.current?.scrollBy({
-      left: dir === "left" ? -350 : 350,
+      left: dir === "left" ? -360 : 360,
       behavior: "smooth",
     });
   };
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
-      
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+    <section className="bg-white px-6 py-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
+            Work Gallery
+          </p>
+          <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-[#111827] md:text-5xl">
+            Our Work in Bangalore
+          </h2>
+          <p className="mt-4 text-[#475569]">
+            Real installations across Bangalore homes and apartments.
+          </p>
+        </div>
 
-      {/* Heading */}
-      <div className="relative z-10 text-center mb-16">
-        <h2 className="text-5xl font-extrabold bg-gradient-to-r from-[#E78946] to-orange-300 bg-clip-text text-transparent">
-          Our Work in Bangalore
-        </h2>
-        <p className="text-gray-400 mt-4">
-          Real installations across Bangalore homes & apartments
-        </p>
-      </div>
-
-      {/* Scroll Buttons */}
-      <button onClick={() => scroll("left")} className="absolute left-4 top-1/2 z-30" aria-label="Previous slide">
-        <FaChevronLeft />
-      </button>
-      <button onClick={() => scroll("right")} className="absolute right-4 top-1/2 z-30" aria-label="Next slide">
-        <FaChevronRight />
-      </button>
-
-      {/* SCROLLER */}
-      <div
-        ref={scrollRef}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        className="flex gap-6 overflow-x-auto px-10 no-scrollbar"
-      >
-        {images.map((item, i) => (
-          <div
-            key={i}
-            className="min-w-[300px] h-72 relative rounded-2xl overflow-hidden group cursor-pointer"
-            onClick={() => setPreview(item)}
+        <div className="relative">
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-[#0F766E] shadow-sm"
+            aria-label="Previous slide"
           >
-            <Image
-              src={item.image}
-              alt={`${item.service} in ${item.location} Bangalore`}
-              fill
-              className="object-cover group-hover:scale-110 transition duration-700"
-            />
+            <FaChevronLeft />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-[#0F766E] shadow-sm"
+            aria-label="Next slide"
+          >
+            <FaChevronRight />
+          </button>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-
-            {/* Tags */}
-            <div className="absolute top-3 left-3 bg-[#E78946] text-xs px-3 py-1 rounded-full">
-              {item.service}
-            </div>
-
-            <div className="absolute top-3 right-3 bg-black/50 text-xs px-3 py-1 rounded-full">
-              📍 {item.location}
-            </div>
-
-            {/* Bottom Content */}
-            <div className="absolute bottom-0 p-4">
-              <h3 className="text-white font-semibold">{item.title}</h3>
-
-              <a
-                href="https://wa.me/917995792953"
-                target="_blank"
-                className="inline-block mt-2 text-sm text-[#E78946]"
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto px-12 pb-2"
+          >
+            {images.map((item) => (
+              <article
+                key={`${item.title}-${item.location}`}
+                className="relative h-72 min-w-[300px] cursor-pointer overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+                onClick={() => setPreview(item)}
               >
-                Get Quote →
-              </a>
-            </div>
+                <Image
+                  src={item.image}
+                  alt={`${item.service} in ${item.location} Bangalore`}
+                  fill
+                  className="object-cover"
+                  sizes="300px"
+                />
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F172A]/85 to-transparent p-4 text-white">
+                  <div className="mb-2 flex flex-wrap gap-2 text-xs">
+                    <span className="rounded-full bg-[#C2410C] px-3 py-1 font-semibold">
+                      {item.service}
+                    </span>
+                    <span className="rounded-full bg-white/20 px-3 py-1">
+                      {item.location}
+                    </span>
+                  </div>
+                  <h3 className="font-semibold">{item.title}</h3>
+                  <a
+                    href="https://wa.me/917995792953"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-sm font-semibold text-orange-200"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    Ask on WhatsApp
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
 
-      {/* 🔍 LIGHTBOX */}
       {preview && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0F172A]/90 p-4"
           onClick={() => setPreview(null)}
         >
-          <div className="relative w-[90%] max-w-4xl h-[80%]">
+          <div className="relative h-[80vh] w-[90%] max-w-4xl">
+            <button
+              onClick={() => setPreview(null)}
+              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#111827] shadow-sm"
+              aria-label="Close preview"
+            >
+              x
+            </button>
             <Image
               src={preview.image}
               alt={preview.title}
               fill
               className="object-contain"
+              sizes="90vw"
             />
 
-            <div className="absolute bottom-0 p-6 text-white">
+            <div className="absolute inset-x-0 bottom-0 rounded-b-lg bg-[#0F172A]/80 p-6 text-white">
               <h3 className="text-xl font-bold">{preview.title}</h3>
-              <p className="text-gray-300">
+              <p className="text-slate-200">
                 {preview.service} in {preview.location}, Bangalore
               </p>
             </div>

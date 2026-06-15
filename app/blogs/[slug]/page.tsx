@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import BlogDetailsClient from "./BlogDetailsClient";
 import { blogsData } from "@/app/data/blogsData";
+import { businessProfile, businessReference } from "@/app/data/businessProfile";
 
 const BASE_URL = "https://servanisafetynets.com";
 
@@ -117,12 +118,10 @@ export default async function Page({
       : `${BASE_URL}${blog.image}`,
     author: {
       "@type": "Organization",
-      name: "Servani Safety Nets",
+      "@id": businessProfile.businessId,
+      name: businessProfile.name,
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Servani Safety Nets",
-    },
+    publisher: businessReference,
     datePublished: blog.date,
     description: blog.content.replace(/<[^>]*>/g, "").slice(0, 150),
     mainEntityOfPage: `${BASE_URL}/blogs/${slug}`,
