@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, MapPin, ShieldCheck } from "lucide-react";
+import type { ReactNode } from "react";
+import {
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  ClipboardCheck,
+  HelpCircle,
+  IndianRupee,
+  MapPin,
+  MapPinned,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+} from "lucide-react";
 import ServiceAreaSearch from "../../components/ServiceAreaSearch";
 import {
   areas,
@@ -13,9 +27,13 @@ import {
   isGmbArea,
   services,
   siteConfig,
+  type Area,
   type AreaSlug,
+  type ManualServiceAreaContent,
+  type Service,
   type ServiceSlug,
 } from "../../data/serviceAreaData";
+import { getServiceLandingContent } from "../../data/serviceLandingContent";
 
 type ServiceAreaPageProps = {
   params: Promise<{
@@ -52,23 +70,56 @@ export async function generateMetadata({
   );
   const isReady = manualContent?.status === "ready";
   const title =
+    manualContent?.metaTitle ||
     manualContent?.h1 ||
-    `${service.name} in ${area.name}, ${siteConfig.city} | ${siteConfig.name}`;
+    `${service.name} in ${area.name}, ${siteConfig.city}`;
+  const description =
+    manualContent?.metaDescription ||
+    manualContent?.intro ||
+    `${service.name} page setup for ${area.name}, ${siteConfig.city}.`;
+  const canonical = `${siteConfig.baseUrl}${getServiceAreaPath(
+    service.slug as ServiceSlug,
+    area.slug as AreaSlug
+  )}`;
+  const serviceLandingContent = getServiceLandingContent(
+    service.slug as ServiceSlug
+  );
+  const shareImage =
+    serviceLandingContent?.hero.image.src ||
+    "/home-optimized/hero-balcony.webp";
 
   return {
     title,
-    description:
-      manualContent?.intro ||
-      `${service.name} page setup for ${area.name}, ${siteConfig.city}.`,
+    description,
+    keywords: manualContent?.keywords,
     robots: {
       index: isReady,
       follow: true,
     },
     alternates: {
-      canonical: `${siteConfig.baseUrl}${getServiceAreaPath(
-        service.slug as ServiceSlug,
-        area.slug as AreaSlug
-      )}`,
+      canonical,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: `${siteConfig.baseUrl}${shareImage}`,
+          width: 1200,
+          height: 800,
+          alt: title,
+        },
+      ],
+      locale: "en_IN",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${siteConfig.baseUrl}${shareImage}`],
     },
   };
 }
@@ -88,6 +139,366 @@ export default async function ServiceAreaPage({
     service.slug as ServiceSlug,
     area.slug as AreaSlug
   );
+
+  if (manualContent?.status === "ready" && manualContent.localHighlights?.length) {
+    return (
+      <RichManualServiceAreaPage
+        service={service}
+        area={area}
+        content={manualContent}
+      />
+    );
+  }
+
+  return (
+    <BasicServiceAreaPage
+      service={service}
+      area={area}
+      manualContent={manualContent}
+    />
+  );
+}
+
+function RichManualServiceAreaPage({
+  service,
+  area,
+  content,
+}: {
+  service: Service;
+  area: Area;
+  content: ManualServiceAreaContent;
+}) {
+  const sameAreaServices = services.filter((item) => item.slug !== service.slug);
+  const jsonLd = buildServiceAreaJsonLd(service, area, content);
+
+  return (
+    <main className="min-h-screen bg-[#F8FAFC] text-[#111827]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
+      <section className="bg-white px-6 py-14 md:px-10 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.03fr_0.97fr] lg:items-start">
+          <div>
+            <Breadcrumbs service={service} area={area} />
+
+            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
+              {area.name} local installation
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-[#111827] md:text-6xl">
+              {content.h1}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] md:text-lg">
+              {content.intro}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              {isGmbArea(area) ? (
+                <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-[#C2410C]">
+                  <MapPinned className="size-4" />
+                  GMB location
+                </span>
+              ) : null}
+              <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-semibold text-[#0F766E]">
+                <ShieldCheck className="size-4" />
+                Local guidance
+              </span>
+              <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-slate-200 bg-[#F8FAFC] px-4 py-2 text-sm font-semibold text-[#475569]">
+                <MapPin className="size-4" />
+                {siteConfig.city}
+              </span>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="#quote-guide"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#0F766E] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#115E59]"
+              >
+                <IndianRupee className="size-4" />
+                Price Guide
+              </Link>
+              <Link
+                href="#service-area-search"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-2 text-sm font-semibold text-[#0F766E] transition hover:bg-[#F8FAFC]"
+              >
+                <Search className="size-4" />
+                Search Service Areas
+              </Link>
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            <ServiceAreaSearch
+              services={services}
+              areas={areas}
+              defaultServiceSlug={service.slug}
+              defaultAreaSlug={area.slug}
+            />
+
+            <div className="rounded-lg border border-slate-200 bg-[#F8FAFC] p-5">
+              <h2 className="text-lg font-bold">Local service brief</h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {(content.localHighlights ?? []).map((item) => (
+                  <div key={item.label} className="rounded-lg bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#0F766E]">
+                      {item.label}
+                    </p>
+                    <h3 className="mt-2 text-lg font-bold">{item.value}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#475569]">
+                      {item.note}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <div>
+            <SectionKicker
+              icon={<Building2 className="size-4" />}
+              text="Local problem map"
+            />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              Why this service is commonly needed in {area.name}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[#475569]">
+              Around {area.name}, {service.name.toLowerCase()} work depends on
+              the exact opening, fixing surface, building rules, and how the
+              family uses the balcony or window every day.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {(content.problemCards ?? []).map((card) => (
+              <article
+                key={card.title}
+                className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <ShieldCheck className="mb-4 size-6 text-[#0F766E]" />
+                <h3 className="text-lg font-semibold">{card.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                  {card.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+          <div>
+            <SectionKicker
+              icon={<ClipboardCheck className="size-4" />}
+              text="Fit notes"
+            />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              Where the net should be checked before fitting
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[#475569]">
+              Before booking, it helps to know which part of the home is causing
+              the problem. A main balcony, window opening, utility side, high
+              floor edge, and rental flat can all need different fitting
+              decisions.
+            </p>
+          </div>
+
+          <ResponsiveInfoTable
+            headers={["Place", "Fit plan", "Watch for"]}
+            rows={(content.specificationRows ?? []).map((row) => [
+              row.place,
+              row.fitPlan,
+              row.watchFor,
+            ])}
+          />
+        </div>
+      </section>
+
+      <section id="quote-guide" className="px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+          <div>
+            <SectionKicker
+              icon={<IndianRupee className="size-4" />}
+              text="Local quote guide"
+            />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              {service.name} price planning in {area.name}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[#475569]">
+              Use these ranges only for planning. Final pricing depends on
+              measurement, material, hook points, height, access, cleaning, and
+              whether the opening is simple or irregular.
+            </p>
+            <p className="mt-4 rounded-lg border border-orange-200 bg-orange-50 p-4 text-sm leading-6 text-[#9A3412]">
+              A local quote should come after checking the actual opening. Very
+              small jobs and difficult-access work may have a minimum visit or
+              custom access charge.
+            </p>
+          </div>
+
+          <ResponsiveInfoTable
+            headers={["Item", "Planning range", "Notes"]}
+            rows={(content.quoteRows ?? []).map((row) => [
+              row.item,
+              row.planningRange,
+              row.notes,
+            ])}
+          />
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div>
+            <SectionKicker icon={<Wrench className="size-4" />} text="Visit plan" />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              How a local installation visit should move
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[#475569]">
+              A clean visit starts with clear photos and ends with a final gap
+              and finish check. That way the installation solves the main
+              concern without making balcony use, cleaning, or service access
+              harder later.
+            </p>
+          </div>
+
+          <div className="grid gap-4">
+            {(content.visitSteps ?? []).map((step) => (
+              <article
+                key={step.title}
+                className="rounded-lg border border-slate-200 bg-[#F8FAFC] p-5"
+              >
+                <h3 className="text-lg font-semibold">{step.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                  {step.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
+          <ListPanel
+            title="Before booking"
+            icon={<ClipboardCheck className="size-5" />}
+            items={content.checklist ?? []}
+          />
+          <ListPanel
+            title="After installation"
+            icon={<Sparkles className="size-5" />}
+            items={content.careTips ?? []}
+          />
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <SectionKicker icon={<MapPin className="size-4" />} text="Nearby" />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              Nearby pockets around {area.name}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[#475569]">
+              These nearby pockets are useful for planning local calls, route
+              timing, and grouped visits around the same side of Bangalore.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {(content.nearbyPockets ?? []).map((pocket) => (
+              <div
+                key={pocket}
+                className="flex min-h-[56px] items-center gap-2 rounded-lg border border-slate-200 bg-[#F8FAFC] px-4 py-3 text-sm font-semibold text-[#334155]"
+              >
+                <MapPin className="size-4 shrink-0 text-[#0F766E]" />
+                {pocket}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 max-w-3xl">
+            <SectionKicker icon={<HelpCircle className="size-4" />} text="FAQs" />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              Questions before booking in {area.name}
+            </h2>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {(content.faqs ?? []).map((faq) => (
+              <article
+                key={faq.question}
+                className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold">{faq.question}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                  {faq.answer}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-16 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div>
+            <SectionKicker
+              icon={<ArrowRight className="size-4" />}
+              text={`More in ${area.name}`}
+            />
+            <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              Other services in {area.name}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[#475569]">
+              If you need another kind of balcony, window, utility, or drying
+              space work in {area.name}, these local service pages stay linked
+              from the same area.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {sameAreaServices.map((item) => (
+              <Link
+                key={item.slug}
+                href={getServiceAreaPath(
+                  item.slug as ServiceSlug,
+                  area.slug as AreaSlug
+                )}
+                className="group flex items-center justify-between rounded-lg border border-slate-200 bg-[#F8FAFC] px-4 py-4 text-sm font-semibold text-[#334155] transition hover:border-[#0F766E]/40 hover:text-[#0F766E]"
+              >
+                {item.name}
+                <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function BasicServiceAreaPage({
+  service,
+  area,
+  manualContent,
+}: {
+  service: Service;
+  area: Area;
+  manualContent?: ManualServiceAreaContent;
+}) {
   const pageHeading =
     manualContent?.h1 || `${service.name} in ${area.name}, ${siteConfig.city}`;
   const isReady = manualContent?.status === "ready";
@@ -98,20 +509,7 @@ export default async function ServiceAreaPage({
       <section className="bg-white px-6 py-16 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
-            <nav className="flex flex-wrap gap-2 text-sm text-[#64748B]">
-              <Link href="/bangalore/" className="font-semibold text-[#0F766E]">
-                Bangalore
-              </Link>
-              <span>/</span>
-              <Link
-                href={getServicePath(service.slug as ServiceSlug)}
-                className="font-semibold text-[#0F766E]"
-              >
-                {service.name}
-              </Link>
-              <span>/</span>
-              <span>{area.name}</span>
-            </nav>
+            <Breadcrumbs service={service} area={area} />
 
             <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[#0F766E]">
               Local service page
@@ -230,7 +628,9 @@ export default async function ServiceAreaPage({
               <h2 className="text-lg font-bold">Area</h2>
               <div className="mt-4 flex items-center gap-2 text-[#475569]">
                 <MapPin className="size-4 text-[#0F766E]" />
-                <span>{area.name}, {siteConfig.city}</span>
+                <span>
+                  {area.name}, {siteConfig.city}
+                </span>
               </div>
               {isGmbArea(area) ? (
                 <p className="mt-3 text-sm font-semibold text-[#C2410C]">
@@ -243,4 +643,216 @@ export default async function ServiceAreaPage({
       </section>
     </main>
   );
+}
+
+function Breadcrumbs({ service, area }: { service: Service; area: Area }) {
+  return (
+    <nav className="flex flex-wrap gap-2 text-sm text-[#64748B]">
+      <Link href="/bangalore/" className="font-semibold text-[#0F766E]">
+        Bangalore
+      </Link>
+      <span>/</span>
+      <Link
+        href={getServicePath(service.slug as ServiceSlug)}
+        className="font-semibold text-[#0F766E]"
+      >
+        {service.name}
+      </Link>
+      <span>/</span>
+      <span>{area.name}</span>
+    </nav>
+  );
+}
+
+function SectionKicker({ icon, text }: { icon: ReactNode; text: string }) {
+  return (
+    <p className="inline-flex items-center gap-2 rounded-lg bg-[#ECFDF5] px-3 py-2 text-sm font-semibold text-[#0F766E]">
+      {icon}
+      {text}
+    </p>
+  );
+}
+
+function ResponsiveInfoTable({
+  headers,
+  rows,
+}: {
+  headers: string[];
+  rows: string[][];
+}) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+      <table className="hidden w-full border-collapse text-left md:table">
+        <thead className="bg-[#F8FAFC] text-sm text-[#334155]">
+          <tr>
+            {headers.map((header) => (
+              <th key={header} className="border-b border-slate-200 px-4 py-3">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.join("|")} className="align-top">
+              {row.map((cell, index) => (
+                <td
+                  key={`${cell}-${index}`}
+                  className="border-b border-slate-100 px-4 py-4 text-sm leading-6 text-[#475569] last:border-b-0"
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="grid gap-0 md:hidden">
+        {rows.map((row) => (
+          <article key={row.join("|")} className="border-b border-slate-200 p-4">
+            {row.map((cell, index) => (
+              <div key={`${cell}-${index}`} className={index ? "mt-3" : ""}>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#0F766E]">
+                  {headers[index]}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-[#475569]">{cell}</p>
+              </div>
+            ))}
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ListPanel({
+  title,
+  icon,
+  items,
+}: {
+  title: string;
+  icon: ReactNode;
+  items: string[];
+}) {
+  return (
+    <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="flex items-center gap-3">
+        <span className="flex size-10 items-center justify-center rounded-lg bg-[#ECFDF5] text-[#0F766E]">
+          {icon}
+        </span>
+        <h2 className="text-2xl font-bold">{title}</h2>
+      </div>
+      <div className="mt-5 grid gap-3">
+        {items.map((item) => (
+          <div key={item} className="flex items-start gap-3">
+            <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#0F766E]" />
+            <p className="text-sm leading-6 text-[#475569]">{item}</p>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function buildServiceAreaJsonLd(
+  service: Service,
+  area: Area,
+  content: ManualServiceAreaContent
+) {
+  const path = getServiceAreaPath(
+    service.slug as ServiceSlug,
+    area.slug as AreaSlug
+  );
+  const canonical = `${siteConfig.baseUrl}${path}`;
+  const title = content.metaTitle || content.h1;
+  const description = content.metaDescription || content.intro;
+  const serviceNode: Record<string, unknown> = {
+    "@type": "Service",
+    "@id": `${canonical}#service`,
+    name: title,
+    description,
+    serviceType: service.name,
+    url: canonical,
+    provider: {
+      "@type": "LocalBusiness",
+      name: siteConfig.name,
+      url: siteConfig.baseUrl,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: siteConfig.branchAreaName,
+        addressRegion: "Karnataka",
+        addressCountry: "IN",
+      },
+      areaServed: `${area.name}, ${siteConfig.city}`,
+    },
+    areaServed: {
+      "@type": "Place",
+      name: `${area.name}, ${siteConfig.city}`,
+    },
+  };
+
+  if (content.quoteRows?.length) {
+    serviceNode.hasOfferCatalog = {
+      "@type": "OfferCatalog",
+      name: `${service.name} quote guide in ${area.name}`,
+      itemListElement: content.quoteRows.slice(0, 4).map((row) => ({
+        "@type": "Offer",
+        name: row.item,
+        description: `${row.planningRange}. ${row.notes}`,
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
+      })),
+    };
+  }
+
+  const graph: Record<string, unknown>[] = [
+    serviceNode,
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonical}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Bangalore",
+          item: `${siteConfig.baseUrl}/bangalore/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: service.name,
+          item: `${siteConfig.baseUrl}${getServicePath(
+            service.slug as ServiceSlug
+          )}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: area.name,
+          item: canonical,
+        },
+      ],
+    },
+  ];
+
+  if (content.faqs?.length) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      mainEntity: content.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": graph,
+  };
 }
