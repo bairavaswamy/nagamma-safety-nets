@@ -81,15 +81,6 @@ export default function Gallery({ images }: { images: GalleryItem[] }) {
                     </span>
                   </div>
                   <h3 className="font-semibold">{item.title}</h3>
-                  <a
-                    href="https://wa.me/917995792953"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-block text-sm font-semibold text-orange-200"
-                    onClick={(event) => event.stopPropagation()}
-                  >
-                    Ask on WhatsApp
-                  </a>
                 </div>
               </article>
             ))}

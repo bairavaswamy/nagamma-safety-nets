@@ -1,5 +1,3 @@
-import { MessageCircle, Phone } from "lucide-react";
-
 interface HeroProps {
   title: string;
   description: string;
@@ -7,7 +5,7 @@ interface HeroProps {
 }
 
 const HeroSection = ({ title, description, image }: HeroProps) => {
-  const heroImage = image || "/images/balcony.webp";
+  const heroImage = image || "/home-optimized/hero-balcony.webp";
 
   return (
     <section
@@ -18,7 +16,7 @@ const HeroSection = ({ title, description, image }: HeroProps) => {
     >
       <div className="relative z-10 flex min-h-[68vh] flex-col items-center justify-center px-4 py-20 text-center text-white md:min-h-[72vh]">
         <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-orange-200">
-          Servani Safety Nets
+          Nagamma Safety Nets
         </p>
         <h1 className="max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
           {title} in Bangalore
@@ -27,26 +25,6 @@ const HeroSection = ({ title, description, image }: HeroProps) => {
         <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-100 md:text-xl">
           {description}
         </p>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <a
-            href="tel:+917995792953"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-[#C2410C] px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-[#9A3412]"
-          >
-            <Phone size={18} />
-            Call Now
-          </a>
-
-          <a
-            href="https://wa.me/917995792953"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20"
-          >
-            <MessageCircle size={18} />
-            WhatsApp
-          </a>
-        </div>
 
         <p className="mt-6 text-sm text-slate-200">
           10+ Years Experience | Safe Installation | Clear Pricing

@@ -1,35 +1,23 @@
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import { buildBusinessJsonLd } from "./data/businessProfile";
-
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+import { siteConfig } from "./bangalore/data/serviceAreaData";
+import FloatingNavbar from "./components/FloatingNavbar";
+import SiteFooter from "./components/SiteFooter";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://servanisafetynets.com"),
+  metadataBase: new URL(siteConfig.baseUrl),
 
   title: {
-    default: "Servani Safety Nets Bangalore | Balcony Nets, Pigeon Nets & Invisible Grills",
-    template: "%s | Servani Safety Nets",
+    default: `${siteConfig.name} Bangalore`,
+    template: `%s | ${siteConfig.name}`,
   },
 
   description:
-    "Servani Safety Nets provides balcony safety nets, pigeon nets, invisible grills, duct area nets, and industrial safety solutions in Bangalore. Affordable, durable & professional installation.",
+    `${siteConfig.name} provides home safety net installation in Bangalore.`,
 
-  keywords: [
-    "Safety Nets Bangalore",
-    "Balcony Safety Nets Bangalore",
-    "Pigeon Nets Bangalore",
-    "Invisible Grills Bangalore",
-    "Bird Nets Bangalore",
-    "Duct Area Safety Nets",
-    "Industrial Safety Nets Bangalore",
-    "Servani Safety Nets",
-  ],
-
-  authors: [{ name: "Servani Safety Nets" }],
-  creator: "Servani Safety Nets",
-  publisher: "Servani Safety Nets",
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
 
   robots: {
     index: true,
@@ -44,21 +32,20 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://servanisafetynets.com",
+    canonical: siteConfig.baseUrl,
   },
 
   openGraph: {
-    title: "Servani Safety Nets Bangalore",
-    description:
-      "Top safety net services in Bangalore - balcony nets, pigeon nets, invisible grills and more. Call now for installation.",
-    url: "https://servanisafetynets.com",
-    siteName: "Servani Safety Nets",
+    title: `${siteConfig.name} Bangalore`,
+    description: "Home safety net installation in Bangalore.",
+    url: siteConfig.baseUrl,
+    siteName: siteConfig.name,
     images: [
       {
-        url: "https://servanisafetynets.com/og-image.webp",
+        url: `${siteConfig.baseUrl}/og-image.webp`,
         width: 1200,
         height: 630,
-        alt: "Servani Safety Nets Bangalore",
+        alt: `${siteConfig.name} Bangalore`,
       },
     ],
     locale: "en_IN",
@@ -67,10 +54,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Servani Safety Nets Bangalore",
-    description:
-      "Balcony safety nets, pigeon nets & invisible grills installation in Bangalore.",
-    images: ["https://servanisafetynets.com/og-image.webp"],
+    title: `${siteConfig.name} Bangalore`,
+    description: "Home safety net installation in Bangalore.",
+    images: [`${siteConfig.baseUrl}/og-image.webp`],
   },
 
   icons: {
@@ -85,21 +71,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const schemaData = buildBusinessJsonLd();
-
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
-        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
-
-        {/* SEO Schema */}
-        <script
-          id="schema-business"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-
-        {children}
+        <FloatingNavbar />
+        <div className="pt-24">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );

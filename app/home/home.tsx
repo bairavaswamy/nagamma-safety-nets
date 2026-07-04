@@ -7,34 +7,10 @@ import HeroSection from "./components/HeroSection";
 import SafetySolutions from "./components/SafetySolutions";
 import Gallery from "./components/Gallery";
 import Testimonials from "./components/Testimonials";
-import CTASection from "./components/CTASection";
 import MissionSection from "./components/MissionSection";
 import OfferMarquee from "./components/OfferMarquee";
-
-const featuredCardTitles = [
-  "Balcony Safety Nets",
-  "Pigeon Safety Nets",
-  "Cloth Hangers",
-  "Sports Safety Nets",
-  "Invisible Safety Nets",
-  "Invisible Grills",
-  "Cat Safety Nets",
-  "Bird Spikes",
-  "Residential Safety Nets",
-];
-
-const homeCards = featuredCardTitles
-  .map((title) => cardsData.find((card) => card.title === title))
-  .filter((card): card is (typeof cardsData)[number] => Boolean(card))
-  .map((card) => ({
-    ...card,
-    image: card.image.replace("/cards/", "/home-optimized/cards/"),
-  }));
-
-const homeGallery = galleryData.slice(0, 10).map((item) => ({
-  ...item,
-  image: item.image.replace("/images/", "/home-optimized/gallery/"),
-}));
+import ServiceAreaSearch from "../bangalore/components/ServiceAreaSearch";
+import { areas, services } from "../bangalore/data/serviceAreaData";
 
 export default function HomePage() {
   return (
@@ -49,20 +25,24 @@ export default function HomePage() {
       <main className="min-h-screen bg-[#F8FAFC] text-[#111827]">
 
         <HeroSection
-          title="Balcony Safety Nets"
-          description="Protect your family with measured safety net installation for balconies, windows, and open spaces."
+          title="Nagamma Safety Nets"
+          description="Safety nets, invisible grills, sports nets, and cloth hanger services across Bangalore with Marathahalli as the primary service location."
           image="/home-optimized/hero-balcony.webp"
         />
 
         <OfferMarquee />
 
-        <SafetySolutions cards={homeCards} />
+        <section className="bg-white px-6 py-10 md:px-12">
+          <div className="mx-auto max-w-5xl">
+            <ServiceAreaSearch services={services} areas={areas} />
+          </div>
+        </section>
 
-        <Gallery images={homeGallery} />
+        <SafetySolutions cards={cardsData} />
+
+        <Gallery images={galleryData} />
 
         <Testimonials testimonials={testimonials} />
-
-        <CTASection />
 
         <MissionSection />
 

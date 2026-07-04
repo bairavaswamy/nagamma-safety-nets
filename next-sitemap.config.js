@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: "https://servanisafetynets.com",
+  siteUrl: "https://nagammasafetynets.com",
   generateRobotsTxt: true, // auto create robots.txt
 
   sitemapSize: 7000,

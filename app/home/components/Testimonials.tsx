@@ -46,7 +46,7 @@ const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
       </h2>
 
       <p className="mx-auto mb-12 max-w-2xl text-center text-sm leading-7 text-[#475569] md:text-base">
-        Real experiences from customers who made their homes safer with Servani
+        Real experiences from customers who made their homes safer with Nagamma
         Safety Nets.
       </p>
 
@@ -58,14 +58,6 @@ const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
         </div>
       </div>
 
-      <div className="relative z-10 mt-14 flex justify-center">
-        <a
-          href="tel:+917995792953"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#C2410C] px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-[#9A3412]"
-        >
-          Get Installation Quote
-        </a>
-      </div>
     </section>
   );
 };

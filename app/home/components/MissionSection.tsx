@@ -32,7 +32,7 @@ const MissionSection = () => {
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#475569]">
           At{" "}
           <span className="font-semibold text-[#0F766E]">
-            Servani Safety Nets
+            Nagamma Safety Nets
           </span>
           , our mission is to make every home in Bengaluru safer, cleaner, and
           easier to live in. We deliver safety nets and invisible grills that

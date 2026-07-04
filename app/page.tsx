@@ -1,27 +1,18 @@
 import type { Metadata } from "next";
-import Footer from "./footer/Footer"
 import HomePage from "./home/home";
-import Navbar from "./navbar/Navbar";
-import StickyContactIcons from "./stickyicons/stickyIcons";
+import { siteConfig } from "./bangalore/data/serviceAreaData";
 
 export const metadata: Metadata = {
-  title: "Servani Safety Nets Bangalore | Balcony Nets, Pigeon Nets & Invisible Grills",
+  title: `${siteConfig.name} Bangalore`,
   description:
-    "Servani Safety Nets provides balcony safety nets, pigeon nets, invisible grills, duct area nets, and industrial safety solutions in Bangalore with professional installation.",
+    `${siteConfig.name} provides home safety net installation in Bangalore.`,
   alternates: {
-    canonical: "https://servanisafetynets.com/",
+    canonical: `${siteConfig.baseUrl}/`,
   },
 };
 
-const Home =()=> {
-  return(
-    <>
-      <Navbar/>
-      <HomePage/>
-      <StickyContactIcons/>
-      <Footer/>
-      </>
-  )
+const Home = () => {
+  return <HomePage />;
 }
 
 export default Home;
