@@ -68,7 +68,7 @@ export const serviceLandingContent: Partial<
     metadata: {
       title: "Pigeon Safety Nets in Bangalore",
       description:
-        "Compare pigeon safety nets in Bangalore with material notes, fitting process, local price ranges, buyer checklist, FAQs, and area coverage.",
+        "Compare pigeon safety nets in Bangalore with material notes, fitting process, price ranges, buyer checklist, FAQs, and area coverage.",
       keywords: [
         "pigeon safety nets in Bangalore",
         "balcony pigeon net Bangalore",
@@ -86,7 +86,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Measured for balconies, windows, ducts, AC ledges, and utility areas",
         "Planned around railings, ceiling hooks, pipes, grills, and apartment rules",
-        "Clear guidance on material, fitting method, maintenance, and price range",
+        "Clear notes on material, fitting method, maintenance, and price range",
       ],
       image: {
         src: "/home-optimized/cards/pigeon-safety-nets-in-bangalore.webp",
@@ -105,7 +105,7 @@ export const serviceLandingContent: Partial<
         body: "A weather-ready net with a tidy edge finish works better than a loose mesh tied only at a few points.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "The primary service base is Marathahalli, with service planned across Bangalore apartments and nearby residential areas.",
       },
@@ -205,7 +205,7 @@ export const serviceLandingContent: Partial<
         strength: "Clean look, stainless-steel cable system, good for view-facing balconies",
         limitation: "Small birds can still enter if the gap plan is not bird-focused",
         chooseWhen:
-          "You want a premium safety finish and may add bird netting only where needed.",
+          "You want a neater safety finish and may add bird netting only where needed.",
       },
       {
         option: "Bird spikes",
@@ -240,7 +240,7 @@ export const serviceLandingContent: Partial<
           "Tight working space, pipe obstructions, shaft access, and minimum visit effort",
       },
       {
-        scope: "Premium or thicker net finish",
+        scope: "Higher-grade or thicker net finish",
         planningRange: "Rs. 30 to Rs. 45 per sq ft",
         normallyIncludes: "Higher-grade net, cleaner border work, and stronger fastening plan",
         affectsPrice:
@@ -308,7 +308,7 @@ export const serviceLandingContent: Partial<
       {
         question: "How much does pigeon safety net installation cost in Bangalore?",
         answer:
-          "A common planning range is Rs. 15 to Rs. 30 per sq ft for standard balcony work, with higher ranges for ducts, premium material, difficult access, or extra finishing. The final quote should always come after measurement.",
+          "A common planning range is Rs. 15 to Rs. 30 per sq ft for standard balcony work, with higher ranges for ducts, higher-grade material, difficult access, or extra finishing. The final quote should always come after measurement.",
       },
       {
         question: "Will pigeon nets block light or airflow?",
@@ -333,7 +333,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which areas in Bangalore do you cover for pigeon net work?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Thanisandra, Kengeri, and nearby locations.",
+          "Pigeon net visits are planned from the Marathahalli service base toward Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Thanisandra, Kengeri, and nearby apartment pockets where balconies, ducts, and AC ledges need bird-entry closure.",
       },
       {
         question: "Can the net be removed later for painting or repair work?",
@@ -364,7 +364,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Planned for balconies, French windows, sit-outs, stair openings, and utility edges",
         "Designed around child safety, pet safety, view, airflow, and apartment rules",
-        "Clear guidance on stainless-steel cable grade, spacing, drilling, warranty questions, and price range",
+        "Clear notes on stainless-steel cable grade, spacing, drilling, warranty questions, and price range",
       ],
       image: {
         src: "/home-optimized/cards/invisible-grills-in-bangalore.webp",
@@ -383,7 +383,7 @@ export const serviceLandingContent: Partial<
         body: "Ask about SS 304 or SS 316 cable, nylon coating, cable thickness, and tension fittings before comparing quotes.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "Nagamma Safety Nets serves Bangalore from the Marathahalli side, with invisible grill work planned for apartments, villas, and rental homes.",
       },
@@ -427,7 +427,7 @@ export const serviceLandingContent: Partial<
       {
         part: "Cable grade",
         whatToAsk: "Is the cable SS 304 or SS 316, and is the grade mentioned in the quote?",
-        goodChoice: "SS 304 for most homes, SS 316 for higher exposure or premium requirements",
+        goodChoice: "SS 304 for most homes, SS 316 for higher exposure or higher finish requirements",
         whyItMatters:
           "Cable grade affects rust resistance, long-term finish, and the trustworthiness of the installation.",
       },
@@ -483,11 +483,11 @@ export const serviceLandingContent: Partial<
         strength: "Practical coverage for children, pets, and open railing gaps",
         limitation: "More visible than invisible grills and may need more cleaning over time",
         chooseWhen:
-          "Budget and broad coverage matter more than a premium cable finish.",
+          "Budget and broad coverage matter more than a higher-grade cable finish.",
       },
       {
         option: "Glass railing or glass enclosure",
-        bestFor: "Premium-looking spaces where a glass finish is allowed",
+        bestFor: "Cleaner-looking spaces where a glass finish is allowed",
         strength: "Modern finish and stronger visual enclosure",
         limitation: "Higher cost, cleaning effort, heat, and building approval concerns",
         chooseWhen:
@@ -497,7 +497,7 @@ export const serviceLandingContent: Partial<
         option: "Pigeon safety nets",
         bestFor: "Bird entry, nesting, droppings, and balcony cleaning problems",
         strength: "Directly blocks pigeons from entering open areas",
-        limitation: "Not a premium edge-safety replacement for invisible grills",
+        limitation: "Not a rigid edge-safety replacement for invisible grills",
         chooseWhen:
           "The main problem is birds, not child or open-edge safety.",
       },
@@ -518,7 +518,7 @@ export const serviceLandingContent: Partial<
           "Required cable gap, balcony height, number of openings, and safety expectation",
       },
       {
-        scope: "Premium cable or higher-exposure balcony",
+        scope: "Higher-grade cable or higher-exposure balcony",
         planningRange: "Rs. 280 to Rs. 420 per sq ft",
         normallyIncludes: "Higher-grade cable, better coating, stronger fittings, and cleaner finish",
         affectsPrice:
@@ -586,7 +586,7 @@ export const serviceLandingContent: Partial<
       {
         question: "How much do invisible grills cost in Bangalore?",
         answer:
-          "A practical planning range is Rs. 180 to Rs. 260 per sq ft for standard balcony work, with higher ranges for closer spacing, premium cable, difficult access, or custom fixing. Final pricing should be confirmed after measurement.",
+          "A practical planning range is Rs. 180 to Rs. 260 per sq ft for standard balcony work, with higher ranges for closer spacing, higher-grade cable, difficult access, or custom fixing. Final pricing should be confirmed after measurement.",
       },
       {
         question: "Are invisible grills safe for children?",
@@ -616,7 +616,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which Bangalore areas do you cover for invisible grills?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Thanisandra, Kengeri, and nearby locations.",
+          "Invisible grill visits are planned from Marathahalli toward Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Thanisandra, Kengeri, and nearby buildings where cable alignment, drilling approval, and balcony view need a proper check.",
       },
     ],
   },
@@ -642,7 +642,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Planned for balconies, terrace sides, open shafts, utility areas, and villa edges",
         "Focused on strong material, tighter border fixing, and practical access control",
-        "Useful guidance on net thickness, anchors, support rope, maintenance, and price range",
+        "Useful notes on net thickness, anchors, support rope, maintenance, and price range",
       ],
       image: {
         src: "/home-optimized/cards/construction-safety-nets-in-bangalore.webp",
@@ -661,7 +661,7 @@ export const serviceLandingContent: Partial<
         body: "Monkey netting needs stronger mesh, tighter border support, and better fixing points than light bird-control netting.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "Nagamma Safety Nets serves Bangalore from Marathahalli, with work planned after checking building access, height, and opening shape.",
       },
@@ -765,7 +765,7 @@ export const serviceLandingContent: Partial<
       },
       {
         option: "Invisible grill",
-        bestFor: "Open-view safety with a cleaner premium look",
+        bestFor: "Open-view safety with a cleaner cleaner look",
         strength: "Neat cable finish and stronger balcony edge protection",
         limitation: "Gaps may not stop monkey reach or entry unless planned separately",
         chooseWhen:
@@ -894,7 +894,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which Bangalore areas do you cover for monkey safety nets?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, Sarjapura, Yelahanka, JP Nagar, Kanakapura Road, RR Nagar, Kengeri, Thanisandra, and nearby locations.",
+          "Monkey safety net visits are planned from Marathahalli toward Whitefield, Bellandur, KR Puram, Sarjapura, Yelahanka, JP Nagar, Kanakapura Road, RR Nagar, Kengeri, Thanisandra, and nearby terrace or tree-facing pockets where stronger border support is needed.",
       },
     ],
   },
@@ -902,7 +902,7 @@ export const serviceLandingContent: Partial<
     metadata: {
       title: "Children Safety Nets in Bangalore",
       description:
-        "Compare children safety nets in Bangalore with child-safe material notes, balcony and window planning, price guide, process, checklist, FAQs, and area coverage.",
+        "Compare children safety nets in Bangalore with child-safe material notes, balcony and window planning, price notes, process, checklist, FAQs, and area coverage.",
       keywords: [
         "children safety nets in Bangalore",
         "child safety net Bangalore",
@@ -920,7 +920,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Measured for balconies, windows, stair gaps, indoor cut-outs, ducts, and utility openings",
         "Planned around child reach, railing gaps, furniture placement, airflow, and daily cleaning",
-        "Clear guidance on mesh strength, fixing method, edge finish, maintenance, and price range",
+        "Clear notes on mesh strength, fixing method, edge finish, maintenance, and price range",
       ],
       image: {
         src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
@@ -939,7 +939,7 @@ export const serviceLandingContent: Partial<
         body: "The net should be tight, weather-ready, and fixed with secure edge support instead of loose temporary tying.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "Nagamma Safety Nets serves Bangalore from Marathahalli, with installation planned for apartments, villas, and rental homes.",
       },
@@ -1035,11 +1035,11 @@ export const serviceLandingContent: Partial<
       },
       {
         option: "Invisible grill",
-        bestFor: "Open-view balcony safety with a premium cable look",
+        bestFor: "Open-view balcony safety with a higher-grade cable look",
         strength: "Strong, neat, and view-friendly for balconies and large windows",
         limitation: "Costs more and spacing must be planned carefully for small children",
         chooseWhen:
-          "You want a long-term premium safety finish and the budget supports cable work.",
+          "You want a long-term neater safety finish and the budget supports cable work.",
       },
       {
         option: "Traditional metal grill",
@@ -1081,7 +1081,7 @@ export const serviceLandingContent: Partial<
           "Opening shape, ceiling height, finish expectation, anchor points, and furniture access",
       },
       {
-        scope: "Premium stronger child-safety finish",
+        scope: "Higher-strength child-safety finish",
         planningRange: "Rs. 35 to Rs. 60 per sq ft",
         normallyIncludes: "Thicker net, reinforced edges, closer fixing points, and cleaner finish",
         affectsPrice:
@@ -1142,7 +1142,7 @@ export const serviceLandingContent: Partial<
       {
         question: "How much do children safety nets cost in Bangalore?",
         answer:
-          "A practical planning range is Rs. 18 to Rs. 35 per sq ft for standard balcony work, with higher ranges for stair voids, stronger material, premium finish, or difficult access. Final pricing should be confirmed after measurement.",
+          "A practical planning range is Rs. 18 to Rs. 35 per sq ft for standard balcony work, with higher ranges for stair voids, stronger material, cleaner finish, or difficult access. Final pricing should be confirmed after measurement.",
       },
       {
         question: "Are children safety nets safe for toddlers?",
@@ -1172,7 +1172,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which Bangalore areas do you cover for children safety nets?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Kengeri, Thanisandra, and nearby locations.",
+          "Children safety net visits are planned from Marathahalli toward Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Kengeri, Thanisandra, and nearby family-apartment pockets where lower gaps, windows, and stair voids need careful checking.",
       },
     ],
   },
@@ -1180,7 +1180,7 @@ export const serviceLandingContent: Partial<
     metadata: {
       title: "Sports Nets in Bangalore",
       description:
-        "Compare sports nets in Bangalore with cricket, football, terrace, school, and apartment practice-net planning, material notes, price guide, process, checklist, FAQs, and area coverage.",
+        "Compare sports nets in Bangalore with cricket, football, terrace, school, and apartment practice-net planning, material notes, price notes, process, checklist, FAQs, and area coverage.",
       keywords: [
         "sports nets in Bangalore",
         "cricket nets Bangalore",
@@ -1198,7 +1198,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Planned for cricket practice, terrace play, box cricket, football, schools, clubs, and apartment activity zones",
         "Designed around ball impact, side coverage, roof height, support poles, wind, and safe entry points",
-        "Clear guidance on mesh type, border rope, support frame, installation process, maintenance, and price range",
+        "Clear notes on mesh type, border rope, support frame, installation process, maintenance, and price range",
       ],
       image: {
         src: "/home-optimized/cards/sports-safety-nets-in-bangalore.webp",
@@ -1217,7 +1217,7 @@ export const serviceLandingContent: Partial<
         body: "The net should be selected by sport, ball speed, mesh size, outdoor exposure, and whether it needs a frame or only edge fixing.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "Nagamma Safety Nets serves Bangalore from Marathahalli, with site planning across apartments, schools, villas, and commercial activity areas.",
       },
@@ -1450,7 +1450,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which Bangalore areas do you cover for sports nets?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Kengeri, Thanisandra, and nearby locations.",
+          "Sports net visits are planned from Marathahalli toward Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Kengeri, Thanisandra, and nearby schools, terraces, coaching lanes, and apartment play zones.",
       },
     ],
   },
@@ -1458,7 +1458,7 @@ export const serviceLandingContent: Partial<
     metadata: {
       title: "Cloth Hangers in Bangalore",
       description:
-        "Compare cloth hangers in Bangalore with ceiling, pulley, balcony, utility, stainless-steel, and foldable drying setup guidance, material notes, price planning, process, checklist, FAQs, and area coverage.",
+        "Compare cloth hangers in Bangalore with ceiling, pulley, balcony, utility, stainless-steel, and foldable drying setup notes, material notes, price planning, process, checklist, FAQs, and area coverage.",
       keywords: [
         "cloth hangers in Bangalore",
         "ceiling cloth hanger Bangalore",
@@ -1476,7 +1476,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Planned for balconies, utility areas, bathrooms, laundry corners, and compact apartment spaces",
         "Designed around ceiling height, reach, drying load, pulley movement, wall surface, and daily access",
-        "Clear guidance on material, hanger type, installation method, maintenance, and price range",
+        "Clear notes on material, hanger type, installation method, maintenance, and price range",
       ],
       image: {
         src: "/home-optimized/cards/cloth-hanger-in-bangalore.webp",
@@ -1495,7 +1495,7 @@ export const serviceLandingContent: Partial<
         body: "Ceiling-mounted and pulley cloth hangers suit many apartments, while foldable wall units work better when ceiling fixing is not ideal.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "Nagamma Safety Nets serves Bangalore from Marathahalli, with cloth hanger work planned around apartment, villa, and rental-home conditions.",
       },
@@ -1675,7 +1675,7 @@ export const serviceLandingContent: Partial<
     ],
     buyerChecklist: [
       "Measure the utility or balcony space and note washing machine, window, pipe, fan, and cabinet positions.",
-      "Ask whether the quote includes rods, brackets, rope, pulley unit, anchors, drilling, and installation.",
+      "Ask whether the quote includes rods, brackets, rope, pulley unit, anchors, drilling, installation, and any tile or ceiling-access work.",
       "Confirm rod material and expected load capacity before choosing the lowest price.",
       "Check if the ceiling is concrete, false ceiling, beam, or tiled surface before booking.",
       "Choose pulley systems when reach is difficult or ceiling height is high.",
@@ -1728,7 +1728,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which Bangalore areas do you cover for cloth hangers?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Kengeri, Thanisandra, and nearby locations.",
+          "Cloth hanger visits are planned from Marathahalli toward Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Kengeri, Thanisandra, and nearby homes where ceiling strength, utility width, and washing-machine clearance need checking.",
       },
     ],
   },
@@ -1736,7 +1736,7 @@ export const serviceLandingContent: Partial<
     metadata: {
       title: "Balcony Safety Nets in Bangalore",
       description:
-        "Plan balcony safety nets in Bangalore with material checks, local apartment points, comparison table, price ranges, installation process, checklist, and FAQs.",
+        "Plan balcony safety nets in Bangalore with material checks, apartment points, comparison table, price ranges, installation process, checklist, and FAQs.",
       keywords: [
         "balcony safety nets in Bangalore",
         "balcony net installation Bangalore",
@@ -1756,7 +1756,7 @@ export const serviceLandingContent: Partial<
       bullets: [
         "Measured for apartment balconies, high-rise openings, windows, ducts, and utility edges",
         "Planned around railings, grills, hooks, pipes, tile surfaces, and society rules",
-        "Clear guidance on mesh, rope, fixing method, price range, and after-care",
+        "Clear notes on mesh, rope, fixing method, price range, and after-care",
       ],
       image: {
         src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
@@ -1775,7 +1775,7 @@ export const serviceLandingContent: Partial<
         body: "A clean installation uses the right mesh size, supported edge rope, secure fixing points, and balanced tension so the net does not sag or look temporary.",
       },
       {
-        label: "Local base",
+        label: "Base location",
         value: "Marathahalli side",
         body: "Nagamma Safety Nets works from the Marathahalli side and serves Bangalore apartments, villas, rented homes, and high-rise communities.",
       },
@@ -1863,7 +1863,7 @@ export const serviceLandingContent: Partial<
       },
       {
         option: "Invisible grill",
-        bestFor: "Premium balcony and window safety where a cleaner long-term look is important",
+        bestFor: "Higher-finish balcony and window safety where a cleaner long-term look is important",
         strength: "Strong stainless-steel cable system with a more permanent architectural finish",
         limitation: "Usually costs more and may need stricter drilling or frame planning",
         chooseWhen:
@@ -2014,7 +2014,7 @@ export const serviceLandingContent: Partial<
       {
         question: "Which Bangalore areas do you cover for balcony safety nets?",
         answer:
-          "Nagamma Safety Nets serves Bangalore with Marathahalli as the primary local base and covers areas such as Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Hebbal, Kengeri, Thanisandra, and nearby locations.",
+          "Balcony safety net visits are planned from Marathahalli toward Whitefield, Bellandur, KR Puram, HSR Layout, Sarjapura, Electronic City, JP Nagar, Yelahanka, Hebbal, Kengeri, Thanisandra, and nearby homes where lower edges, side gaps, children, pets, or falling-object concerns need checking.",
       },
     ],
   },

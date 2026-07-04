@@ -106,29 +106,29 @@ export default function FloatingNavbar() {
         <button
           type="button"
           aria-label="Close navigation overlay"
-          className="fixed inset-0 z-0 cursor-default touch-none bg-[#0F172A]/35 backdrop-blur-[1px] xl:hidden"
+          className="fixed inset-0 z-0 cursor-default touch-none bg-[#082F2A]/35 backdrop-blur-[1px] xl:hidden"
           onClick={() => setIsOpen(false)}
         />
       ) : null}
 
       <nav
         aria-label="Primary navigation"
-        className="relative z-10 mx-auto max-w-7xl overflow-hidden rounded-lg border border-slate-200/80 bg-white/95 px-3 py-2 text-[#111827] shadow-lg shadow-slate-900/10 backdrop-blur md:px-4"
+        className="border border-white/70 bg-white/75 shadow-2xl shadow-[#075E54]/15 backdrop-blur-xl relative z-10 mx-auto max-w-7xl overflow-hidden rounded-lg px-3 py-2 text-[#082F2A] md:px-4"
       >
         <div className="flex min-h-[56px] items-center justify-between gap-3">
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-[#F8FAFC]"
+            className="flex min-w-0 items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-white/55"
             onClick={() => setIsOpen(false)}
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0F766E] text-white">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#075E54] to-[#04483F] text-white shadow-[0_10px_26px_rgba(7,94,84,0.28)]">
               <ShieldCheck className="size-5" />
             </span>
             <span className="min-w-0">
               <span className="block truncate text-sm font-extrabold leading-5 md:text-base">
                 {siteConfig.name}
               </span>
-              <span className="block text-xs font-medium text-[#64748B]">
+              <span className="block text-xs font-medium text-[#70847D]">
                 {siteConfig.branchAreaName}, {siteConfig.city}
               </span>
             </span>
@@ -145,8 +145,8 @@ export default function FloatingNavbar() {
                   href={link.href}
                   className={`inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold transition ${
                     active
-                      ? "bg-[#ECFDF5] text-[#0F766E]"
-                      : "text-[#334155] hover:bg-[#F8FAFC] hover:text-[#0F766E]"
+                      ? "bg-[#DDF4EC] text-[#075E54]"
+                      : "text-[#263B35] hover:bg-white/55 hover:text-[#075E54]"
                   }`}
                 >
                   <Icon className="size-4" />
@@ -158,7 +158,7 @@ export default function FloatingNavbar() {
             <div className="group relative">
               <button
                 type="button"
-                className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[#334155] transition hover:bg-[#F8FAFC] hover:text-[#0F766E]"
+                className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[#263B35] transition hover:bg-white/55 hover:text-[#075E54]"
               >
                 <Layers3 className="size-4" />
                 Services
@@ -166,17 +166,17 @@ export default function FloatingNavbar() {
               </button>
 
               <div className="invisible absolute right-0 top-full w-[320px] pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
-                <div className="rounded-lg border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/12">
+                <div className="border border-white/70 bg-white/75 shadow-2xl shadow-[#075E54]/15 backdrop-blur-xl rounded-lg p-2">
                   {services.map((service) => (
                     <Link
                       key={service.slug}
                       href={getServicePath(service.slug)}
-                      className="block rounded-lg px-3 py-3 transition hover:bg-[#F8FAFC]"
+                      className="block rounded-lg px-3 py-3 transition hover:bg-white/55"
                     >
-                      <span className="block text-sm font-semibold text-[#111827]">
+                      <span className="block text-sm font-semibold text-[#082F2A]">
                         {service.name}
                       </span>
-                      <span className="mt-1 line-clamp-1 block text-xs text-[#64748B]">
+                      <span className="mt-1 line-clamp-1 block text-xs text-[#70847D]">
                         {service.shortDescription}
                       </span>
                     </Link>
@@ -188,7 +188,7 @@ export default function FloatingNavbar() {
 
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-[#334155] transition hover:bg-[#F8FAFC] hover:text-[#0F766E] xl:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/70 bg-white/45 text-[#263B35] transition hover:bg-white/70 hover:text-[#075E54] xl:hidden"
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((current) => !current)}
@@ -198,7 +198,7 @@ export default function FloatingNavbar() {
         </div>
 
         {isOpen ? (
-          <div className="max-h-[calc(100vh-7rem)] touch-pan-y overflow-y-auto overscroll-contain border-t border-slate-200 py-3 xl:hidden">
+          <div className="max-h-[calc(100vh-7rem)] touch-pan-y overflow-y-auto overscroll-contain border-t border-white/50 py-3 xl:hidden">
             <div className="grid gap-2">
               {mainLinks.map((link) => {
                 const Icon = link.icon;
@@ -210,8 +210,8 @@ export default function FloatingNavbar() {
                     href={link.href}
                     className={`flex min-h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-semibold ${
                       active
-                        ? "bg-[#ECFDF5] text-[#0F766E]"
-                        : "text-[#334155] hover:bg-[#F8FAFC]"
+                        ? "bg-[#DDF4EC] text-[#075E54]"
+                        : "text-[#263B35] hover:bg-white/55"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -222,8 +222,8 @@ export default function FloatingNavbar() {
               })}
             </div>
 
-            <div className="mt-3 border-t border-slate-200 pt-3">
-              <p className="px-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+            <div className="mt-3 border-t border-white/50 pt-3">
+              <p className="px-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#70847D]">
                 Services
               </p>
               <div className="mt-2 grid gap-2">
@@ -231,7 +231,7 @@ export default function FloatingNavbar() {
                   <Link
                     key={service.slug}
                     href={getServicePath(service.slug)}
-                    className="rounded-lg px-3 py-3 text-sm font-semibold text-[#334155] transition hover:bg-[#F8FAFC] hover:text-[#0F766E]"
+                    className="rounded-lg px-3 py-3 text-sm font-semibold text-[#263B35] transition hover:bg-white/55 hover:text-[#075E54]"
                     onClick={() => setIsOpen(false)}
                   >
                     {service.name}

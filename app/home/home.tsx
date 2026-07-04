@@ -22,17 +22,17 @@ export default function HomePage() {
         fetchPriority="high"
       />
 
-      <main className="min-h-screen bg-[#F8FAFC] text-[#111827]">
+      <main className="min-h-screen bg-transparent text-[#082F2A]">
 
         <HeroSection
           title="Nagamma Safety Nets"
-          description="Safety nets, invisible grills, sports nets, and cloth hanger services across Bangalore with Marathahalli as the primary service location."
+          description="Safety nets, invisible grills, sports nets, and cloth hanger installation across Bangalore from the Marathahalli service base."
           image="/home-optimized/hero-balcony.webp"
         />
 
         <OfferMarquee />
 
-        <section className="bg-white px-6 py-10 md:px-12">
+        <section className="bg-white/45 px-6 py-10 md:px-12">
           <div className="mx-auto max-w-5xl">
             <ServiceAreaSearch services={services} areas={areas} />
           </div>

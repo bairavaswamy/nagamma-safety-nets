@@ -85,12 +85,12 @@ export default function ServiceAreaSearch({
     <form
       id="service-area-search"
       onSubmit={submitSearch}
-      className="overflow-hidden rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 lg:p-6"
+      className="overflow-hidden rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#075E54]/10 backdrop-blur-xl p-4 sm:p-5 lg:p-6"
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_160px] lg:items-end">
         <label className="block min-w-0">
-          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#334155]">
-            <Wrench className="size-4 text-[#0F766E]" />
+          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#263B35]">
+            <Wrench className="size-4 text-[#075E54]" />
             Service
           </span>
           <input
@@ -101,13 +101,13 @@ export default function ServiceAreaSearch({
               setMessage("");
             }}
             placeholder="Search service"
-            className="h-12 w-full rounded-lg border border-slate-300 px-4 text-sm text-[#111827] outline-none transition focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/15"
+            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#082F2A] outline-none transition focus:border-[#075E54] focus:ring-2 focus:ring-[#075E54]/15"
           />
         </label>
 
         <label className="block min-w-0">
-          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#334155]">
-            <MapPin className="size-4 text-[#0F766E]" />
+          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#263B35]">
+            <MapPin className="size-4 text-[#075E54]" />
             Area
           </span>
           <input
@@ -118,13 +118,13 @@ export default function ServiceAreaSearch({
               setMessage("");
             }}
             placeholder="Search area"
-            className="h-12 w-full rounded-lg border border-slate-300 px-4 text-sm text-[#111827] outline-none transition focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/15"
+            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#082F2A] outline-none transition focus:border-[#075E54] focus:ring-2 focus:ring-[#075E54]/15"
           />
         </label>
 
         <button
           type="submit"
-          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#115E59] sm:col-span-2 lg:col-span-1"
+          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#075E54] px-5 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(7,94,84,0.10)] transition hover:bg-[#04483F] sm:col-span-2 lg:col-span-1"
         >
           <Search className="size-4" />
           Search

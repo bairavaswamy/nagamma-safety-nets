@@ -2,8 +2,8 @@ import { BadgePercent } from "lucide-react";
 
 const offerItems = [
   "Nagamma Safety Nets Bangalore",
-  "20% off on safety nets",
-  "15% off on invisible grills",
+  "Balcony, window, and duct fitting",
+  "Invisible grills, sports nets, and cloth hangers",
 ];
 
 const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
@@ -25,8 +25,8 @@ const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
 const OfferMarquee = () => {
   return (
     <section
-      className="overflow-hidden border-y border-teal-900/10 bg-[#0F766E] py-3 text-white"
-      aria-label="Nagamma Safety Nets offer: 20 percent off safety nets and 15 percent off invisible grills."
+      className="overflow-hidden border-y border-teal-900/10 bg-[#075E54] py-3 text-white"
+      aria-label="Nagamma Safety Nets Bangalore service highlights."
     >
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
         <OfferGroup />

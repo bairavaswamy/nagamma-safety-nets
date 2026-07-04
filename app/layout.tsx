@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { siteConfig } from "./bangalore/data/serviceAreaData";
+import { buildRootJsonLd, sanitizeJsonLd } from "./schema";
+import ContactCta from "./components/ContactCta";
 import FloatingNavbar from "./components/FloatingNavbar";
 import SiteFooter from "./components/SiteFooter";
 
@@ -71,11 +73,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const rootJsonLd = buildRootJsonLd();
+
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body>
+      <body className="min-h-screen bg-gradient-to-br from-[#f8fcfa] via-[#eef7f4] to-[#f7efe8] text-[#082F2A] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: sanitizeJsonLd(rootJsonLd),
+          }}
+        />
         <FloatingNavbar />
         <div className="pt-24">{children}</div>
+        <ContactCta />
         <SiteFooter />
       </body>
     </html>
