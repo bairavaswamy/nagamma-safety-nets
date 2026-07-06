@@ -1,9 +1,23 @@
-import { BadgePercent } from "lucide-react";
+import Link from "next/link";
+import { BadgePercent, Phone } from "lucide-react";
+import { siteConfig } from "../../bangalore/data/serviceAreaData";
 
 const offerItems = [
-  "Nagamma Safety Nets Bangalore",
-  "Balcony, window, and duct fitting",
-  "Invisible grills, sports nets, and cloth hangers",
+  {
+    label: "Nagamma Safety Nets Bangalore",
+    icon: "badge",
+  },
+  {
+    label: "Balcony, window, and duct fitting",
+  },
+  {
+    label: "Invisible grills, sports nets, and cloth hangers",
+  },
+  {
+    label: `Call ${siteConfig.phoneDisplay}`,
+    href: siteConfig.phoneHref,
+    icon: "phone",
+  },
 ];
 
 const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
@@ -11,12 +25,21 @@ const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
     className="flex shrink-0 items-center gap-5 px-5 text-sm font-semibold md:text-base"
     aria-hidden={hidden}
   >
-    {offerItems.map((item, index) => (
-      <span key={item} className="flex items-center gap-2 whitespace-nowrap">
-        {index === 0 ? (
-          <BadgePercent className="size-4 text-orange-200" aria-hidden="true" />
+    {offerItems.map((item) => (
+      <span key={item.label} className="flex items-center gap-2 whitespace-nowrap">
+        {item.icon === "badge" ? (
+          <BadgePercent className="size-4 text-[#B5121B]" aria-hidden="true" />
         ) : null}
-        {item}
+        {item.icon === "phone" ? (
+          <Phone className="size-4 text-[#B5121B]" aria-hidden="true" />
+        ) : null}
+        {item.href ? (
+          <Link href={item.href} className="transition hover:text-[#B5121B]">
+            {item.label}
+          </Link>
+        ) : (
+          item.label
+        )}
       </span>
     ))}
   </div>
@@ -25,7 +48,7 @@ const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
 const OfferMarquee = () => {
   return (
     <section
-      className="overflow-hidden border-y border-teal-900/10 bg-[#075E54] py-3 text-white"
+      className="overflow-hidden border-y border-white/70 bg-white/55 py-3 text-[#172129] shadow-sm backdrop-blur-xl"
       aria-label="Nagamma Safety Nets Bangalore service highlights."
     >
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "./bangalore/data/serviceAreaData";
 import { buildRootJsonLd, sanitizeJsonLd } from "./schema";
 import ContactCta from "./components/ContactCta";
+import FloatingContactButtons from "./components/FloatingContactButtons";
 import FloatingNavbar from "./components/FloatingNavbar";
 import SiteFooter from "./components/SiteFooter";
 
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: `${siteConfig.baseUrl}/og-image.webp`,
+        url: `${siteConfig.baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} Bangalore`,
@@ -58,13 +59,29 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} Bangalore`,
     description: "Home safety net installation in Bangalore.",
-    images: [`${siteConfig.baseUrl}/og-image.webp`],
+    images: [`${siteConfig.baseUrl}/og-image.png`],
   },
 
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      {
+        url: "/favicon.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+      {
+        url: "/favicon-red.ico",
+        type: "image/x-icon",
+      },
+    ],
+    shortcut: "/favicon-red.ico",
+    apple: [
+      {
+        url: "/apple-touch-icon-red.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
 };
 
@@ -77,7 +94,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-gradient-to-br from-[#f8fcfa] via-[#eef7f4] to-[#f7efe8] text-[#082F2A] antialiased">
+      <body className="min-h-screen bg-gradient-to-br from-[#FBFAFA] via-[#F8EFEF] to-[#EEF1F3] text-[#172129] antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -85,7 +102,8 @@ export default function RootLayout({
           }}
         />
         <FloatingNavbar />
-        <div className="pt-24">{children}</div>
+        <FloatingContactButtons />
+        {children}
         <ContactCta />
         <SiteFooter />
       </body>

@@ -5,9 +5,10 @@ import { CheckCircle2, MapPin, ShieldCheck } from "lucide-react";
 import ServiceAreaSearch from "./components/ServiceAreaSearch";
 import { areas, services, siteConfig } from "./data/serviceAreaData";
 import { cardsData } from "../home/data/homeData";
+import { buildBangaloreLandingJsonLd, sanitizeJsonLd } from "../schema";
 
 export const metadata: Metadata = {
-  title: `Safety Net Services in ${siteConfig.city} | ${siteConfig.name}`,
+  title: `Safety Net Services in ${siteConfig.city}`,
   description: `${siteConfig.name} helps Bangalore homes choose practical safety net, invisible grill, sports net, and cloth hanger installation from the Marathahalli service base.`,
   alternates: {
     canonical: `${siteConfig.baseUrl}/bangalore/`,
@@ -41,18 +42,26 @@ const workingStyle = [
 ];
 
 export default function BangaloreLandingPage() {
+  const jsonLd = buildBangaloreLandingJsonLd();
+
   return (
-    <main className="min-h-screen bg-transparent text-[#082F2A]">
+    <main className="min-h-screen bg-transparent text-[#172129]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: sanitizeJsonLd(jsonLd),
+        }}
+      />
       <section className="bg-white/45 px-6 py-16 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#075E54]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
               Bangalore services
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-[#082F2A] md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-[#172129] md:text-6xl">
               Choose the right safety work for your home
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#536761] md:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[#5E4B4B] md:text-lg">
               Every balcony, window, duct, terrace, and utility space behaves a
               little differently. This page helps you start with the right kind
               of work, then choose your area so the request is clear from the
@@ -62,29 +71,29 @@ export default function BangaloreLandingPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="#services"
-                className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#075E54] px-5 py-2 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(7,94,84,0.10)] transition hover:bg-[#04483F]"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#B5121B] px-5 py-2 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(181,18,27,0.12)] transition hover:bg-[#7A0C0F]"
               >
                 View Services
               </Link>
               <Link
                 href="#service-area-search"
-                className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-white/70 bg-white/70 backdrop-blur-xl px-5 py-2 text-sm font-semibold text-[#075E54] transition hover:bg-[#EEF7F4]"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-white/70 bg-white/70 backdrop-blur-xl px-5 py-2 text-sm font-semibold text-[#B5121B] transition hover:bg-[#F8EFEF]"
               >
                 Search by Area
               </Link>
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#075E54]/10 backdrop-blur-xl p-5">
+          <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#B5121B]/10 backdrop-blur-xl p-5">
             <div className="mb-5 flex items-start gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#075E54] text-white">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#B5121B] text-white">
                 <MapPin className="size-5" />
               </span>
               <div>
                 <h2 className="text-xl font-bold">
                   Based around {siteConfig.branchAreaName}
                 </h2>
-                <p className="mt-2 text-sm leading-6 text-[#536761]">
+                <p className="mt-2 text-sm leading-6 text-[#5E4B4B]">
                   Nagamma Safety Nets serves Bangalore from the Marathahalli
                   side, which makes it easier to plan nearby apartment, villa,
                   and commercial visits with the right site details.
@@ -100,13 +109,13 @@ export default function BangaloreLandingPage() {
       <section id="services" className="px-6 py-16 md:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#075E54]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
               What do you need help with?
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               Start with the problem, not the product name
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#536761]">
+            <p className="mt-4 text-base leading-8 text-[#5E4B4B]">
               Some homes need fall protection, some need bird control, and some
               need a cleaner way to use the balcony or utility space. These
               cards keep the choice simple.
@@ -118,7 +127,7 @@ export default function BangaloreLandingPage() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="group overflow-hidden rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#075E54]/10 backdrop-blur-xl transition hover:border-[#075E54]/40"
+                className="group overflow-hidden rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#B5121B]/10 backdrop-blur-xl transition hover:border-[#B5121B]/40"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -128,28 +137,28 @@ export default function BangaloreLandingPage() {
                     className="object-cover transition duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   />
-                  <span className="absolute left-3 top-3 rounded-lg bg-white/45 px-3 py-1 text-xs font-semibold text-[#075E54] shadow-sm">
+                  <span className="absolute left-3 top-3 rounded-lg bg-white/45 px-3 py-1 text-xs font-semibold text-[#B5121B] shadow-sm">
                     {service.badge}
                   </span>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-xl font-bold text-[#082F2A]">
+                  <h3 className="text-xl font-bold text-[#172129]">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-[#536761]">
+                  <p className="mt-3 text-sm leading-6 text-[#5E4B4B]">
                     {service.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-lg bg-[#DDF4EC] px-2.5 py-1 text-xs font-medium text-[#075E54]"
+                        className="rounded-lg bg-[#F4E7E7] px-2.5 py-1 text-xs font-medium text-[#B5121B]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <p className="mt-5 text-sm font-semibold text-[#075E54]">
+                  <p className="mt-5 text-sm font-semibold text-[#B5121B]">
                     See details
                   </p>
                 </div>
@@ -162,13 +171,13 @@ export default function BangaloreLandingPage() {
       <section className="bg-white/45 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#075E54]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
               How to decide
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               A practical way to narrow it down
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#536761]">
+            <p className="mt-4 text-base leading-8 text-[#5E4B4B]">
               The right choice depends on what is happening in the space: a
               child leaning near a railing, birds entering a duct, a balcony
               needing a cleaner look, or a utility area that needs better daily
@@ -180,11 +189,11 @@ export default function BangaloreLandingPage() {
             {choosingNotes.map((note) => (
               <article
                 key={note.title}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#075E54]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#B5121B]/10 backdrop-blur-xl p-5"
               >
-                <ShieldCheck className="mb-4 size-6 text-[#075E54]" />
+                <ShieldCheck className="mb-4 size-6 text-[#B5121B]" />
                 <h3 className="text-lg font-semibold">{note.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#536761]">
+                <p className="mt-3 text-sm leading-6 text-[#5E4B4B]">
                   {note.body}
                 </p>
               </article>
@@ -196,25 +205,25 @@ export default function BangaloreLandingPage() {
       <section className="px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#075E54]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
               Before installation
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               Good fitting starts with small details
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#536761]">
+            <p className="mt-4 text-base leading-8 text-[#5E4B4B]">
               A net or grill should not feel like an afterthought. The fitting
               has to respect the railing, ceiling, wall finish, pipes, window
               movement, and the way people use the space every day.
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#075E54]/10 backdrop-blur-xl p-5">
+          <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#B5121B]/10 backdrop-blur-xl p-5">
             <div className="grid gap-3">
               {workingStyle.map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#075E54]" />
-                  <p className="text-sm leading-6 text-[#536761]">{item}</p>
+                  <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#B5121B]" />
+                  <p className="text-sm leading-6 text-[#5E4B4B]">{item}</p>
                 </div>
               ))}
             </div>
@@ -225,13 +234,13 @@ export default function BangaloreLandingPage() {
       <section id="service-areas" className="bg-white/45 px-6 py-16 md:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#075E54]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
               Bangalore coverage
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               Choose your area and open the matching page
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#536761]">
+            <p className="mt-4 text-base leading-8 text-[#5E4B4B]">
               If your area is listed below, use the search box to pair it with
               the service you need. If you are near one of these places, start
               with the closest area and the details can be adjusted later.
@@ -242,14 +251,14 @@ export default function BangaloreLandingPage() {
             {areas.map((area) => (
               <div
                 key={area.slug}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#075E54]/10 backdrop-blur-xl p-4"
+                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#B5121B]/10 backdrop-blur-xl p-4"
               >
                 <div className="flex items-center gap-2">
-                  <MapPin className="size-4 text-[#075E54]" />
+                  <MapPin className="size-4 text-[#B5121B]" />
                   <h3 className="font-semibold">{area.name}</h3>
                 </div>
                 {area.slug === siteConfig.branchAreaSlug ? (
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#C65A31]">
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#B5121B]">
                     Primary service base
                   </p>
                 ) : null}

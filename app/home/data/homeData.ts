@@ -1,6 +1,6 @@
 export const cardsData = [
   {
-    image: "/home-optimized/cards/pigeon-safety-nets-in-bangalore.webp",
+    image: "/home-generated/cards/pigeon-safety-nets.webp",
     title: "Pigeon Safety Nets",
     description:
       "Balcony, window, duct, and utility-area netting planned to reduce bird entry and keep homes cleaner.",
@@ -9,7 +9,7 @@ export const cardsData = [
     tags: ["Pigeon", "Balcony", "Clean Home"],
   },
   {
-    image: "/home-optimized/cards/invisible-grills-in-bangalore.webp",
+    image: "/home-generated/cards/invisible-grills.webp",
     title: "Invisible Grills",
     description:
       "Modern balcony and window grill systems designed for safety while keeping the view open.",
@@ -18,7 +18,7 @@ export const cardsData = [
     tags: ["Invisible", "Grills", "Apartments"],
   },
   {
-    image: "/home-optimized/cards/construction-safety-nets-in-bangalore.webp",
+    image: "/home-generated/cards/monkey-safety-nets.webp",
     title: "Monkey Safety Nets",
     description:
       "Heavy-duty netting for balconies, terraces, and open edges where stronger entry protection is needed.",
@@ -27,7 +27,7 @@ export const cardsData = [
     tags: ["Balcony", "Terrace", "Protection"],
   },
   {
-    image: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+    image: "/home-generated/cards/children-safety-nets.webp",
     title: "Children Safety Nets",
     description:
       "Protective netting for balconies, windows, stair openings, and indoor void areas in family homes.",
@@ -36,7 +36,7 @@ export const cardsData = [
     tags: ["Children", "Windows", "Balcony"],
   },
   {
-    image: "/home-optimized/cards/sports-safety-nets-in-bangalore.webp",
+    image: "/home-generated/cards/sports-nets.webp",
     title: "Sports Nets",
     description:
       "Practice and play-area netting for apartments, schools, terraces, and sports activity zones.",
@@ -45,7 +45,7 @@ export const cardsData = [
     tags: ["Sports", "Cricket", "Practice"],
   },
   {
-    image: "/home-optimized/cards/cloth-hanger-in-bangalore.webp",
+    image: "/home-generated/cards/cloth-hangers.webp",
     title: "Cloth Hangers",
     description:
       "Ceiling, pulley, fixed, and utility-area drying setups planned around usable space and reach.",
@@ -54,7 +54,7 @@ export const cardsData = [
     tags: ["Balcony", "Utility", "Drying"],
   },
   {
-    image: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+    image: "/home-generated/cards/balcony-safety-nets.webp",
     title: "Balcony Safety Nets",
     description:
       "Measured balcony net installation for apartments, homes, and high-rise safety needs.",
@@ -64,86 +64,35 @@ export const cardsData = [
   },
 ];
 
-export const testimonials = [
-  {
-    comment:
-      "Balcony safety net fitting was clean and strong. The team measured everything properly before installation.",
-    author: "Srinivas Reddy",
-  },
-  {
-    comment:
-      "Pigeon net work was completed neatly and the balcony is much easier to maintain now.",
-    author: "Anitha Krishnan",
-  },
-  {
-    comment:
-      "The balcony feels safer for children without blocking air or light. Good quality material and tidy work.",
-    author: "Murali Kumar",
-  },
-  {
-    comment:
-      "Invisible grills were installed with a clean finish. The view is still open and the space feels secure.",
-    author: "Rajesh Nair",
-  },
-  {
-    comment:
-      "The cloth hanger setup made the utility area easier to use every day. Simple and practical installation.",
-    author: "Deepa Chandran",
-  },
-  {
-    comment:
-      "Sports netting was fitted neatly for our practice area. Strong material and careful alignment.",
-    author: "Karthik Ramesh",
-  },
-];
-
 export const galleryData = [
   {
-    image: "/home-optimized/gallery/gallery_1.webp",
-    title: "Balcony Safety Net Installation",
-    location: "Whitefield",
+    image: "/home-generated/carousel/slide-1-balcony-safety.webp",
+    title: "High-Rise Balcony Safety Net",
+    location: "Marathahalli",
     service: "Balcony Safety Nets",
   },
   {
-    image: "/home-optimized/gallery/gallery_2.webp",
-    title: "Pigeon Net Installation",
-    location: "Indiranagar",
-    service: "Pigeon Safety Nets",
-  },
-  {
-    image: "/home-optimized/gallery/gallery_3.webp",
-    title: "Invisible Grill Work",
-    location: "HSR Layout",
+    image: "/home-generated/carousel/slide-2-invisible-grills.webp",
+    title: "Invisible Grill View Protection",
+    location: "Whitefield",
     service: "Invisible Grills",
   },
   {
-    image: "/home-optimized/gallery/gallery_4.webp",
-    title: "Children Safety Setup",
-    location: "Marathahalli",
-    service: "Children Safety Nets",
-  },
-  {
-    image: "/home-optimized/gallery/gallery_5.webp",
-    title: "Utility Area Netting",
-    location: "Electronic City",
-    service: "Safety Nets",
-  },
-  {
-    image: "/home-optimized/gallery/gallery_6.webp",
-    title: "Bird Control Installation",
-    location: "Koramangala",
+    image: "/home-generated/carousel/slide-3-pigeon-safety.webp",
+    title: "Pigeon Net for Utility Openings",
+    location: "Bellandur",
     service: "Pigeon Safety Nets",
   },
   {
-    image: "/home-optimized/gallery/gallery_7.webp",
-    title: "Open Area Safety Net",
-    location: "Bellandur",
-    service: "Safety Nets",
+    image: "/home-generated/carousel/slide-4-cloth-hangers.webp",
+    title: "Utility Cloth Hanger Setup",
+    location: "Kalyan Nagar",
+    service: "Cloth Hangers",
   },
   {
-    image: "/home-optimized/gallery/gallery_8.webp",
-    title: "Stair Opening Safety Net",
-    location: "Jayanagar",
-    service: "Children Safety Nets",
+    image: "/home-generated/carousel/slide-5-sports-nets.webp",
+    title: "Terrace Sports Net Bay",
+    location: "Electronic City",
+    service: "Sports Nets",
   },
 ];

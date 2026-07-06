@@ -89,7 +89,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on material, fitting method, maintenance, and price range",
       ],
       image: {
-        src: "/home-optimized/cards/pigeon-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/pigeon-safety-nets.webp",
         alt: "Pigeon safety net installed on a Bangalore apartment balcony",
       },
     },
@@ -130,17 +130,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/gallery/gallery_2.webp",
+        src: "/home-generated/cards/pigeon-safety-nets.webp",
         alt: "Balcony pigeon net work with open airflow",
         caption: "Balcony coverage",
       },
       {
-        src: "/home-optimized/gallery/gallery_6.webp",
+        src: "/home-generated/gallery/utility-duct-net.webp",
         alt: "Bird control netting around apartment opening",
         caption: "Bird entry control",
       },
       {
-        src: "/home-optimized/gallery/gallery_7.webp",
+        src: "/home-generated/gallery/terrace-sports-net.webp",
         alt: "Safety net fitted around an open apartment area",
         caption: "Open area fitting",
       },
@@ -367,7 +367,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on stainless-steel cable grade, spacing, drilling, warranty questions, and price range",
       ],
       image: {
-        src: "/home-optimized/cards/invisible-grills-in-bangalore.webp",
+        src: "/home-generated/cards/invisible-grills.webp",
         alt: "Invisible grill installed on a Bangalore apartment balcony",
       },
     },
@@ -408,17 +408,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/gallery/gallery_3.webp",
+        src: "/home-generated/gallery/invisible-grill-detail.webp",
         alt: "Invisible grill cable work on an apartment opening",
         caption: "Open-view balcony",
       },
       {
-        src: "/home-optimized/cards/invisible-safety-nets-in-bangalore.webp",
+        src: "/home-generated/gallery/invisible-grill-detail.webp",
         alt: "Invisible safety grill style balcony protection",
         caption: "Clean safety finish",
       },
       {
-        src: "/home-optimized/gallery/gallery_4.webp",
+        src: "/home-generated/gallery/stair-opening-net.webp",
         alt: "Apartment balcony safety installation with neat edge work",
         caption: "Family safety planning",
       },
@@ -645,7 +645,7 @@ export const serviceLandingContent: Partial<
         "Useful notes on net thickness, anchors, support rope, maintenance, and price range",
       ],
       image: {
-        src: "/home-optimized/cards/construction-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/monkey-safety-nets.webp",
         alt: "Heavy-duty monkey safety net installed on a Bangalore apartment opening",
       },
     },
@@ -686,17 +686,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/cards/construction-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/monkey-safety-nets.webp",
         alt: "Heavy-duty safety net fitted around an open balcony side",
         caption: "Heavy-duty coverage",
       },
       {
-        src: "/home-optimized/gallery/gallery_7.webp",
+        src: "/home-generated/gallery/terrace-sports-net.webp",
         alt: "Open apartment area protected with safety netting",
         caption: "Open area protection",
       },
       {
-        src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Balcony safety net work planned around railing and side openings",
         caption: "Balcony edge planning",
       },
@@ -923,7 +923,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on mesh strength, fixing method, edge finish, maintenance, and price range",
       ],
       image: {
-        src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Children safety net installed on a Bangalore apartment balcony",
       },
     },
@@ -964,17 +964,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Child safety net fitted on an apartment balcony",
         caption: "Balcony protection",
       },
       {
-        src: "/home-optimized/gallery/gallery_8.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Safety net fitted over a stair opening",
         caption: "Stair opening safety",
       },
       {
-        src: "/home-optimized/gallery/gallery_4.webp",
+        src: "/home-generated/gallery/stair-opening-net.webp",
         alt: "Family balcony safety setup with neat net finish",
         caption: "Family home fitting",
       },
@@ -1201,7 +1201,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on mesh type, border rope, support frame, installation process, maintenance, and price range",
       ],
       image: {
-        src: "/home-optimized/cards/sports-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/sports-nets.webp",
         alt: "Sports net installed for a Bangalore practice area",
       },
     },
@@ -1242,17 +1242,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/cards/sports-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/sports-nets.webp",
         alt: "Cricket practice net installed in an activity space",
         caption: "Cricket practice",
       },
       {
-        src: "/home-optimized/gallery/gallery_7.webp",
+        src: "/home-generated/gallery/terrace-sports-net.webp",
         alt: "Open play area protected with safety netting",
         caption: "Open area coverage",
       },
       {
-        src: "/home-optimized/cards/construction-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/monkey-safety-nets.webp",
         alt: "Large safety net setup for an outdoor open span",
         caption: "Large span support",
       },
@@ -1479,7 +1479,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on material, hanger type, installation method, maintenance, and price range",
       ],
       image: {
-        src: "/home-optimized/cards/cloth-hanger-in-bangalore.webp",
+        src: "/home-generated/cards/cloth-hangers.webp",
         alt: "Ceiling cloth hanger installed in a Bangalore utility area",
       },
     },
@@ -1520,17 +1520,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/cards/cloth-hanger-in-bangalore.webp",
+        src: "/home-generated/cards/cloth-hangers.webp",
         alt: "Pulley cloth hanger in a compact utility space",
         caption: "Utility drying",
       },
       {
-        src: "/home-optimized/gallery/gallery_5.webp",
+        src: "/home-generated/gallery/utility-cloth-hanger.webp",
         alt: "Utility area planned with netting and drying access",
         caption: "Compact planning",
       },
       {
-        src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Balcony space where cloth hanger placement must avoid movement paths",
         caption: "Balcony use",
       },
@@ -1759,7 +1759,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on mesh, rope, fixing method, price range, and after-care",
       ],
       image: {
-        src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Balcony safety net fitted across a Bangalore apartment balcony",
       },
     },
@@ -1800,17 +1800,17 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-optimized/cards/balcony-safety-nets-in-bangalore.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Balcony net covering the open face of an apartment balcony",
         caption: "Open balcony face",
       },
       {
-        src: "/home-optimized/hero-balcony.webp",
+        src: "/home-generated/hero.webp",
         alt: "Bangalore apartment balcony that needs measured safety net planning",
         caption: "Apartment planning",
       },
       {
-        src: "/home-optimized/gallery/gallery_8.webp",
+        src: "/home-generated/cards/balcony-safety-nets.webp",
         alt: "Balcony corner where safety net fixing must follow the railing and side wall",
         caption: "Corner finishing",
       },

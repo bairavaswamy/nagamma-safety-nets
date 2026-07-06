@@ -39,8 +39,8 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             onClick={() => setActiveService(service)}
             className={`min-h-[40px] rounded-lg border px-4 py-2 text-sm font-semibold transition ${
               activeService === service
-                ? "border-[#075E54] bg-[#075E54] text-white"
-                : "border-slate-200 bg-white/70 text-[#263B35] hover:border-[#075E54]/40"
+                ? "border-[#B5121B] bg-[#B5121B] text-white"
+                : "border-slate-200 bg-white/70 text-[#2B2526] hover:border-[#B5121B]/40"
             }`}
           >
             {service}
@@ -54,7 +54,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             key={`${item.title}-${item.location}`}
             type="button"
             onClick={() => setPreview(item)}
-            className="group overflow-hidden rounded-lg border border-white/65 bg-white/70 backdrop-blur-xl text-left shadow-[0_14px_45px_rgba(7,94,84,0.10)] transition hover:border-[#075E54]/40"
+            className="group overflow-hidden rounded-lg border border-white/65 bg-white/70 backdrop-blur-xl text-left shadow-[0_14px_45px_rgba(181,18,27,0.12)] transition hover:border-[#B5121B]/40"
           >
             <span className="relative block aspect-[4/3] overflow-hidden">
               <Image
@@ -66,13 +66,13 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
               />
             </span>
             <span className="block p-4">
-              <span className="inline-flex rounded-lg bg-[#DDF4EC] px-3 py-1 text-xs font-semibold text-[#075E54]">
+              <span className="inline-flex rounded-lg bg-[#F4E7E7] px-3 py-1 text-xs font-semibold text-[#B5121B]">
                 {item.service}
               </span>
-              <span className="mt-3 block text-lg font-semibold text-[#082F2A]">
+              <span className="mt-3 block text-lg font-semibold text-[#172129]">
                 {item.title}
               </span>
-              <span className="mt-1 block text-sm text-[#70847D]">
+              <span className="mt-1 block text-sm text-[#66575A]">
                 {item.location}, Bangalore
               </span>
             </span>
@@ -82,7 +82,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
 
       {preview ? (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-[#082F2A]/90 p-4"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-[#172129]/90 p-4"
           onClick={() => setPreview(null)}
         >
           <div
@@ -92,7 +92,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             <button
               type="button"
               onClick={() => setPreview(null)}
-              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-lg bg-white/70 text-[#082F2A] shadow-sm"
+              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-lg bg-white/70 text-[#172129] shadow-sm"
               aria-label="Close image preview"
             >
               <X className="size-5" />
@@ -104,7 +104,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
               className="object-contain"
               sizes="90vw"
             />
-            <div className="absolute inset-x-0 bottom-0 rounded-b-lg bg-[#082F2A]/80 p-5 text-white">
+            <div className="absolute inset-x-0 bottom-0 rounded-b-lg bg-[#172129]/80 p-5 text-white">
               <h2 className="text-xl font-bold">{preview.title}</h2>
               <p className="mt-1 text-sm text-slate-200">
                 {preview.service} in {preview.location}, Bangalore

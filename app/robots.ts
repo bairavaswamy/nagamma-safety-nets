@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: `${siteConfig.baseUrl}/sitemap.xml`,
-    host: siteConfig.baseUrl,
+    host: new URL(siteConfig.baseUrl).host,
   };
 }

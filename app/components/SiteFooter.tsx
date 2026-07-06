@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { MapPin, ShieldCheck } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import {
   areas,
   getServiceAreaPath,
@@ -13,22 +14,22 @@ export default function SiteFooter() {
   const branchAreaSlug = siteConfig.branchAreaSlug as AreaSlug;
 
   return (
-    <footer className="border-t border-white/10 bg-[linear-gradient(135deg,#082F2A_0%,#04483F_56%,#4B261B_100%)] text-white">
+    <footer className="border-t border-white/10 bg-[linear-gradient(135deg,#111820_0%,#3B0A0D_48%,#7A0C0F_100%)] text-white">
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white shadow-[0_14px_38px_rgba(0,0,0,0.18)] backdrop-blur-xl">
-                <ShieldCheck className="size-6" />
-              </span>
-              <span>
-                <span className="block text-lg font-extrabold">
-                  {siteConfig.name}
-                </span>
-                <span className="block text-sm text-slate-300">
-                  {siteConfig.city} safety services
-                </span>
-              </span>
+            <Link
+              href="/"
+              className="inline-flex rounded-lg p-1 transition hover:opacity-90"
+              aria-label={`${siteConfig.name} home`}
+            >
+              <Image
+                src="/logo-horizontal-light.webp"
+                alt={`${siteConfig.name} logo`}
+                width={300}
+                height={94}
+                className="h-16 w-auto max-w-[280px] object-contain"
+              />
             </Link>
 
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300">
@@ -37,14 +38,22 @@ export default function SiteFooter() {
               service base.
             </p>
 
-            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-teal-100">
-              <MapPin className="size-4 text-[#A7E6D0]" />
+            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[#F0C9C9]">
+              <MapPin className="size-4 text-[#F0C9C9]" />
               {siteConfig.branchAreaName}, {siteConfig.city}
             </div>
+
+            <Link
+              href={siteConfig.phoneHref}
+              className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#F0C9C9] transition hover:text-white"
+            >
+              <Phone className="size-4" />
+              {siteConfig.phoneDisplay}
+            </Link>
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A7E6D0]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9]">
               Services
             </h2>
             <nav className="mt-4 grid gap-2" aria-label="Footer services">
@@ -61,7 +70,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A7E6D0]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9]">
               Marathahalli
             </h2>
             <nav className="mt-4 grid gap-2" aria-label="Marathahalli services">
@@ -78,7 +87,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A7E6D0]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9]">
               Coverage
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">

@@ -7,6 +7,11 @@ export const siteConfig = {
   region: "Karnataka",
   country: "IN",
   contactPath: "/contact-us/",
+  phoneDisplay: "9642966031",
+  phoneInternational: "+91 9642966031",
+  phoneHref: "tel:+919642966031",
+  whatsappHref:
+    "https://wa.me/919642966031?text=Hi%20Nagamma%20Safety%20Nets%2C%20I%20want%20to%20enquire%20about%20a%20service%20in%20Bangalore.",
   businessDescription:
     "Safety net, invisible grill, sports net, and cloth hanger installation for Bangalore homes, apartments, and utility spaces.",
 } as const;
@@ -25534,7 +25539,7 @@ export const manualServiceAreaContent: Partial<
         fitPlan:
           "Use neat alignment, matching hardware, and a discreet colour so the installation does not look heavy from outside. In Koramangala, connect this with mixed wall strength, tight access, and exterior appearance rules before approving invisible grill work.",
         watchFor:
-          "Association rules, glass-panel protection, exterior visibility, and approved drilling locations. This is worth checking near ST Bed side because cable spacing, anchor strength, view, and lower-edge control can change the final setup.",
+          "Association rules, glass panel protection, exterior visibility, and approved drilling locations. This is worth checking near ST Bed side because cable spacing, anchor strength, view, and lower-edge control can change the final setup.",
       },
       {
         place: "Rental or PG building",
@@ -27255,7 +27260,7 @@ export const manualServiceAreaContent: Partial<
         fitPlan:
           "Use neat alignment, matching hardware, and a discreet colour so the installation does not look heavy from outside. This is worth checking near 100 Feet Road side because cable spacing, anchor strength, view, and lower-edge control can change the final setup.",
         watchFor:
-          "Association rules, glass-panel protection, exterior visibility, and approved drilling locations. Use Indiranagar site photos to confirm this against road-facing balconies, older walls, and appearance rules.",
+          "Association rules, glass panel protection, exterior visibility, and approved drilling locations. Use Indiranagar site photos to confirm this against road-facing balconies, older walls, and appearance rules.",
       },
       {
         place: "Older independent home",
@@ -28963,7 +28968,7 @@ export const manualServiceAreaContent: Partial<
         fitPlan:
           "Keep cable alignment neat and consistent so the opening remains visually light while the reachable gap is controlled.",
         watchFor:
-          "Large spans, glass-panel clearance, view preference, side anchoring, and balcony door movement.",
+          "Large spans, glass panel clearance, view preference, side anchoring, and balcony door movement.",
       },
       {
         place: "Duplex or stair void",
@@ -30698,7 +30703,7 @@ export const manualServiceAreaContent: Partial<
         fitPlan:
           "Use neat alignment, matching hardware, and a discreet colour so the installation does not look heavy from outside. Around South End side, this matters when cable spacing, anchor strength, view, and lower-edge control affect the fitting plan.",
         watchFor:
-          "Association rules, glass-panel protection, exterior visibility, and approved drilling locations. Around South End side, this matters when cable spacing, anchor strength, view, and lower-edge control affect the fitting plan.",
+          "Association rules, glass panel protection, exterior visibility, and approved drilling locations. Around South End side, this matters when cable spacing, anchor strength, view, and lower-edge control affect the fitting plan.",
       },
       {
         place: "Utility-side opening",
