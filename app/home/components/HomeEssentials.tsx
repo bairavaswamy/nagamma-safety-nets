@@ -33,14 +33,14 @@ export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-lg bg-[#F4E7E7] px-3 py-2 text-sm font-semibold uppercase text-[#B5121B]">
+            <p className="inline-flex items-center gap-2 rounded-lg bg-[#EAF6FF] px-3 py-2 text-sm font-semibold uppercase text-[#0369A1]">
               <ShieldCheck className="size-4" />
               Home setup
             </p>
             <h2 className="mt-5 max-w-2xl text-3xl font-extrabold leading-tight text-[#172129] md:text-5xl">
               Planned safety work for Bangalore apartments
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#5E4B4B]">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569]">
               A good installation should not feel forced into the space. We
               look at the opening, material, fixing surface, and daily use
               before deciding how the net, grill, hanger, or sports enclosure
@@ -49,7 +49,7 @@ export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
 
             <Link
               href="/bangalore/"
-              className="mt-7 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#B5121B] px-5 py-2 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(181,18,27,0.12)] transition hover:bg-[#7A0C0F]"
+              className="mt-7 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#0369A1] px-5 py-2 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(14,165,233,0.12)] transition hover:bg-[#075985]"
             >
               View Bangalore Services
               <ArrowRight className="size-4" />
@@ -65,11 +65,11 @@ export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
                   key={item.title}
                   className="rounded-lg border border-white/70 bg-white/70 p-5 shadow-xl shadow-[#172129]/10 backdrop-blur-xl"
                 >
-                  <Icon className="mb-4 size-6 text-[#B5121B]" />
+                  <Icon className="mb-4 size-6 text-[#0369A1]" />
                   <h3 className="text-lg font-semibold text-[#172129]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-[#5E4B4B]">
+                  <p className="mt-3 text-sm leading-6 text-[#475569]">
                     {item.body}
                   </p>
                 </article>
@@ -81,7 +81,7 @@ export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
         <div className="mt-12 rounded-lg border border-white/70 bg-white/70 p-5 shadow-xl shadow-[#172129]/10 backdrop-blur-xl md:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#B5121B]">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0369A1]">
                 Coverage
               </p>
               <h3 className="mt-2 text-2xl font-bold text-[#172129]">
@@ -90,7 +90,7 @@ export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
             </div>
             <Link
               href="/#service-area-search"
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[#EACACA] bg-[#F8EFEF] px-4 py-2 text-sm font-semibold text-[#B5121B] transition hover:bg-white"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[#BAE6FD] bg-[#E0F2FE] px-4 py-2 text-sm font-semibold text-[#0369A1] transition hover:bg-white"
             >
               <MapPin className="size-4" />
               Search Service and Area
@@ -101,7 +101,7 @@ export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
             {areas.slice(0, 20).map((area) => (
               <span
                 key={area.slug}
-                className="rounded-lg border border-white/70 bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#5E4B4B]"
+                className="rounded-lg border border-white/70 bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#475569]"
               >
                 {area.name}
               </span>

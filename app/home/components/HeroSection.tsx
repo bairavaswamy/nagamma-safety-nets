@@ -26,7 +26,7 @@ interface HeroProps {
 const heroBadges = [
   "Measured fitting",
   "Clean finish",
-  "Clear price discussion",
+  "Site checked installation",
 ];
 
 const HeroSection = ({ title, description, image, slides = [] }: HeroProps) => {
@@ -79,16 +79,16 @@ const HeroSection = ({ title, description, image, slides = [] }: HeroProps) => {
           className="object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,32,0.94),rgba(23,33,41,0.78)_38%,rgba(122,12,15,0.28)_68%,rgba(23,33,41,0.06))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.88),rgba(15,23,42,0.66)_42%,rgba(15,23,42,0.26)_72%,rgba(15,23,42,0.04))]" />
 
       <div className="relative z-10 mx-auto flex min-h-[84vh] max-w-7xl flex-col items-start justify-center px-6 py-28 text-left text-white md:min-h-[94vh] md:px-12">
-        <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9] backdrop-blur-md">
+        <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#BAE6FD] backdrop-blur-md">
           <ShieldCheck className="size-4" />
           Nagamma Safety Nets
         </p>
 
         <h1 className="home-hero-title max-w-4xl font-extrabold">
-          {title} <span className="text-[#F0C9C9]">in Bangalore</span>
+          {title} <span className="text-[#BAE6FD]">in Bangalore</span>
         </h1>
 
         <p className="home-hero-copy mt-6 max-w-2xl text-white/90">
@@ -98,7 +98,7 @@ const HeroSection = ({ title, description, image, slides = [] }: HeroProps) => {
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link
             href="/contact-us/"
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg bg-[#B5121B] px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(181,18,27,0.32)] transition hover:bg-[#7A0C0F] md:text-base"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg bg-[#0369A1] px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(14,165,233,0.32)] transition hover:bg-[#075985] md:text-base"
           >
             <MessageSquareText className="size-4" />
             Get a Free Site Visit
@@ -130,7 +130,7 @@ const HeroSection = ({ title, description, image, slides = [] }: HeroProps) => {
                 key={slide.image}
                 type="button"
                 aria-label={`Show ${slide.title}`}
-                className={`h-2.5 rounded-full transition-all ${
+                className={`carousel-control h-2.5 rounded-full transition-all ${
                   index === activeSlide
                     ? "w-10 bg-white"
                     : "w-2.5 bg-white/45 hover:bg-white/75"
@@ -144,7 +144,7 @@ const HeroSection = ({ title, description, image, slides = [] }: HeroProps) => {
             <button
               type="button"
               aria-label="Previous carousel image"
-              className="flex size-10 items-center justify-center rounded-full border border-white/25 bg-white/12 text-white backdrop-blur-md transition hover:bg-white/20"
+              className="carousel-control flex size-10 items-center justify-center rounded-full border border-white/25 bg-white/12 text-white backdrop-blur-md transition hover:bg-white/20"
               onClick={() => moveSlide("previous")}
             >
               <ChevronLeft className="size-5" />
@@ -152,7 +152,7 @@ const HeroSection = ({ title, description, image, slides = [] }: HeroProps) => {
             <button
               type="button"
               aria-label="Next carousel image"
-              className="flex size-10 items-center justify-center rounded-full border border-white/25 bg-white/12 text-white backdrop-blur-md transition hover:bg-white/20"
+              className="carousel-control flex size-10 items-center justify-center rounded-full border border-white/25 bg-white/12 text-white backdrop-blur-md transition hover:bg-white/20"
               onClick={() => moveSlide("next")}
             >
               <ChevronRight className="size-5" />

@@ -94,7 +94,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-gradient-to-br from-[#FBFAFA] via-[#F8EFEF] to-[#EEF1F3] text-[#172129] antialiased">
+      <body className="min-h-screen bg-gradient-to-br from-[#F8FCFF] via-[#E0F2FE] to-[#F0F9FF] text-[#172129] antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

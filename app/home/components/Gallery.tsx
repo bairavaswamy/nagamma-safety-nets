@@ -26,14 +26,14 @@ export default function Gallery({ images }: { images: GalleryItem[] }) {
     <section className="bg-white/45 px-6 py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
             Project snapshots
           </p>
-          <span className="mx-auto mt-3 block h-1 w-12 rounded-full bg-[#B5121B]" />
+          <span className="mx-auto mt-3 block h-1 w-12 rounded-full bg-[#0369A1]" />
           <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-[#172129] md:text-5xl">
             Safety Work for Bangalore Homes
           </h2>
-          <p className="mt-4 text-[#5E4B4B]">
+          <p className="mt-4 text-[#475569]">
             Balcony nets, invisible grills, utility fittings, pigeon control,
             and sports net work shown in real-use settings.
           </p>
@@ -42,14 +42,14 @@ export default function Gallery({ images }: { images: GalleryItem[] }) {
         <div className="relative">
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-white/75 text-[#172129] shadow-lg shadow-[#172129]/10 backdrop-blur-xl transition hover:text-[#B5121B]"
+            className="absolute left-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-white/75 text-[#172129] shadow-lg shadow-[#172129]/10 backdrop-blur-xl transition hover:text-[#0369A1]"
             aria-label="Previous slide"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-white/75 text-[#172129] shadow-lg shadow-[#172129]/10 backdrop-blur-xl transition hover:text-[#B5121B]"
+            className="absolute right-0 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-white/75 text-[#172129] shadow-lg shadow-[#172129]/10 backdrop-blur-xl transition hover:text-[#0369A1]"
             aria-label="Next slide"
           >
             <FaChevronRight />
@@ -78,7 +78,7 @@ export default function Gallery({ images }: { images: GalleryItem[] }) {
                     <span className="rounded-full border border-white/35 bg-white/85 px-3 py-1 font-semibold text-[#172129] backdrop-blur-md">
                       {item.service}
                     </span>
-                    <span className="rounded-full border border-[#F0C9C9]/45 bg-[#F8EFEF]/90 px-3 py-1 font-medium text-[#7A0C0F] backdrop-blur-md">
+                    <span className="rounded-full border border-[#BAE6FD]/45 bg-[#E0F2FE]/90 px-3 py-1 font-medium text-[#075985] backdrop-blur-md">
                       {item.location}
                     </span>
                   </div>

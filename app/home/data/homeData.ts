@@ -12,10 +12,11 @@ export const cardsData = [
     image: "/home-generated/cards/invisible-grills.webp",
     title: "Invisible Grills",
     description:
-      "Modern balcony and window grill systems designed for safety while keeping the view open.",
+      "One of our most installed balcony and window safety upgrades, made to keep the view open with a neat finish.",
     href: "/bangalore/invisible-grills/",
-    badge: "Modern Safety",
-    tags: ["Invisible", "Grills", "Apartments"],
+    badge: "Most Popular",
+    tags: ["Popular", "Open View", "Balcony"],
+    highlight: true,
   },
   {
     image: "/home-generated/cards/monkey-safety-nets.webp",

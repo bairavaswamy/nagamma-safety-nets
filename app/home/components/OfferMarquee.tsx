@@ -28,13 +28,13 @@ const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
     {offerItems.map((item) => (
       <span key={item.label} className="flex items-center gap-2 whitespace-nowrap">
         {item.icon === "badge" ? (
-          <BadgePercent className="size-4 text-[#B5121B]" aria-hidden="true" />
+          <BadgePercent className="size-4 text-[#0369A1]" aria-hidden="true" />
         ) : null}
         {item.icon === "phone" ? (
-          <Phone className="size-4 text-[#B5121B]" aria-hidden="true" />
+          <Phone className="size-4 text-[#0369A1]" aria-hidden="true" />
         ) : null}
         {item.href ? (
-          <Link href={item.href} className="transition hover:text-[#B5121B]">
+          <Link href={item.href} className="transition hover:text-[#0369A1]">
             {item.label}
           </Link>
         ) : (

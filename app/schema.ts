@@ -166,7 +166,6 @@ export function buildBusinessJsonLd() {
       },
     ],
     description: siteConfig.businessDescription,
-    priceRange: "INR by site measurement",
     address: {
       "@type": "PostalAddress",
       addressLocality: siteConfig.branchAreaName,

@@ -12,7 +12,7 @@ export default function FloatingContactButtons() {
       <Link
         href={siteConfig.phoneHref}
         aria-label={`Call ${siteConfig.name} at ${siteConfig.phoneDisplay}`}
-        className="group flex size-12 items-center justify-center rounded-full border border-white/70 bg-white/90 text-[#B5121B] shadow-[0_18px_42px_rgba(23,33,41,0.18)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[#B5121B] hover:text-white sm:size-14"
+        className="group flex size-12 items-center justify-center rounded-full border border-white/70 bg-white/90 text-[#0369A1] shadow-[0_18px_42px_rgba(23,33,41,0.18)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[#0369A1] hover:text-white sm:size-14"
       >
         <Phone className="size-5 sm:size-6" />
         <span className="sr-only">Call {siteConfig.phoneDisplay}</span>

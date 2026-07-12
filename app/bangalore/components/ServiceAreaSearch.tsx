@@ -89,8 +89,8 @@ export default function ServiceAreaSearch({
     >
       <div className="home-search-grid">
         <label className="block min-w-0">
-          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#2B2526]">
-            <Wrench className="size-4 text-[#B5121B]" />
+          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#102A43]">
+            <Wrench className="size-4 text-[#0369A1]" />
             Service
           </span>
           <input
@@ -101,13 +101,13 @@ export default function ServiceAreaSearch({
               setMessage("");
             }}
             placeholder="Search service"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#172129] outline-none transition focus:border-[#B5121B] focus:ring-2 focus:ring-[#B5121B]/15"
+            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#172129] outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
           />
         </label>
 
         <label className="block min-w-0">
-          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#2B2526]">
-            <MapPin className="size-4 text-[#B5121B]" />
+          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#102A43]">
+            <MapPin className="size-4 text-[#0369A1]" />
             Area
           </span>
           <input
@@ -118,13 +118,13 @@ export default function ServiceAreaSearch({
               setMessage("");
             }}
             placeholder="Search area"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#172129] outline-none transition focus:border-[#B5121B] focus:ring-2 focus:ring-[#B5121B]/15"
+            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#172129] outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
           />
         </label>
 
         <button
           type="submit"
-          className="home-search-button inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#B5121B] px-5 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(181,18,27,0.12)] transition hover:bg-[#7A0C0F]"
+          className="home-search-button inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#0369A1] px-5 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(14,165,233,0.12)] transition hover:bg-[#075985]"
         >
           <Search className="size-4" />
           Search

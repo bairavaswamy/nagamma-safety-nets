@@ -22,17 +22,17 @@ const MissionSection = () => {
   return (
     <section className="bg-transparent px-6 py-20">
       <div className="mx-auto max-w-5xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B5121B]">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
           Mission
         </p>
-        <span className="mx-auto mt-3 block h-1 w-12 rounded-full bg-[#B5121B]" />
+        <span className="mx-auto mt-3 block h-1 w-12 rounded-full bg-[#0369A1]" />
         <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-[#172129] md:text-5xl">
           Our Mission
         </h2>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#5E4B4B]">
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#475569]">
           At{" "}
-          <span className="font-semibold text-[#B5121B]">
+          <span className="font-semibold text-[#0369A1]">
             Nagamma Safety Nets
           </span>
           , our mission is to make every home in Bengaluru safer, cleaner, and
@@ -49,17 +49,17 @@ const MissionSection = () => {
                 key={item.label}
                 className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#172129]/10 backdrop-blur-xl p-6"
               >
-                <Icon className="mx-auto mb-3 text-[#B5121B]" size={28} />
+                <Icon className="mx-auto mb-3 text-[#0369A1]" size={28} />
                 <h3 className="text-2xl font-bold text-[#172129]">
                   {item.value}
                 </h3>
-                <p className="text-sm text-[#66575A]">{item.label}</p>
+                <p className="text-sm text-[#52677A]">{item.label}</p>
               </div>
             );
           })}
         </div>
 
-        <p className="mt-10 text-sm text-[#66575A]">
+        <p className="mt-10 text-sm text-[#52677A]">
           Careful measurement | Suitable materials | Neat installation
         </p>
       </div>

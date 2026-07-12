@@ -39,8 +39,8 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             onClick={() => setActiveService(service)}
             className={`min-h-[40px] rounded-lg border px-4 py-2 text-sm font-semibold transition ${
               activeService === service
-                ? "border-[#B5121B] bg-[#B5121B] text-white"
-                : "border-slate-200 bg-white/70 text-[#2B2526] hover:border-[#B5121B]/40"
+                ? "border-[#0369A1] bg-[#0369A1] text-white"
+                : "border-slate-200 bg-white/70 text-[#102A43] hover:border-[#0369A1]/40"
             }`}
           >
             {service}
@@ -54,7 +54,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             key={`${item.title}-${item.location}`}
             type="button"
             onClick={() => setPreview(item)}
-            className="group overflow-hidden rounded-lg border border-white/65 bg-white/70 backdrop-blur-xl text-left shadow-[0_14px_45px_rgba(181,18,27,0.12)] transition hover:border-[#B5121B]/40"
+            className="group overflow-hidden rounded-lg border border-white/65 bg-white/70 backdrop-blur-xl text-left shadow-[0_14px_45px_rgba(14,165,233,0.12)] transition hover:border-[#0369A1]/40"
           >
             <span className="relative block aspect-[4/3] overflow-hidden">
               <Image
@@ -66,13 +66,13 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
               />
             </span>
             <span className="block p-4">
-              <span className="inline-flex rounded-lg bg-[#F4E7E7] px-3 py-1 text-xs font-semibold text-[#B5121B]">
+              <span className="inline-flex rounded-lg bg-[#EAF6FF] px-3 py-1 text-xs font-semibold text-[#0369A1]">
                 {item.service}
               </span>
               <span className="mt-3 block text-lg font-semibold text-[#172129]">
                 {item.title}
               </span>
-              <span className="mt-1 block text-sm text-[#66575A]">
+              <span className="mt-1 block text-sm text-[#52677A]">
                 {item.location}, Bangalore
               </span>
             </span>

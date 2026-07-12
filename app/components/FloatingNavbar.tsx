@@ -150,7 +150,7 @@ export default function FloatingNavbar() {
           <Link
             href="/"
             aria-label={`${siteConfig.name} home`}
-            className="flex min-w-0 items-center rounded-lg px-1.5 py-1 transition hover:bg-[#F8EFEF]"
+            className="flex min-w-0 items-center rounded-lg px-1.5 py-1 transition hover:bg-[#E0F2FE]"
             onClick={() => setIsOpen(false)}
           >
             <Image
@@ -174,8 +174,8 @@ export default function FloatingNavbar() {
                   href={link.href}
                   className={`inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold transition ${
                     active
-                      ? "border border-[#EACACA] bg-[#F8EFEF] text-[#B5121B]"
-                      : "text-[#2B2526] hover:bg-[#F8EFEF] hover:text-[#B5121B]"
+                      ? "border border-[#BAE6FD] bg-[#E0F2FE] text-[#0369A1]"
+                      : "text-[#102A43] hover:bg-[#E0F2FE] hover:text-[#0369A1]"
                   }`}
                 >
                   <Icon className="size-4" />
@@ -193,7 +193,7 @@ export default function FloatingNavbar() {
                 type="button"
                 aria-haspopup="menu"
                 aria-expanded={isServicesOpen}
-                className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[#2B2526] transition hover:bg-[#F8EFEF] hover:text-[#B5121B]"
+                className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[#102A43] transition hover:bg-[#E0F2FE] hover:text-[#0369A1]"
                 onClick={() => setIsServicesOpen(true)}
                 onFocus={() => setIsServicesOpen(true)}
               >
@@ -222,13 +222,13 @@ export default function FloatingNavbar() {
                       key={service.slug}
                       href={getServicePath(service.slug)}
                       role="menuitem"
-                      className="block rounded-lg px-3 py-3 transition hover:bg-[#F8EFEF]"
+                      className="block rounded-lg px-3 py-3 transition hover:bg-[#E0F2FE]"
                       onClick={() => setIsServicesOpen(false)}
                     >
                       <span className="block text-sm font-semibold text-[#172129]">
                         {service.name}
                       </span>
-                      <span className="mt-1 line-clamp-1 block text-xs text-[#66575A]">
+                      <span className="mt-1 line-clamp-1 block text-xs text-[#52677A]">
                         {service.shortDescription}
                       </span>
                     </Link>
@@ -240,7 +240,7 @@ export default function FloatingNavbar() {
 
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#E5E7EA] bg-[#F8EFEF] text-[#172129] transition hover:bg-[#F4E7E7] hover:text-[#B5121B] xl:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#E5E7EA] bg-[#E0F2FE] text-[#172129] transition hover:bg-[#EAF6FF] hover:text-[#0369A1] xl:hidden"
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((current) => !current)}
@@ -262,8 +262,8 @@ export default function FloatingNavbar() {
                     href={link.href}
                     className={`flex min-h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-semibold ${
                       active
-                        ? "border border-[#EACACA] bg-[#F8EFEF] text-[#B5121B]"
-                        : "text-[#2B2526] hover:bg-[#F8EFEF]"
+                        ? "border border-[#BAE6FD] bg-[#E0F2FE] text-[#0369A1]"
+                        : "text-[#102A43] hover:bg-[#E0F2FE]"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -275,7 +275,7 @@ export default function FloatingNavbar() {
             </div>
 
             <div className="mt-3 border-t border-[#E5E7EA] pt-3">
-              <p className="px-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#B5121B]">
+              <p className="px-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#0369A1]">
                 Services
               </p>
               <div className="mt-2 grid gap-2">
@@ -283,7 +283,7 @@ export default function FloatingNavbar() {
                   <Link
                     key={service.slug}
                     href={getServicePath(service.slug)}
-                    className="rounded-lg px-3 py-3 text-sm font-semibold text-[#2B2526] transition hover:bg-[#F8EFEF] hover:text-[#B5121B]"
+                    className="rounded-lg px-3 py-3 text-sm font-semibold text-[#102A43] transition hover:bg-[#E0F2FE] hover:text-[#0369A1]"
                     onClick={() => setIsOpen(false)}
                   >
                     {service.name}

@@ -14,7 +14,7 @@ export default function SiteFooter() {
   const branchAreaSlug = siteConfig.branchAreaSlug as AreaSlug;
 
   return (
-    <footer className="border-t border-white/10 bg-[linear-gradient(135deg,#111820_0%,#3B0A0D_48%,#7A0C0F_100%)] text-white">
+    <footer className="border-t border-[#BAE6FD]/70 bg-[linear-gradient(135deg,#F8FCFF_0%,#E0F2FE_48%,#BAE6FD_100%)] text-[#172129]">
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.1fr]">
           <div>
@@ -24,7 +24,7 @@ export default function SiteFooter() {
               aria-label={`${siteConfig.name} home`}
             >
               <Image
-                src="/logo-horizontal-light.webp"
+                src="/logo-horizontal.webp"
                 alt={`${siteConfig.name} logo`}
                 width={300}
                 height={94}
@@ -32,20 +32,20 @@ export default function SiteFooter() {
               />
             </Link>
 
-            <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300">
+            <p className="mt-5 max-w-sm text-sm leading-7 text-[#475569]">
               Safety nets, invisible grills, sports nets, and cloth hanger
               services across Bangalore with {siteConfig.branchAreaName} as the
               service base.
             </p>
 
-            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[#F0C9C9]">
-              <MapPin className="size-4 text-[#F0C9C9]" />
+            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[#0369A1]">
+              <MapPin className="size-4 text-[#0369A1]" />
               {siteConfig.branchAreaName}, {siteConfig.city}
             </div>
 
             <Link
               href={siteConfig.phoneHref}
-              className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#F0C9C9] transition hover:text-white"
+              className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0369A1] transition hover:text-[#075985]"
             >
               <Phone className="size-4" />
               {siteConfig.phoneDisplay}
@@ -53,7 +53,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
               Services
             </h2>
             <nav className="mt-4 grid gap-2" aria-label="Footer services">
@@ -61,7 +61,7 @@ export default function SiteFooter() {
                 <Link
                   key={service.slug}
                   href={getServicePath(service.slug)}
-                  className="text-sm text-slate-300 transition hover:text-white"
+                  className="text-sm text-[#475569] transition hover:text-[#0369A1]"
                 >
                   {service.name}
                 </Link>
@@ -70,7 +70,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
               Marathahalli
             </h2>
             <nav className="mt-4 grid gap-2" aria-label="Marathahalli services">
@@ -78,7 +78,7 @@ export default function SiteFooter() {
                 <Link
                   key={service.slug}
                   href={getServiceAreaPath(service.slug, branchAreaSlug)}
-                  className="text-sm text-slate-300 transition hover:text-white"
+                  className="text-sm text-[#475569] transition hover:text-[#0369A1]"
                 >
                   {service.name}
                 </Link>
@@ -87,14 +87,14 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F0C9C9]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
               Coverage
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {areas.map((area) => (
                 <span
                   key={area.slug}
-                  className="rounded-lg border border-white/[0.12] bg-white/[0.08] px-3 py-1.5 text-xs font-medium text-slate-200 backdrop-blur-md"
+                  className="rounded-lg border border-white/70 bg-white/60 px-3 py-1.5 text-xs font-medium text-[#475569] backdrop-blur-md"
                 >
                   {area.name}
                 </span>
@@ -103,27 +103,27 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-[#BAE6FD]/70 pt-6 text-sm text-[#52677A] md:flex-row md:items-center md:justify-between">
           <p>
             Copyright {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link href="/about/" className="transition hover:text-white">
+            <Link href="/about/" className="transition hover:text-[#0369A1]">
               About
             </Link>
-            <Link href="/gallery/" className="transition hover:text-white">
+            <Link href="/gallery/" className="transition hover:text-[#0369A1]">
               Gallery
             </Link>
-            <Link href="/contact-us/" className="transition hover:text-white">
+            <Link href="/contact-us/" className="transition hover:text-[#0369A1]">
               Contact
             </Link>
-            <Link href="/bangalore/" className="transition hover:text-white">
+            <Link href="/bangalore/" className="transition hover:text-[#0369A1]">
               Bangalore Services
             </Link>
             <Link
               href="/#service-area-search"
-              className="transition hover:text-white"
+              className="transition hover:text-[#0369A1]"
             >
               Search Services
             </Link>
