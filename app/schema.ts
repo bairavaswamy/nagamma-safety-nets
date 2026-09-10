@@ -215,15 +215,15 @@ export function buildRootJsonLd() {
       buildWebsiteJsonLd(),
       buildImageJsonLd({
         id: logoSchemaId,
-        src: "/logo-horizontal.webp",
+        src: "/brand/logo.svg",
         name: `${siteConfig.name} logo`,
         alt: `${siteConfig.name} logo`,
-        width: 640,
-        height: 200,
+        width: 438,
+        height: 104,
       }),
       buildImageJsonLd({
         id: primaryImageSchemaId,
-        src: "/og-image.png",
+        src: "/brand/og-image.png",
         name: `${siteConfig.name} Bangalore safety net installation`,
         alt: `${siteConfig.name} Bangalore`,
         width: 1200,
@@ -346,9 +346,9 @@ export function buildGalleryPageJsonLd() {
       buildWebPageJsonLd({
         type: "ImageGallery",
         canonical,
-        name: `${siteConfig.name} work photos`,
+        name: `${siteConfig.name} service gallery`,
         description:
-          "Safety net, pigeon net, invisible grill, cloth hanger, and sports net installation photos from Bangalore.",
+          "Illustrative safety net, invisible grill, cloth hanger and sports net examples for Bangalore homes.",
         imageId: `${canonical}#gallery-image-1`,
         breadcrumbId: `${canonical}#breadcrumb`,
       }),
@@ -379,8 +379,8 @@ export function buildGalleryPageJsonLd() {
           id: `${canonical}#gallery-image-${index + 1}`,
           src: item.image,
           name: item.title,
-          alt: `${item.service} in ${item.location}, ${siteConfig.city}`,
-          caption: `${item.service} work in ${item.location}, ${siteConfig.city}`,
+          alt: item.alt,
+          caption: `Illustrative service example: ${item.service}`,
         })
       ),
     ],

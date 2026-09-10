@@ -180,7 +180,7 @@ function RichManualServiceAreaPage({
   const jsonLd = buildServiceAreaJsonLd(service, area, content);
 
   return (
-    <main className="min-h-screen bg-transparent text-[#172129]">
+    <main id="main-content" className="min-h-screen bg-transparent text-[var(--brand-text)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -188,33 +188,33 @@ function RichManualServiceAreaPage({
         }}
       />
 
-      <section className="bg-white/45 px-6 py-14 md:px-10 md:py-20">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-14 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.03fr_0.97fr] lg:items-start">
           <div>
             <Breadcrumbs service={service} area={area} />
 
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
+            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
               Installation in {area.name}
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-[#172129] md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-[var(--brand-text)] md:text-6xl">
               {content.h1}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] md:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--brand-muted)] md:text-lg">
               {cleanPricingText(content.intro)}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               {isGmbArea(area) ? (
-                <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[#BAE6FD] bg-[#E0F2FE] px-4 py-2 text-sm font-semibold text-[#0369A1]">
+                <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[var(--brand-border)] bg-[var(--brand-secondary)] px-4 py-2 text-sm font-semibold text-[var(--brand-primary)]">
                   <MapPinned className="size-4" />
                   GMB location
                 </span>
               ) : null}
-              <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[#D8DEE2] bg-[#F0F9FF] px-4 py-2 text-sm font-semibold text-[#0369A1]">
+              <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[#D8DEE2] bg-[var(--brand-surface-soft)] px-4 py-2 text-sm font-semibold text-[var(--brand-primary)]">
                 <ShieldCheck className="size-4" />
                 Site notes
               </span>
-              <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl px-4 py-2 text-sm font-semibold text-[#475569]">
+              <span className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl px-4 py-2 text-sm font-semibold text-[var(--brand-muted)]">
                 <MapPin className="size-4" />
                 {siteConfig.city}
               </span>
@@ -223,7 +223,7 @@ function RichManualServiceAreaPage({
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="#service-area-search"
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-white/70 bg-white/70 backdrop-blur-xl px-5 py-2 text-sm font-semibold text-[#0369A1] transition hover:bg-[#E0F2FE]"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[var(--brand-border)] bg-white backdrop-blur-xl px-5 py-2 text-sm font-semibold text-[var(--brand-primary)] transition hover:bg-[var(--brand-secondary)]"
               >
                 <Search className="size-4" />
                 Search Services
@@ -232,14 +232,14 @@ function RichManualServiceAreaPage({
           </div>
 
           <div className="space-y-5">
-            <ServiceAreaSearch
+            <ServiceAreaSearch id="service-area-search"
               services={services}
               areas={areas}
               defaultServiceSlug={service.slug}
               defaultAreaSlug={area.slug}
             />
 
-            <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5">
+            <div className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5">
               <h2 className="text-lg font-bold">Site brief</h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {withoutPricingRecords(content.localHighlights ?? [], [
@@ -247,14 +247,14 @@ function RichManualServiceAreaPage({
                   "value",
                   "note",
                 ]).map((item) => (
-                  <div key={item.label} className="rounded-lg bg-white/70 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#0369A1]">
+                  <div key={item.label} className="rounded-lg bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-primary)]">
                       {cleanPricingText(item.label)}
                     </p>
                     <h3 className="mt-2 text-lg font-bold">
                       {cleanPricingText(item.value)}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-[#475569]">
+                    <p className="mt-2 text-sm leading-6 text-[var(--brand-muted)]">
                       {cleanPricingText(item.note)}
                     </p>
                   </div>
@@ -275,7 +275,7 @@ function RichManualServiceAreaPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Why this service is commonly needed in {area.name}
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               Around {area.name}, {service.name.toLowerCase()} work depends on
               the exact opening, fixing surface, building rules, and how the
               family uses the balcony or window every day.
@@ -286,13 +286,13 @@ function RichManualServiceAreaPage({
             {(content.problemCards ?? []).map((card) => (
               <article
                 key={card.title}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
               >
-                <ShieldCheck className="mb-4 size-6 text-[#0369A1]" />
+                <ShieldCheck className="mb-4 size-6 text-[var(--brand-primary)]" />
                 <h3 className="text-lg font-semibold">
                   {cleanPricingText(card.title)}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                   {cleanPricingText(card.body)}
                 </p>
               </article>
@@ -301,7 +301,7 @@ function RichManualServiceAreaPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <div>
             <SectionKicker
@@ -311,7 +311,7 @@ function RichManualServiceAreaPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Where the net should be checked before fitting
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               Before booking, it helps to know which part of the home is causing
               the problem. A main balcony, window opening, utility side, high
               floor edge, and rental flat can all need different fitting
@@ -330,14 +330,14 @@ function RichManualServiceAreaPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <SectionKicker icon={<Wrench className="size-4" />} text="Visit plan" />
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               How an installation visit should move
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               A clean visit starts with clear photos and ends with a final gap
               and finish check. That way the installation solves the main
               concern without making balcony use, cleaning, or service access
@@ -349,12 +349,12 @@ function RichManualServiceAreaPage({
             {(content.visitSteps ?? []).map((step) => (
               <article
                 key={step.title}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
               >
                 <h3 className="text-lg font-semibold">
                   {cleanPricingText(step.title)}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                   {cleanPricingText(step.body)}
                 </p>
               </article>
@@ -378,14 +378,14 @@ function RichManualServiceAreaPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <SectionKicker icon={<MapPin className="size-4" />} text="Nearby" />
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Nearby pockets around {area.name}
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               These nearby pockets are useful for route timing and grouped
               visits around the same side of Bangalore.
             </p>
@@ -395,9 +395,9 @@ function RichManualServiceAreaPage({
             {(content.nearbyPockets ?? []).map((pocket) => (
               <div
                 key={pocket}
-                className="flex min-h-[56px] items-center gap-2 rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl px-4 py-3 text-sm font-semibold text-[#102A43]"
+                className="flex min-h-[56px] items-center gap-2 rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl px-4 py-3 text-sm font-semibold text-[var(--brand-primary)]"
               >
-                <MapPin className="size-4 shrink-0 text-[#0369A1]" />
+                <MapPin className="size-4 shrink-0 text-[var(--brand-primary)]" />
                 {pocket}
               </div>
             ))}
@@ -418,10 +418,10 @@ function RichManualServiceAreaPage({
             {withoutPricingFaqs(content.faqs ?? []).map((faq) => (
               <article
                 key={faq.question}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
               >
                 <h3 className="text-lg font-semibold">{faq.question}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                   {cleanPricingText(faq.answer)}
                 </p>
               </article>
@@ -430,7 +430,7 @@ function RichManualServiceAreaPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div>
             <SectionKicker
@@ -440,7 +440,7 @@ function RichManualServiceAreaPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Other services in {area.name}
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               If you need another kind of balcony, window, utility, or drying
               space work in {area.name}, these service pages stay linked
               from the same area.
@@ -455,7 +455,7 @@ function RichManualServiceAreaPage({
                   item.slug as ServiceSlug,
                   area.slug as AreaSlug
                 )}
-                className="group flex items-center justify-between rounded-lg border border-white/60 bg-white/45 backdrop-blur-xl px-4 py-4 text-sm font-semibold text-[#102A43] transition hover:border-[#0369A1]/40 hover:text-[#0369A1]"
+                className="group flex items-center justify-between rounded-lg border border-white/60 bg-[var(--brand-secondary)]/30 backdrop-blur-xl px-4 py-4 text-sm font-semibold text-[var(--brand-primary)] transition hover:border-[var(--brand-primary)]/40 hover:text-[var(--brand-primary)]"
               >
                 {item.name}
                 <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
@@ -485,28 +485,28 @@ function BasicServiceAreaPage({
   const otherServices = services.filter((item) => item.slug !== service.slug);
 
   return (
-    <main className="min-h-screen bg-transparent text-[#172129]">
-      <section className="bg-white/45 px-6 py-16 md:px-10 md:py-20">
+    <main className="min-h-screen bg-transparent text-[var(--brand-text)]">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <Breadcrumbs service={service} area={area} />
 
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
+            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--brand-primary)]">
               Service page
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-[#172129] md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-[var(--brand-text)] md:text-6xl">
               {pageHeading}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] md:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--brand-muted)] md:text-lg">
               {cleanPricingText(manualContent?.intro || service.shortDescription)}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3 text-sm">
-              <span className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl px-4 py-2 font-semibold text-[#475569]">
+              <span className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl px-4 py-2 font-semibold text-[var(--brand-muted)]">
                 {isReady ? "Content ready" : "Content pending"}
               </span>
               {isGmbArea(area) ? (
-                <span className="rounded-lg border border-[#BAE6FD] bg-[#E0F2FE] px-4 py-2 font-semibold text-[#0369A1]">
+                <span className="rounded-lg border border-[var(--brand-border)] bg-[var(--brand-secondary)] px-4 py-2 font-semibold text-[var(--brand-primary)]">
                   GMB location: {siteConfig.branchAreaName}
                 </span>
               ) : null}
@@ -529,22 +529,22 @@ function BasicServiceAreaPage({
               manualContent.sections.map((section) => (
                 <article
                   key={section.title}
-                  className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-6"
+                  className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-6"
                 >
                   <h2 className="text-2xl font-bold">
                     {cleanPricingText(section.title)}
                   </h2>
-                  <p className="mt-4 text-base leading-8 text-[#475569]">
+                  <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
                     {cleanPricingText(section.body)}
                   </p>
                 </article>
               ))
             ) : (
-              <article className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-6">
+              <article className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-6">
                 <h2 className="text-2xl font-bold">
                   Content still to write
                 </h2>
-                <p className="mt-4 text-base leading-8 text-[#475569]">
+                <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
                   This URL is ready for hand-written copy for {service.name} in{" "}
                   {area.name}. Keep this page as draft until the area-specific
                   intro, installation notes, nearby apartment context, and FAQs
@@ -559,9 +559,9 @@ function BasicServiceAreaPage({
                   ].map((item) => (
                     <div
                       key={item}
-                      className="flex items-start gap-2 rounded-lg bg-[#E0F2FE] p-3 text-sm text-[#475569]"
+                      className="flex items-start gap-2 rounded-lg bg-[var(--brand-secondary)] p-3 text-sm text-[var(--brand-muted)]"
                     >
-                      <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#0369A1]" />
+                      <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[var(--brand-primary)]" />
                       {item}
                     </div>
                   ))}
@@ -570,13 +570,13 @@ function BasicServiceAreaPage({
             )}
 
             {manualContent?.faqs?.length ? (
-              <article className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-6">
+              <article className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-6">
                 <h2 className="text-2xl font-bold">FAQs</h2>
                 <div className="mt-5 space-y-4">
                   {withoutPricingFaqs(manualContent.faqs).map((faq) => (
                     <div key={faq.question}>
                       <h3 className="font-semibold">{faq.question}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#475569]">
+                      <p className="mt-2 text-sm leading-6 text-[var(--brand-muted)]">
                         {cleanPricingText(faq.answer)}
                       </p>
                     </div>
@@ -587,7 +587,7 @@ function BasicServiceAreaPage({
           </div>
 
           <aside className="space-y-4">
-            <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5">
+            <div className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5">
               <h2 className="text-lg font-bold">Same area services</h2>
               <div className="mt-4 space-y-2">
                 {otherServices.map((item) => (
@@ -597,7 +597,7 @@ function BasicServiceAreaPage({
                       item.slug as ServiceSlug,
                       area.slug as AreaSlug
                     )}
-                    className="flex items-center justify-between rounded-lg bg-[#E0F2FE] px-3 py-2 text-sm font-semibold text-[#102A43] transition hover:text-[#0369A1]"
+                    className="flex items-center justify-between rounded-lg bg-[var(--brand-secondary)] px-3 py-2 text-sm font-semibold text-[var(--brand-primary)] transition hover:text-[var(--brand-primary)]"
                   >
                     {item.name}
                     <ArrowRight className="size-4" />
@@ -606,16 +606,16 @@ function BasicServiceAreaPage({
               </div>
             </div>
 
-            <div className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5">
+            <div className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5">
               <h2 className="text-lg font-bold">Area</h2>
-              <div className="mt-4 flex items-center gap-2 text-[#475569]">
-                <MapPin className="size-4 text-[#0369A1]" />
+              <div className="mt-4 flex items-center gap-2 text-[var(--brand-muted)]">
+                <MapPin className="size-4 text-[var(--brand-primary)]" />
                 <span>
                   {area.name}, {siteConfig.city}
                 </span>
               </div>
               {isGmbArea(area) ? (
-                <p className="mt-3 text-sm font-semibold text-[#0369A1]">
+                <p className="mt-3 text-sm font-semibold text-[var(--brand-primary)]">
                   Primary GMB location for {siteConfig.name}.
                 </p>
               ) : null}
@@ -629,14 +629,14 @@ function BasicServiceAreaPage({
 
 function Breadcrumbs({ service, area }: { service: Service; area: Area }) {
   return (
-    <nav className="flex flex-wrap gap-2 text-sm text-[#52677A]">
-      <Link href="/bangalore/" className="font-semibold text-[#0369A1]">
+    <nav className="flex flex-wrap gap-2 text-sm text-[var(--brand-muted)]">
+      <Link href="/bangalore/" className="font-semibold text-[var(--brand-primary)]">
         Bangalore
       </Link>
       <span>/</span>
       <Link
         href={getServicePath(service.slug as ServiceSlug)}
-        className="font-semibold text-[#0369A1]"
+        className="font-semibold text-[var(--brand-primary)]"
       >
         {service.name}
       </Link>
@@ -648,7 +648,7 @@ function Breadcrumbs({ service, area }: { service: Service; area: Area }) {
 
 function SectionKicker({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <p className="inline-flex items-center gap-2 rounded-lg bg-[#EAF6FF] px-3 py-2 text-sm font-semibold text-[#0369A1]">
+    <p className="inline-flex items-center gap-2 rounded-lg bg-[var(--brand-surface-soft)] px-3 py-2 text-sm font-semibold text-[var(--brand-primary)]">
       {icon}
       {text}
     </p>
@@ -663,9 +663,9 @@ function ResponsiveInfoTable({
   rows: string[][];
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl">
+    <div className="overflow-hidden rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl">
       <table className="hidden w-full border-collapse text-left md:table">
-        <thead className="bg-[#E0F2FE] text-sm text-[#102A43]">
+        <thead className="bg-[var(--brand-secondary)] text-sm text-[var(--brand-primary)]">
           <tr>
             {headers.map((header) => (
               <th key={header} className="border-b border-slate-200 px-4 py-3">
@@ -680,7 +680,7 @@ function ResponsiveInfoTable({
               {row.map((cell, index) => (
                 <td
                   key={`${cell}-${index}`}
-                  className="border-b border-slate-100 px-4 py-4 text-sm leading-6 text-[#475569] last:border-b-0"
+                  className="border-b border-slate-100 px-4 py-4 text-sm leading-6 text-[var(--brand-muted)] last:border-b-0"
                 >
                   {cell}
                 </td>
@@ -695,10 +695,10 @@ function ResponsiveInfoTable({
           <article key={row.join("|")} className="border-b border-slate-200 p-4">
             {row.map((cell, index) => (
               <div key={`${cell}-${index}`} className={index ? "mt-3" : ""}>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#0369A1]">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-primary)]">
                   {headers[index]}
                 </p>
-                <p className="mt-1 text-sm leading-6 text-[#475569]">{cell}</p>
+                <p className="mt-1 text-sm leading-6 text-[var(--brand-muted)]">{cell}</p>
               </div>
             ))}
           </article>
@@ -718,9 +718,9 @@ function ListPanel({
   items: string[];
 }) {
   return (
-    <article className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-6">
+    <article className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-6">
       <div className="flex items-center gap-3">
-        <span className="flex size-10 items-center justify-center rounded-lg bg-[#EAF6FF] text-[#0369A1]">
+        <span className="flex size-10 items-center justify-center rounded-lg bg-[var(--brand-surface-soft)] text-[var(--brand-primary)]">
           {icon}
         </span>
         <h2 className="text-2xl font-bold">{title}</h2>
@@ -728,8 +728,8 @@ function ListPanel({
       <div className="mt-5 grid gap-3">
         {items.map((item) => (
           <div key={item} className="flex items-start gap-3">
-            <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#0369A1]" />
-            <p className="text-sm leading-6 text-[#475569]">
+            <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[var(--brand-primary)]" />
+            <p className="text-sm leading-6 text-[var(--brand-muted)]">
               {cleanPricingText(item)}
             </p>
           </div>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <title>Nagamma Safety Nets social share artwork</title>
+  <desc>Typography and brand composition. The build script places the existing balcony photograph behind the transparent right panel.</desc>
+  <path fill="#F7FAFE" d="M0 0h660v565H0z"/>
+  <path fill="#C5A46D" d="M64 173h30v3H64z"/>
+  <text x="107" y="179" fill="#5C6F86" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1.6">HOME SAFETY, THOUGHTFULLY DONE</text>
+  <text x="60" y="276" fill="#174D8B" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="600" letter-spacing="-2.5">A safer home.</text>
+  <text x="60" y="351" fill="#174D8B" font-family="Georgia, Times New Roman, serif" font-size="64" font-style="italic" letter-spacing="-1.7">An open view.</text>
+  <text x="64" y="418" fill="#5C6F86" font-family="Segoe UI, Arial, sans-serif" font-size="24">Safety nets &amp; home essentials</text>
+  <text x="64" y="452" fill="#5C6F86" font-family="Segoe UI, Arial, sans-serif" font-size="24">in Bangalore</text>
+  <path fill="#10335D" d="M0 565h1200v65H0z"/>
+  <text x="64" y="605" fill="#F7FAFE" font-family="Segoe UI, Arial, sans-serif" font-size="17" letter-spacing=".25">Thoughtful protection for everyday living.</text>
+  <g stroke="#C5A46D" stroke-width="1.2" opacity=".8">
+    <path d="M1083 585h63m-63 11h63m-63 11h63m-52-31v40m13-40v40m13-40v40m13-40v40"/>
+  </g>
+</svg>
+

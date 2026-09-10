@@ -1,11 +1,14 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "./bangalore/data/serviceAreaData";
 import { buildRootJsonLd, sanitizeJsonLd } from "./schema";
 import ContactCta from "./components/ContactCta";
 import FloatingContactButtons from "./components/FloatingContactButtons";
 import FloatingNavbar from "./components/FloatingNavbar";
 import SiteFooter from "./components/SiteFooter";
+import GoogleTagManager from "./components/GoogleTagManager";
+
+export const viewport: Viewport = { themeColor: "#174D8B" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -45,7 +48,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: `${siteConfig.baseUrl}/og-image.png`,
+        url: `${siteConfig.baseUrl}/brand/og-image.png`,
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} Bangalore`,
@@ -59,25 +62,25 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} Bangalore`,
     description: "Home safety net installation in Bangalore.",
-    images: [`${siteConfig.baseUrl}/og-image.png`],
+    images: [`${siteConfig.baseUrl}/brand/og-image.png`],
   },
 
   icons: {
     icon: [
       {
-        url: "/favicon.png",
+        url: "/brand/mark-512.png",
         sizes: "512x512",
         type: "image/png",
       },
       {
-        url: "/favicon-red.ico",
-        type: "image/x-icon",
+        url: "/brand/mark.svg",
+        type: "image/svg+xml",
       },
     ],
-    shortcut: "/favicon-red.ico",
+    shortcut: "/brand/favicon.ico",
     apple: [
       {
-        url: "/apple-touch-icon-red.png",
+        url: "/brand/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
       },
@@ -94,7 +97,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-gradient-to-br from-[#F8FCFF] via-[#E0F2FE] to-[#F0F9FF] text-[#172129] antialiased">
+      <body className="min-h-screen antialiased">
+        <GoogleTagManager />
+        <a href="#main-content" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:rounded-md focus:bg-white focus:px-5 focus:py-3">Skip to content</a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

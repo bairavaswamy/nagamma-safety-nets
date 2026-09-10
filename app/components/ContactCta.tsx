@@ -1,49 +1,20 @@
 import Link from "next/link";
-import { ArrowRight, Camera, MapPinned, MessageSquareText, Phone } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { siteConfig } from "../bangalore/data/serviceAreaData";
-
 export default function ContactCta() {
   return (
-    <section className="border-t border-white/45 bg-white/30 px-6 py-14 md:px-10">
-      <div className="border border-white/70 bg-white/75 shadow-2xl shadow-[#0369A1]/15 backdrop-blur-xl mx-auto grid max-w-7xl gap-6 rounded-lg p-5 md:p-6 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div>
-          <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#0369A1]">
-            <MapPinned className="size-4" />
-            {siteConfig.branchAreaName}, {siteConfig.city}
-          </p>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-[#172129] md:text-3xl">
-            Need a site check for a balcony, window, duct, or utility space?
-          </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-[#475569] md:text-base">
-            Share the service, area, and a few photos of the opening. The visit
-            can be planned around the surface, access, material, and daily use
-            of the space.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-          <Link
-            href={siteConfig.phoneHref}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[#BAE6FD] bg-white/80 px-5 py-2 text-sm font-semibold text-[#0369A1] shadow-[0_10px_30px_rgba(14,165,233,0.10)] backdrop-blur-xl transition hover:bg-white"
-          >
-            <Phone className="size-4" />
-            {siteConfig.phoneDisplay}
-          </Link>
-          <Link
-            href={siteConfig.contactPath}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-gradient-to-br from-[#0369A1] to-[#075985] px-5 py-2 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(14,165,233,0.22)] transition hover:brightness-95"
-          >
-            <MessageSquareText className="size-4" />
-            Contact Us
-            <ArrowRight className="size-4" />
-          </Link>
-          <Link
-            href="/gallery/"
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-white/70 bg-white/70 px-5 py-2 text-sm font-semibold text-[#0369A1] shadow-[0_10px_30px_rgba(14,165,233,0.10)] backdrop-blur-xl transition hover:bg-white/85"
-          >
-            <Camera className="size-4" />
-            View Work
-          </Link>
+    <section className="py-14 sm:py-20">
+      <div className="site-container">
+        <div className="relative overflow-hidden rounded-2xl bg-[var(--brand-primary)] px-6 py-10 text-white sm:px-12 sm:py-12">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-28 size-96 rounded-full border border-white/10" />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-2 -top-16 size-72 rounded-full border border-white/10" />
+          <div className="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+            <div><p className="text-[10px] font-semibold uppercase tracking-[.18em] text-[#D8BE97]">Let’s make your space feel safer</p><h2 className="mt-4 text-[32px] font-medium leading-tight tracking-tight sm:text-[42px]">A little care.<br /><span className="editorial-serif">A lot of peace of mind.</span></h2><p className="mt-4 max-w-md text-sm leading-7 text-white/75">Tell us what you have in mind. We’ll help you find the right solution, starting with a free site visit.</p></div>
+            <div className="flex flex-col items-start gap-4 lg:min-w-[245px]">
+              <Link href="/contact-us/" className="inline-flex min-h-12 items-center gap-6 rounded-md bg-[var(--brand-background)] px-6 py-3 text-sm font-semibold text-[var(--brand-primary)] transition hover:bg-white" data-contact-location="footer-cta">Arrange a free site visit <ArrowUpRight className="size-4" /></Link>
+              <a href={siteConfig.phoneHref} className="inline-flex min-h-11 items-center gap-3 text-sm text-white/90"><Phone className="size-4" /> Or call +91 {siteConfig.phoneDisplay}</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

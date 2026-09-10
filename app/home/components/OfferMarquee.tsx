@@ -28,13 +28,13 @@ const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
     {offerItems.map((item) => (
       <span key={item.label} className="flex items-center gap-2 whitespace-nowrap">
         {item.icon === "badge" ? (
-          <BadgePercent className="size-4 text-[#0369A1]" aria-hidden="true" />
+          <BadgePercent className="size-4 text-[var(--brand-primary)]" aria-hidden="true" />
         ) : null}
         {item.icon === "phone" ? (
-          <Phone className="size-4 text-[#0369A1]" aria-hidden="true" />
+          <Phone className="size-4 text-[var(--brand-primary)]" aria-hidden="true" />
         ) : null}
         {item.href ? (
-          <Link href={item.href} className="transition hover:text-[#0369A1]">
+          <Link href={item.href} className="transition hover:text-[var(--brand-primary)]">
             {item.label}
           </Link>
         ) : (
@@ -48,7 +48,7 @@ const OfferGroup = ({ hidden = false }: { hidden?: boolean }) => (
 const OfferMarquee = () => {
   return (
     <section
-      className="overflow-hidden border-y border-white/70 bg-white/55 py-3 text-[#172129] shadow-sm backdrop-blur-xl"
+      className="overflow-hidden border-y border-[var(--brand-border)] bg-white/55 py-3 text-[var(--brand-text)] shadow-sm backdrop-blur-xl"
       aria-label="Nagamma Safety Nets Bangalore service highlights."
     >
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">

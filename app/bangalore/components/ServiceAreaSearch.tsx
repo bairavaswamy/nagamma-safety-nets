@@ -1,152 +1,46 @@
 "use client";
-
-import { FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useId, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, MapPin, Search, Wrench } from "lucide-react";
+import { ArrowRight, MapPin, Wrench } from "lucide-react";
 import type { Area, Service } from "../data/serviceAreaData";
 
-type SearchItem = {
-  slug: string;
-  name: string;
-  aliases: readonly string[];
-};
-
+type SearchItem = { slug: string; name: string; aliases: readonly string[]; };
 type ServiceAreaSearchProps = {
-  services: readonly Service[];
-  areas: readonly Area[];
-  defaultServiceSlug?: string;
-  defaultAreaSlug?: string;
+  services: readonly Service[]; areas: readonly Area[];
+  defaultServiceSlug?: string; defaultAreaSlug?: string; compact?: boolean; id?: string;
 };
-
-const normalize = (value: string) =>
-  value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-
-const findItem = (items: readonly SearchItem[], value: string) => {
-  const normalized = normalize(value);
-
-  return items.find((item) => {
-    const names = [item.name, item.slug, ...item.aliases].map(normalize);
-    return names.includes(normalized);
-  });
-};
-
-export default function ServiceAreaSearch({
-  services,
-  areas,
-  defaultServiceSlug,
-  defaultAreaSlug,
-}: ServiceAreaSearchProps) {
+const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const findItem = (items: readonly SearchItem[], value: string) => items.find(item =>
+  [item.name, item.slug, ...item.aliases].map(normalize).includes(normalize(value))
+);
+export default function ServiceAreaSearch({ services, areas, defaultServiceSlug, defaultAreaSlug, compact = false, id }: ServiceAreaSearchProps) {
   const router = useRouter();
-
-  const defaultService = services.find(
-    (service) => service.slug === defaultServiceSlug
-  );
-  const defaultArea = areas.find((area) => area.slug === defaultAreaSlug);
-
-  const [serviceInput, setServiceInput] = useState(defaultService?.name || "");
-  const [areaInput, setAreaInput] = useState(defaultArea?.name || "");
+  const uniqueId = useId();
+  const [serviceInput, setServiceInput] = useState(services.find(service => service.slug === defaultServiceSlug)?.name || "");
+  const [areaInput, setAreaInput] = useState(areas.find(area => area.slug === defaultAreaSlug)?.name || "");
   const [message, setMessage] = useState("");
-
-  const serviceItems = useMemo(
-    () =>
-      services.map((service) => ({
-        slug: service.slug,
-        name: service.name,
-        aliases: service.aliases,
-      })),
-    [services]
-  );
-
-  const areaItems = useMemo(
-    () =>
-      areas.map((area) => ({
-        slug: area.slug,
-        name: area.name,
-        aliases: area.aliases,
-      })),
-    [areas]
-  );
-
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const service = findItem(serviceItems, serviceInput);
-    const area = findItem(areaItems, areaInput);
-
-    if (!service || !area) {
-      setMessage("Choose one service and one area from the suggestions.");
-      return;
-    }
-
+    const service = findItem(services, serviceInput);
+    const area = findItem(areas, areaInput);
+    if (!service || !area) { setMessage("Please choose a service and a Bangalore area from the suggestions."); return; }
     router.push(`/bangalore/${service.slug}/${area.slug}/`);
   };
-
+  const inputClass = "h-12 w-full min-w-0 rounded-md border border-[var(--brand-border)] bg-[var(--brand-background)] px-3 text-sm text-[var(--brand-text)] placeholder:text-[var(--brand-muted)] focus:border-[var(--brand-primary)]";
   return (
-    <form
-      id="service-area-search"
-      onSubmit={submitSearch}
-      className="overflow-hidden rounded-lg border border-white/70 bg-white/75 shadow-xl shadow-[#172129]/10 backdrop-blur-xl p-4 sm:p-5 lg:p-6"
-    >
+    <form id={id} onSubmit={submitSearch} className={compact ? "min-w-0" : "min-w-0 rounded-xl border border-[var(--brand-border)] bg-white p-5 shadow-[var(--brand-card-shadow)] sm:p-6"}>
       <div className="home-search-grid">
-        <label className="block min-w-0">
-          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#102A43]">
-            <Wrench className="size-4 text-[#0369A1]" />
-            Service
-          </span>
-          <input
-            list="service-options"
-            value={serviceInput}
-            onChange={(event) => {
-              setServiceInput(event.target.value);
-              setMessage("");
-            }}
-            placeholder="Search service"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#172129] outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
-          />
+        <label className="block min-w-0"><span className="mb-2 flex items-center gap-2 text-xs font-semibold"><Wrench className="size-3.5 text-[var(--brand-muted)]" />What do you need?</span>
+          <input list={`${uniqueId}-services`} value={serviceInput} required autoComplete="off" onChange={event => { setServiceInput(event.target.value); setMessage(""); }} placeholder="Choose a service" aria-describedby={message ? `${uniqueId}-error` : undefined} className={inputClass} />
         </label>
-
-        <label className="block min-w-0">
-          <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#102A43]">
-            <MapPin className="size-4 text-[#0369A1]" />
-            Area
-          </span>
-          <input
-            list="area-options"
-            value={areaInput}
-            onChange={(event) => {
-              setAreaInput(event.target.value);
-              setMessage("");
-            }}
-            placeholder="Search area"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm text-[#172129] outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
-          />
+        <label className="block min-w-0"><span className="mb-2 flex items-center gap-2 text-xs font-semibold"><MapPin className="size-3.5 text-[var(--brand-muted)]" />Where is your home?</span>
+          <input list={`${uniqueId}-areas`} value={areaInput} required autoComplete="off" onChange={event => { setAreaInput(event.target.value); setMessage(""); }} placeholder="Choose your area" aria-describedby={message ? `${uniqueId}-error` : undefined} className={inputClass} />
         </label>
-
-        <button
-          type="submit"
-          className="home-search-button inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#0369A1] px-5 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(14,165,233,0.12)] transition hover:bg-[#075985]"
-        >
-          <Search className="size-4" />
-          Search
-          <ArrowRight className="size-4" />
-        </button>
+        <button type="submit" className="home-search-button btn-primary w-full">Find my service <ArrowRight className="size-4" /></button>
       </div>
-
-      <datalist id="service-options">
-        {services.map((service) => (
-          <option key={service.slug} value={service.name} />
-        ))}
-      </datalist>
-
-      <datalist id="area-options">
-        {areas.map((area) => (
-          <option key={area.slug} value={area.name} />
-        ))}
-      </datalist>
-
-      {message ? (
-        <p className="mt-3 text-sm font-medium text-[#B45309]">{message}</p>
-      ) : null}
+      <datalist id={`${uniqueId}-services`}>{services.map(service => <option key={service.slug} value={service.name} />)}</datalist>
+      <datalist id={`${uniqueId}-areas`}>{areas.map(area => <option key={area.slug} value={area.name} />)}</datalist>
+      <p id={`${uniqueId}-error`} role="status" className={message ? "mt-3 text-sm text-[#9A3A19]" : "sr-only"}>{message}</p>
     </form>
   );
 }

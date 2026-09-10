@@ -1,111 +1,43 @@
+import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ClipboardCheck,
-  MapPin,
-  Ruler,
-  ShieldCheck,
-  Wrench,
-} from "lucide-react";
-import type { Area } from "@/app/bangalore/data/serviceAreaData";
+import { ArrowRight, Check, MessageSquare, Ruler, Wrench } from "lucide-react";
+import type { Area } from "../../bangalore/data/serviceAreaData";
 
-const processItems = [
-  {
-    title: "Photos and first discussion",
-    body: "Share the balcony, window, duct, terrace, or utility space. We check access, opening size, and the kind of safety concern before suggesting a fitting plan.",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "Measurement before fitting",
-    body: "The net, grill, hanger, or sports enclosure is planned around the actual surface, hook points, railing depth, and how the space is used every day.",
-    icon: Ruler,
-  },
-  {
-    title: "Neat installation finish",
-    body: "The work is completed with suitable anchors, clean tension, trimmed edges, and a final check so the space stays usable after installation.",
-    icon: Wrench,
-  },
+const steps = [
+  { title: "Tell us about your space", body: "Share a few photos and what you need. We’ll help you explore suitable options.", icon: MessageSquare },
+  { title: "We measure and plan", body: "A site visit helps us check the opening, fixing points and materials, then give you a clear quote.", icon: Ruler },
+  { title: "Fitted with care", body: "Our team installs, finishes and checks the fitting, with guidance on everyday care.", icon: Wrench },
 ];
-
 export default function HomeEssentials({ areas }: { areas: readonly Area[] }) {
   return (
-    <section className="bg-white/45 px-6 py-20 md:px-12">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-lg bg-[#EAF6FF] px-3 py-2 text-sm font-semibold uppercase text-[#0369A1]">
-              <ShieldCheck className="size-4" />
-              Home setup
-            </p>
-            <h2 className="mt-5 max-w-2xl text-3xl font-extrabold leading-tight text-[#172129] md:text-5xl">
-              Planned safety work for Bangalore apartments
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569]">
-              A good installation should not feel forced into the space. We
-              look at the opening, material, fixing surface, and daily use
-              before deciding how the net, grill, hanger, or sports enclosure
-              should be fitted.
-            </p>
-
-            <Link
-              href="/bangalore/"
-              className="mt-7 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#0369A1] px-5 py-2 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(14,165,233,0.12)] transition hover:bg-[#075985]"
-            >
-              View Bangalore Services
-              <ArrowRight className="size-4" />
-            </Link>
+    <section className="border-y border-[var(--brand-border)] bg-[var(--brand-secondary)]/65 py-16 sm:py-20 lg:py-24">
+      <div className="site-container">
+        <div className="grid gap-12 lg:grid-cols-[.95fr_1.05fr] lg:items-center lg:gap-20">
+          <div className="relative pb-6">
+            <div className="relative aspect-[1.05/1] overflow-hidden rounded-xl rounded-tr-[90px]">
+              <Image src="/home-generated/gallery/invisible-grill-detail.webp" alt="Illustrative close-up of slim stainless steel grill cables and a neat balcony fixing" fill sizes="(max-width: 1023px) 100vw, 45vw" className="object-cover" />
+              <span className="absolute bottom-4 left-4 rounded bg-black/35 px-2 py-1 text-[9px] tracking-wider text-white">ILLUSTRATIVE DETAIL</span>
+            </div>
+            <div className="absolute -bottom-1 right-4 flex items-center gap-3 rounded-lg border border-[var(--brand-border)] bg-[var(--brand-background)] px-5 py-4 sm:right-7"><Check className="size-5 text-[var(--brand-primary)]" /><p className="text-sm font-medium">The little details make a difference.</p></div>
           </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {processItems.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article
-                  key={item.title}
-                  className="rounded-lg border border-white/70 bg-white/70 p-5 shadow-xl shadow-[#172129]/10 backdrop-blur-xl"
-                >
-                  <Icon className="mb-4 size-6 text-[#0369A1]" />
-                  <h3 className="text-lg font-semibold text-[#172129]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-[#475569]">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
+          <div>
+            <p className="eyebrow">Our approach</p>
+            <h2 className="section-heading mt-4">Good protection starts<br />with a better fit.</h2>
+            <p className="mt-5 text-sm leading-7 text-[var(--brand-muted)]">Every home is different. We take the time to understand yours, so the finished installation feels like it belongs.</p>
+            <ol className="mt-7 space-y-6">
+              {steps.map((step, index) => <li key={step.title} className="flex gap-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[var(--brand-primary)]/20 text-xs font-semibold text-[var(--brand-primary)]">0{index + 1}</span>
+                <div><h3 className="text-base font-semibold">{step.title}</h3><p className="mt-1 text-[13px] leading-6 text-[var(--brand-muted)]">{step.body}</p></div>
+              </li>)}
+            </ol>
+            <Link href="/about/" className="mt-7 inline-flex min-h-11 items-center gap-3 text-sm font-semibold">A little more about us <ArrowRight className="size-4" /></Link>
           </div>
         </div>
-
-        <div className="mt-12 rounded-lg border border-white/70 bg-white/70 p-5 shadow-xl shadow-[#172129]/10 backdrop-blur-xl md:p-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0369A1]">
-                Coverage
-              </p>
-              <h3 className="mt-2 text-2xl font-bold text-[#172129]">
-                Marathahalli base, Bangalore service routes
-              </h3>
-            </div>
-            <Link
-              href="/#service-area-search"
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[#BAE6FD] bg-[#E0F2FE] px-4 py-2 text-sm font-semibold text-[#0369A1] transition hover:bg-white"
-            >
-              <MapPin className="size-4" />
-              Search Service and Area
-            </Link>
-          </div>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {areas.slice(0, 20).map((area) => (
-              <span
-                key={area.slug}
-                className="rounded-lg border border-white/70 bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#475569]"
-              >
-                {area.name}
-              </span>
-            ))}
+        <div className="mt-14 flex flex-col justify-between gap-5 border-t border-[var(--brand-primary)]/15 pt-7 md:flex-row md:items-center">
+          <p className="text-sm font-medium">Based in Marathahalli.<br /><span className="mt-1 inline-block font-normal text-[var(--brand-muted)]">Here for homes across Bangalore.</span></p>
+          <div className="flex max-w-[680px] flex-wrap gap-x-5 gap-y-3 text-xs text-[var(--brand-muted)]">
+            {areas.slice(0, 6).map(area => <span key={area.slug}>{area.name}</span>)}
+            <Link href="/bangalore/" className="inline-flex items-center gap-1 font-semibold text-[var(--brand-primary)]">All areas <ArrowRight className="size-3" /></Link>
           </div>
         </div>
       </div>

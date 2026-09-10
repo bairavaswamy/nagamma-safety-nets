@@ -1,70 +1,12 @@
-import { Home, ShieldCheck, Wrench } from "lucide-react";
-
-const stats = [
-  {
-    label: "Balconies, windows, and utility spaces",
-    value: "Home safety",
-    icon: Home,
-  },
-  {
-    label: "Site checks before fitting",
-    value: "Measured work",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Nets, grills, sports nets, and hangers",
-    value: "Practical install",
-    icon: Wrench,
-  },
-];
-
-const MissionSection = () => {
+import { ShieldCheck } from "lucide-react";
+export default function MissionSection() {
   return (
-    <section className="bg-transparent px-6 py-20">
-      <div className="mx-auto max-w-5xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
-          Mission
-        </p>
-        <span className="mx-auto mt-3 block h-1 w-12 rounded-full bg-[#0369A1]" />
-        <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-[#172129] md:text-5xl">
-          Our Mission
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#475569]">
-          At{" "}
-          <span className="font-semibold text-[#0369A1]">
-            Nagamma Safety Nets
-          </span>
-          , our mission is to make every home in Bengaluru safer, cleaner, and
-          easier to live in. We deliver safety nets and invisible grills that
-          protect your family, children, and pets without blocking comfort or
-          view.
-        </p>
-
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {stats.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.label}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#172129]/10 backdrop-blur-xl p-6"
-              >
-                <Icon className="mx-auto mb-3 text-[#0369A1]" size={28} />
-                <h3 className="text-2xl font-bold text-[#172129]">
-                  {item.value}
-                </h3>
-                <p className="text-sm text-[#52677A]">{item.label}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <p className="mt-10 text-sm text-[#52677A]">
-          Careful measurement | Suitable materials | Neat installation
-        </p>
+    <section className="border-y border-[var(--brand-border)] bg-white py-12 sm:py-16">
+      <div className="site-container flex flex-col items-center gap-6 text-center md:flex-row md:gap-12 md:text-left">
+        <span className="flex size-20 shrink-0 items-center justify-center rounded-full bg-[var(--brand-secondary)]"><ShieldCheck className="size-9 text-[var(--brand-primary)]" strokeWidth={1.3} /></span>
+        <h2 className="max-w-[560px] text-[28px] font-medium leading-tight tracking-tight text-[var(--brand-primary)] sm:text-[34px]">For the people, the pets,<br />and the everyday moments.</h2>
+        <p className="max-w-[330px] text-sm leading-7 text-[var(--brand-muted)] md:ml-auto">Our purpose is simple: to make home a little safer, cleaner and easier to enjoy. One carefully fitted space at a time.</p>
       </div>
     </section>
   );
-};
-
-export default MissionSection;
+}

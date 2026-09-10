@@ -1,134 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Phone } from "lucide-react";
-import {
-  areas,
-  getServiceAreaPath,
-  getServicePath,
-  services,
-  siteConfig,
-  type AreaSlug,
-} from "../bangalore/data/serviceAreaData";
-
+import { MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { areas, getServicePath, services, siteConfig } from "../bangalore/data/serviceAreaData";
 export default function SiteFooter() {
-  const branchAreaSlug = siteConfig.branchAreaSlug as AreaSlug;
-
   return (
-    <footer className="border-t border-[#BAE6FD]/70 bg-[linear-gradient(135deg,#F8FCFF_0%,#E0F2FE_48%,#BAE6FD_100%)] text-[#172129]">
-      <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.1fr]">
-          <div>
-            <Link
-              href="/"
-              className="inline-flex rounded-lg p-1 transition hover:opacity-90"
-              aria-label={`${siteConfig.name} home`}
-            >
-              <Image
-                src="/logo-horizontal.webp"
-                alt={`${siteConfig.name} logo`}
-                width={300}
-                height={94}
-                className="h-16 w-auto max-w-[280px] object-contain"
-              />
-            </Link>
-
-            <p className="mt-5 max-w-sm text-sm leading-7 text-[#475569]">
-              Safety nets, invisible grills, sports nets, and cloth hanger
-              services across Bangalore with {siteConfig.branchAreaName} as the
-              service base.
-            </p>
-
-            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[#0369A1]">
-              <MapPin className="size-4 text-[#0369A1]" />
-              {siteConfig.branchAreaName}, {siteConfig.city}
-            </div>
-
-            <Link
-              href={siteConfig.phoneHref}
-              className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0369A1] transition hover:text-[#075985]"
-            >
-              <Phone className="size-4" />
-              {siteConfig.phoneDisplay}
-            </Link>
+    <footer className="border-t border-[var(--brand-border)] bg-[var(--brand-secondary)]/65 pb-6 pt-12">
+      <div className="site-container">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_.8fr_1fr]">
+          <div><Link href="/" aria-label="Nagamma Safety Nets home"><Image src="/brand/logo.svg" alt="Nagamma Safety Nets" width={438} height={104} className="h-auto w-[230px]" /></Link>
+            <p className="mt-5 max-w-[270px] text-[13px] leading-7 text-[var(--brand-muted)]">Thoughtful protection for the spaces you call home. Safety nets and home essentials, fitted with care.</p>
+            <p className="mt-5 flex items-center gap-2 text-xs"><MapPin className="size-3.5" /> {siteConfig.branchAreaName}, Bangalore</p>
+            <a href={siteConfig.phoneHref} className="mt-3 inline-flex min-h-8 items-center gap-2 text-sm font-semibold"><Phone className="size-3.5" />+91 {siteConfig.phoneDisplay}</a>
           </div>
-
-          <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
-              Services
-            </h2>
-            <nav className="mt-4 grid gap-2" aria-label="Footer services">
-              {services.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={getServicePath(service.slug)}
-                  className="text-sm text-[#475569] transition hover:text-[#0369A1]"
-                >
-                  {service.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
-              Marathahalli
-            </h2>
-            <nav className="mt-4 grid gap-2" aria-label="Marathahalli services">
-              {services.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={getServiceAreaPath(service.slug, branchAreaSlug)}
-                  className="text-sm text-[#475569] transition hover:text-[#0369A1]"
-                >
-                  {service.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0369A1]">
-              Coverage
-            </h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {areas.map((area) => (
-                <span
-                  key={area.slug}
-                  className="rounded-lg border border-white/70 bg-white/60 px-3 py-1.5 text-xs font-medium text-[#475569] backdrop-blur-md"
-                >
-                  {area.name}
-                </span>
-              ))}
-            </div>
-          </div>
+          <div><h2 className="text-[11px] font-semibold uppercase tracking-[.14em]">Our services</h2><nav aria-label="Footer services" className="mt-5 grid gap-3">{services.map(service => <Link key={service.slug} href={getServicePath(service.slug)} className="text-[13px] text-[var(--brand-muted)] hover:text-[var(--brand-primary)]">{service.name}</Link>)}</nav></div>
+          <div><h2 className="text-[11px] font-semibold uppercase tracking-[.14em]">Explore</h2><nav aria-label="Footer navigation" className="mt-5 grid gap-3">{[{href:"/about/",name:"Our approach"},{href:"/gallery/",name:"Service gallery"},{href:"/bangalore/",name:"Areas we serve"},{href:"/contact-us/",name:"Get in touch"},{href:"/#service-area-search",name:"Find your service"}].map(link => <Link key={link.href} href={link.href} className="text-[13px] text-[var(--brand-muted)] hover:text-[var(--brand-primary)]">{link.name}</Link>)}</nav></div>
+          <div><h2 className="text-[11px] font-semibold uppercase tracking-[.14em]">Around Bangalore</h2><div className="mt-5 grid gap-3 text-[13px] text-[var(--brand-muted)]">{areas.slice(0,6).map(area => <span key={area.slug}>{area.name}</span>)}</div><Link href="/bangalore/" className="mt-4 inline-flex min-h-8 items-center gap-1 text-xs font-semibold">See all service areas <ArrowUpRight className="size-3.5" /></Link></div>
         </div>
-
-        <div className="mt-12 flex flex-col gap-4 border-t border-[#BAE6FD]/70 pt-6 text-sm text-[#52677A] md:flex-row md:items-center md:justify-between">
-          <p>
-            Copyright {new Date().getFullYear()} {siteConfig.name}. All rights
-            reserved.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/about/" className="transition hover:text-[#0369A1]">
-              About
-            </Link>
-            <Link href="/gallery/" className="transition hover:text-[#0369A1]">
-              Gallery
-            </Link>
-            <Link href="/contact-us/" className="transition hover:text-[#0369A1]">
-              Contact
-            </Link>
-            <Link href="/bangalore/" className="transition hover:text-[#0369A1]">
-              Bangalore Services
-            </Link>
-            <Link
-              href="/#service-area-search"
-              className="transition hover:text-[#0369A1]"
-            >
-              Search Services
-            </Link>
-          </div>
-        </div>
+        <div className="mt-10 flex flex-col justify-between gap-3 border-t border-[var(--brand-border)] pt-5 text-[11px] text-[var(--brand-muted)] sm:flex-row"><p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p><p>Carefully measured. Thoughtfully installed.</p></div>
       </div>
     </footer>
   );

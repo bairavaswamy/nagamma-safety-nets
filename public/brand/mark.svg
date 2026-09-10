@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none" role="img" aria-labelledby="title"><title id="title">Nagamma Safety Nets</title><defs>
+  <linearGradient id="gold" x1="12" y1="8" x2="79" y2="100" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF0C6"/><stop offset=".19" stop-color="#B38A4F"/><stop offset=".42" stop-color="#F3DBA4"/><stop offset=".69" stop-color="#98703E"/><stop offset="1" stop-color="#DFBF7C"/></linearGradient>
+  <linearGradient id="blue" x1="22" y1="16" x2="76" y2="90" gradientUnits="userSpaceOnUse"><stop stop-color="#376FAA"/><stop offset=".42" stop-color="#174D8B"/><stop offset="1" stop-color="#09233F"/></linearGradient>
+  <linearGradient id="ivory" x1="30" y1="24" x2="70" y2="70" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset=".57" stop-color="#F7FAFE"/><stop offset="1" stop-color="#DAE4F0"/></linearGradient>
+  <linearGradient id="word" x1="0" y1="0" x2="0" y2="39" gradientUnits="userSpaceOnUse"><stop stop-color="#376FAA"/><stop offset="1" stop-color="#10335D"/></linearGradient>
+  <linearGradient id="wordLight" x1="0" y1="0" x2="0" y2="39" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3EAF4"/></linearGradient>
+  <pattern id="net" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><path d="M0 0H10M0 0V10" stroke="#D6BD84" stroke-width=".65"/><circle cx="0" cy="0" r=".9" fill="#D6BD84"/></pattern>
+  <clipPath id="inset"><path d="M48 13C60 21 71 26 80 28v23c0 19-11 31-32 41-21-10-32-22-32-41V28c9-2 20-7 32-15Z"/></clipPath>
+</defs><g transform="translate(4)"><g>
+  <path d="M48 2C61 12 74 18 90 21v31c0 24-14 40-42 51C20 92 6 76 6 52V21C22 18 35 12 48 2Z" fill="url(#gold)" stroke="#906B3A" stroke-width=".65"/>
+  <path d="M48 7c12 9 25 15 37 18v27c0 21-12 35-37 46-25-11-37-25-37-46V25c12-3 25-9 37-18Z" fill="#09233F"/>
+  <path d="M48 11c12 8 24 14 34 17v24c0 20-12 33-34 43-22-10-34-23-34-43V28c10-3 22-9 34-17Z" fill="url(#gold)"/>
+  <path d="M48 13C60 21 71 26 80 28v23c0 19-11 31-32 41-21-10-32-22-32-41V28c9-2 20-7 32-15Z" fill="url(#blue)"/>
+  <g clip-path="url(#inset)">
+    <path d="M15 20h68v74H15z" fill="url(#net)" opacity=".19"/>
+    <path d="M18 30 77 16 88 42 16 60Z" fill="#B5CCE8" opacity=".045"/>
+    <g stroke="#C5A46D" stroke-width="1.1" stroke-linejoin="round" opacity=".65">
+      <path d="M22 67V47l10-5v25M24.5 48.5l5-2.5M24.5 54l5-2.5M24.5 59.5l5-2.5"/>
+      <path d="m62 61 8-6 7 5v10M65 64v5m5-8v8m5-6v6"/>
+    </g>
+    <path d="M40 1.868C39.553 1.916 38.914 2.004 38.084 2.132C37.253 2.259 36.503 2.571 35.832 3.066C35.242 3.497 34.822 4.236 34.575 5.281C34.327 6.327 34.204 7.864 34.204 9.892L34.204 34.18L29.94 34.18L8.766 7.904L8.766 23.856C8.766 25.836 8.898 27.341 9.162 28.371C9.425 29.401 9.852 30.156 10.443 30.635C10.874 30.986 11.561 31.297 12.503 31.569C13.445 31.84 14.196 32.024 14.754 32.12L14.754 33.988L0.144 33.988L0.144 32.12C0.766 32.072 1.481 31.956 2.287 31.772C3.094 31.589 3.768 31.305 4.311 30.922C4.934 30.459 5.361 29.76 5.593 28.826C5.824 27.892 5.94 26.323 5.94 24.12L5.94 8.024C5.94 7.226 5.816 6.471 5.569 5.76C5.321 5.05 4.934 4.439 4.407 3.928C3.848 3.385 3.206 2.958 2.479 2.647C1.752 2.335 0.926 2.092 -0 1.916L-0 -0L12.794 -0L31.377 22.985L31.377 10.128C31.377 8.085 31.242 6.565 30.97 5.567C30.699 4.57 30.267 3.831 29.677 3.353C29.214 2.986 28.527 2.67 27.617 2.407C26.707 2.144 25.972 1.964 25.413 1.868L25.413 -0L40 -0Z" transform="translate(28 28)" fill="#09233F" opacity=".75"/>
+    <path d="M40 1.868C39.553 1.916 38.914 2.004 38.084 2.132C37.253 2.259 36.503 2.571 35.832 3.066C35.242 3.497 34.822 4.236 34.575 5.281C34.327 6.327 34.204 7.864 34.204 9.892L34.204 34.18L29.94 34.18L8.766 7.904L8.766 23.856C8.766 25.836 8.898 27.341 9.162 28.371C9.425 29.401 9.852 30.156 10.443 30.635C10.874 30.986 11.561 31.297 12.503 31.569C13.445 31.84 14.196 32.024 14.754 32.12L14.754 33.988L0.144 33.988L0.144 32.12C0.766 32.072 1.481 31.956 2.287 31.772C3.094 31.589 3.768 31.305 4.311 30.922C4.934 30.459 5.361 29.76 5.593 28.826C5.824 27.892 5.94 26.323 5.94 24.12L5.94 8.024C5.94 7.226 5.816 6.471 5.569 5.76C5.321 5.05 4.934 4.439 4.407 3.928C3.848 3.385 3.206 2.958 2.479 2.647C1.752 2.335 0.926 2.092 -0 1.916L-0 -0L12.794 -0L31.377 22.985L31.377 10.128C31.377 8.085 31.242 6.565 30.97 5.567C30.699 4.57 30.267 3.831 29.677 3.353C29.214 2.986 28.527 2.67 27.617 2.407C26.707 2.144 25.972 1.964 25.413 1.868L25.413 -0L40 -0Z" transform="translate(28 26.7)" fill="url(#ivory)"/>
+    <path d="M20 69c15 1 29 4 55 1v4c-20 3-36 0-55-1v-4Z" fill="url(#gold)"/>
+    <path d="M25 74v8m8-7v12m8-11v14m8-13v16m8-16v12m8-13v9m8-10v6" stroke="#C8AC73" stroke-width="1.35"/>
+    <path d="M25 83c13 6 30 8 45-1" stroke="#E3CC97" stroke-width="1.25"/>
+  </g>
+  <path d="M48 18 50 21 48 24 46 21Z" fill="#EAD197"/>
+  <path d="M10 25c14-3 26-8 38-18" stroke="#FFF7DA" stroke-width=".9" opacity=".6"/>
+  <path d="M86 54c-1 18-14 34-38 44" stroke="#FBE8B8" stroke-width=".8" opacity=".5"/>
+</g></g></svg>

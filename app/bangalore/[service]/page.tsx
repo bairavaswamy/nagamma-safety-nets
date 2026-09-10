@@ -132,7 +132,7 @@ function RichServiceLandingPage({
   const jsonLd = buildServiceJsonLd(service, content);
 
   return (
-    <main className="min-h-screen bg-transparent text-[#172129]">
+    <main id="main-content" className="min-h-screen bg-transparent text-[var(--brand-text)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -140,26 +140,26 @@ function RichServiceLandingPage({
         }}
       />
 
-      <section className="bg-white/45 px-6 py-14 md:px-10 md:py-20">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-14 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div>
             <Breadcrumbs service={service} />
 
-            <p className="mt-8 text-sm font-semibold uppercase text-[#0369A1]">
+            <p className="mt-8 text-sm font-semibold uppercase text-[var(--brand-primary)]">
               {content.hero.eyebrow}
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-[#172129] md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-[var(--brand-text)] md:text-6xl">
               {content.hero.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] md:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--brand-muted)] md:text-lg">
               {content.hero.intro}
             </p>
 
             <div className="mt-7 grid gap-3">
               {withoutPricingItems(content.hero.bullets).map((bullet) => (
                 <div key={bullet} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 size-5 shrink-0 text-[#0369A1]" />
-                  <p className="text-sm leading-6 text-[#102A43]">
+                  <CheckCircle2 className="mt-1 size-5 shrink-0 text-[var(--brand-primary)]" />
+                  <p className="text-sm leading-6 text-[var(--brand-primary)]">
                     {cleanPricingText(bullet)}
                   </p>
                 </div>
@@ -169,7 +169,7 @@ function RichServiceLandingPage({
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="#service-area-search"
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-white/70 bg-white/70 backdrop-blur-xl px-5 py-2 text-sm font-semibold text-[#0369A1] transition hover:bg-[#E0F2FE]"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[var(--brand-border)] bg-white backdrop-blur-xl px-5 py-2 text-sm font-semibold text-[var(--brand-primary)] transition hover:bg-[var(--brand-secondary)]"
               >
                 <MapPin className="size-4" />
                 Search Your Area
@@ -188,7 +188,7 @@ function RichServiceLandingPage({
                 sizes="(max-width: 1024px) 100vw, 48vw"
               />
             </div>
-            <ServiceAreaSearch
+            <ServiceAreaSearch id="service-area-search"
               services={services}
               areas={areas}
               defaultServiceSlug={service.slug}
@@ -202,15 +202,15 @@ function RichServiceLandingPage({
           {content.quickFacts.map((fact) => (
             <article
               key={fact.label}
-              className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+              className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
             >
-              <p className="text-sm font-semibold uppercase text-[#0369A1]">
+              <p className="text-sm font-semibold uppercase text-[var(--brand-primary)]">
                 {cleanPricingText(fact.label)}
               </p>
-              <h2 className="mt-3 text-xl font-bold text-[#172129]">
+              <h2 className="mt-3 text-xl font-bold text-[var(--brand-text)]">
                 {cleanPricingText(fact.value)}
               </h2>
-              <p className="mt-3 text-sm leading-6 text-[#475569]">
+              <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                 {cleanPricingText(fact.body)}
               </p>
             </article>
@@ -218,14 +218,14 @@ function RichServiceLandingPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <SectionKicker icon={<MapPin className="size-4" />} text="Site fit" />
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               What matters in Bangalore apartments
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               {service.name} work looks simple from far away, but the lasting
               result depends on small site details. The right work starts by
               reading the balcony, window, or utility opening before choosing a
@@ -237,13 +237,13 @@ function RichServiceLandingPage({
             {content.localPoints.map((point) => (
               <article
                 key={point.title}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
               >
-                <ShieldCheck className="mb-4 size-6 text-[#0369A1]" />
+                <ShieldCheck className="mb-4 size-6 text-[var(--brand-primary)]" />
                 <h3 className="text-lg font-semibold">
                   {cleanPricingText(point.title)}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                   {cleanPricingText(point.body)}
                 </p>
               </article>
@@ -262,7 +262,7 @@ function RichServiceLandingPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Common places where this service is fitted
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               These views show the kind of balcony faces, window openings, and
               utility areas that need measured installation instead of a quick
               one-size-fits-all setup.
@@ -273,7 +273,7 @@ function RichServiceLandingPage({
             {content.imageStrip.map((image) => (
               <figure
                 key={image.src}
-                className="overflow-hidden rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl"
+                className="overflow-hidden rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl"
               >
                 <div className="relative aspect-[4/3]">
                   <Image
@@ -284,7 +284,7 @@ function RichServiceLandingPage({
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
-                <figcaption className="px-4 py-3 text-sm font-semibold text-[#102A43]">
+                <figcaption className="px-4 py-3 text-sm font-semibold text-[var(--brand-primary)]">
                   {image.caption}
                 </figcaption>
               </figure>
@@ -293,14 +293,14 @@ function RichServiceLandingPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
           <div>
             <SectionKicker icon={<Layers3 className="size-4" />} text="Materials" />
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Material and fitting checks before you book
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               The net is only one part of the job. A reliable installation also
               needs the correct mesh size, edge support, fixing points, and a
               finish that works with the balcony surface.
@@ -329,7 +329,7 @@ function RichServiceLandingPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Compare options before choosing {service.name.toLowerCase()}
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               {service.name} can be the right answer for many homes, but it is
               not the right answer for every balcony or window problem. This
               comparison keeps the decision honest.
@@ -356,7 +356,7 @@ function RichServiceLandingPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               How the installation should be handled
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               Good {service.name.toLowerCase()} work should feel measured and
               calm. The installer has to understand the opening, fixing points,
               safety expectation, and how the space will be used after the job.
@@ -367,10 +367,10 @@ function RichServiceLandingPage({
             {content.processSteps.map((step) => (
               <article
                 key={step.title}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
               >
                 <h3 className="text-lg font-semibold">{step.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                   {step.body}
                 </p>
               </article>
@@ -379,7 +379,7 @@ function RichServiceLandingPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
           <ChecklistPanel
             title="Buyer checklist"
@@ -401,7 +401,7 @@ function RichServiceLandingPage({
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Where this service is available in Bangalore
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               Start with the nearest area page. Marathahalli is the business
               base, and the same service route is available across Bangalore.
             </p>
@@ -411,14 +411,14 @@ function RichServiceLandingPage({
         </div>
       </section>
 
-      <section className="bg-white/45 px-6 py-16 md:px-10">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <SectionKicker icon={<HelpCircle className="size-4" />} text="FAQ" />
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Questions people ask before booking
             </h2>
-            <p className="mt-4 text-base leading-8 text-[#475569]">
+            <p className="mt-4 text-base leading-8 text-[var(--brand-muted)]">
               These answers are written for real buying decisions: material,
               drilling, airflow, children, pets, and future repair work.
             </p>
@@ -428,10 +428,10 @@ function RichServiceLandingPage({
             {withoutPricingFaqs(content.faqs).map((faq) => (
               <article
                 key={faq.question}
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5"
               >
                 <h3 className="text-lg font-semibold">{faq.question}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#475569]">
+                <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
                   {cleanPricingText(faq.answer)}
                 </p>
               </article>
@@ -446,7 +446,7 @@ function RichServiceLandingPage({
             <h2 className="text-2xl font-bold leading-tight md:text-3xl">
               Check service and area together
             </h2>
-            <p className="mt-3 text-sm leading-6 text-[#475569]">
+            <p className="mt-3 text-sm leading-6 text-[var(--brand-muted)]">
               Search the service with your Bangalore area to open the correct
               matching page path.
             </p>
@@ -464,29 +464,29 @@ function RichServiceLandingPage({
 
 function BasicServiceLandingPage({ service }: { service: Service }) {
   return (
-    <main className="min-h-screen bg-transparent text-[#172129]">
-      <section className="bg-white/45 px-6 py-16 md:px-10 md:py-20">
+    <main className="min-h-screen bg-transparent text-[var(--brand-text)]">
+      <section className="bg-[var(--brand-secondary)]/30 px-6 py-16 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <Breadcrumbs service={service} />
 
-            <p className="mt-8 text-sm font-semibold uppercase text-[#0369A1]">
+            <p className="mt-8 text-sm font-semibold uppercase text-[var(--brand-primary)]">
               {siteConfig.city} service
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-[#172129] md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-[var(--brand-text)] md:text-6xl">
               {service.name} in {siteConfig.city}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] md:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--brand-muted)] md:text-lg">
               {service.shortDescription}
             </p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm">
               <Link
                 href="/bangalore/"
-                className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl px-4 py-2 font-semibold text-[#0369A1]"
+                className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl px-4 py-2 font-semibold text-[var(--brand-primary)]"
               >
                 Bangalore hub
               </Link>
-              <span className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl px-4 py-2 font-semibold text-[#475569]">
+              <span className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl px-4 py-2 font-semibold text-[var(--brand-muted)]">
                 Bangalore pages ready
               </span>
             </div>
@@ -503,7 +503,7 @@ function BasicServiceLandingPage({ service }: { service: Service }) {
       <section className="px-6 py-16 md:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8">
-            <p className="text-sm font-semibold uppercase text-[#0369A1]">
+            <p className="text-sm font-semibold uppercase text-[var(--brand-primary)]">
               Area pages
             </p>
             <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
@@ -520,8 +520,8 @@ function BasicServiceLandingPage({ service }: { service: Service }) {
 
 function Breadcrumbs({ service }: { service: Service }) {
   return (
-    <nav className="flex flex-wrap gap-2 text-sm text-[#52677A]">
-      <Link href="/bangalore/" className="font-semibold text-[#0369A1]">
+    <nav className="flex flex-wrap gap-2 text-sm text-[var(--brand-muted)]">
+      <Link href="/bangalore/" className="font-semibold text-[var(--brand-primary)]">
         Bangalore
       </Link>
       <span>/</span>
@@ -538,7 +538,7 @@ function SectionKicker({
   text: string;
 }) {
   return (
-    <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase text-[#0369A1]">
+    <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase text-[var(--brand-primary)]">
       {icon}
       {text}
     </p>
@@ -553,14 +553,14 @@ function ResponsiveTable({
   rows: string[][];
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl">
+    <div className="overflow-hidden rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl">
       <table className="hidden w-full border-collapse text-left text-sm md:table">
-        <thead className="bg-[#E0F2FE] text-[#102A43]">
+        <thead className="bg-[var(--brand-secondary)] text-[var(--brand-primary)]">
           <tr>
             {headers.map((header) => (
               <th
                 key={header}
-                className="border-b border-[#BAE6FD] px-4 py-3 font-semibold"
+                className="border-b border-[var(--brand-border)] px-4 py-3 font-semibold"
               >
                 {header}
               </th>
@@ -573,10 +573,10 @@ function ResponsiveTable({
               {row.map((cell, index) => (
                 <td
                   key={`${row[0]}-${index}`}
-                  className="border-b border-slate-100 px-4 py-4 leading-6 text-[#475569] last:border-b-0"
+                  className="border-b border-slate-100 px-4 py-4 leading-6 text-[var(--brand-muted)] last:border-b-0"
                 >
                   {index === 0 ? (
-                    <span className="font-semibold text-[#172129]">{cell}</span>
+                    <span className="font-semibold text-[var(--brand-text)]">{cell}</span>
                   ) : (
                     cell
                   )}
@@ -591,9 +591,9 @@ function ResponsiveTable({
         {rows.map((row) => (
           <article
             key={row.join("|")}
-            className="rounded-lg border border-[#BAE6FD]/70 bg-white/82 p-4 shadow-sm"
+            className="rounded-lg border border-[var(--brand-border)]/70 bg-white/82 p-4 shadow-sm"
           >
-            <h3 className="text-base font-bold leading-6 text-[#172129]">
+            <h3 className="text-base font-bold leading-6 text-[var(--brand-text)]">
               {row[0]}
             </h3>
 
@@ -601,12 +601,12 @@ function ResponsiveTable({
               {row.slice(1).map((cell, index) => (
                 <div
                   key={`${row[0]}-${headers[index + 1]}`}
-                  className="rounded-lg bg-[#F8FCFF] px-3 py-3"
+                  className="rounded-lg bg-[var(--brand-background)] px-3 py-3"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0369A1]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-primary)]">
                     {headers[index + 1]}
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-[#475569]">
+                  <p className="mt-1 text-sm leading-6 text-[var(--brand-muted)]">
                     {cell}
                   </p>
                 </div>
@@ -629,16 +629,16 @@ function ChecklistPanel({
   items: string[];
 }) {
   return (
-    <article className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5">
+    <article className="rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-5">
       <h2 className="flex items-center gap-2 text-2xl font-bold">
-        <span className="text-[#0369A1]">{icon}</span>
+        <span className="text-[var(--brand-primary)]">{icon}</span>
         {title}
       </h2>
       <div className="mt-5 grid gap-3">
         {items.map((item) => (
           <div key={item} className="flex items-start gap-3">
-            <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#0369A1]" />
-            <p className="text-sm leading-6 text-[#475569]">
+            <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[var(--brand-primary)]" />
+            <p className="text-sm leading-6 text-[var(--brand-muted)]">
               {cleanPricingText(item)}
             </p>
           </div>
@@ -655,18 +655,18 @@ function AreaGrid({ service }: { service: Service }) {
         <Link
           key={area.slug}
           href={getServiceAreaPath(service.slug as ServiceSlug, area.slug)}
-          className="group rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-4 transition hover:border-[#0369A1]/40"
+          className="group rounded-lg border border-[var(--brand-border)] bg-white shadow-sm shadow-[var(--brand-primary)]/10 backdrop-blur-xl p-4 transition hover:border-[var(--brand-primary)]/40"
         >
           <div className="flex items-center gap-2">
-            <MapPin className="size-4 text-[#0369A1]" />
+            <MapPin className="size-4 text-[var(--brand-primary)]" />
             <h3 className="font-semibold">{area.name}</h3>
           </div>
-          <p className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#0369A1]">
+          <p className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[var(--brand-primary)]">
             Open page
             <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
           </p>
           {isGmbArea(area) ? (
-            <p className="mt-2 text-xs font-semibold uppercase text-[#0369A1]">
+            <p className="mt-2 text-xs font-semibold uppercase text-[var(--brand-primary)]">
               GMB location
             </p>
           ) : null}

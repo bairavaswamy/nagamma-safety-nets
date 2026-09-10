@@ -1,126 +1,169 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CheckCircle2, Send } from "lucide-react";
-import type { Area, Service } from "../bangalore/data/serviceAreaData";
+import { ArrowUpRight, CheckCircle2, MessageCircle, Send } from "lucide-react";
+import { siteConfig, type Area, type Service } from "../bangalore/data/serviceAreaData";
 
 type ContactFormProps = {
   services: readonly Service[];
   areas: readonly Area[];
 };
 
+const inputClass =
+  "h-12 w-full rounded-xl border border-[var(--brand-border)] bg-white px-4 text-sm text-[var(--brand-text)] outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/15";
+
 export default function ContactForm({ services, areas }: ContactFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+  const [draft, setDraft] = useState<{ message: string; href: string } | null>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const nameInput = form.elements.namedItem("name") as HTMLInputElement;
+    const mobileInput = form.elements.namedItem("mobile") as HTMLInputElement;
+    const requirementInput = form.elements.namedItem("requirement") as HTMLTextAreaElement;
+    const name = String(data.get("name") || "").trim();
+    const mobile = String(data.get("mobile") || "").replace(/[\s()-]/g, "");
+    const requirement = String(data.get("requirement") || "").trim();
+
+    nameInput.setCustomValidity(name ? "" : "Please enter your name.");
+    mobileInput.setCustomValidity(
+      /^(?:\+?91)?[6-9]\d{9}$/.test(mobile)
+        ? ""
+        : "Enter a 10-digit Indian mobile number, optionally with +91."
+    );
+    requirementInput.setCustomValidity(
+      requirement ? "" : "Please describe your requirement."
+    );
+
+    if (!form.reportValidity()) return;
+
+    const service = services.find((item) => item.slug === data.get("service"));
+    const area = areas.find((item) => item.slug === data.get("area"));
+    if (!service || !area) return;
+
+    const message = [
+      `Hi ${siteConfig.name}, I would like to enquire about a service.`,
+      "",
+      `Name: ${name}`,
+      `Mobile: ${mobile}`,
+      `Service: ${service.name}`,
+      `Area: ${area.name}, ${siteConfig.city}`,
+      `Requirement: ${requirement}`,
+    ].join("\n");
+    const whatsappUrl = new URL(siteConfig.whatsappHref);
+    whatsappUrl.searchParams.set("text", message);
+    setDraft({ message, href: whatsappUrl.toString() });
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-lg border border-white/70 bg-white/70 shadow-xl shadow-[#0369A1]/10 backdrop-blur-xl p-5 md:p-6"
+      onChange={() => setDraft(null)}
+      className="rounded-3xl border border-[var(--brand-border)] bg-white p-5 shadow-[0_16px_50px_rgba(23,57,43,0.06)] md:p-8"
     >
+      <div className="mb-6">
+        <p className="text-xl font-semibold text-[var(--brand-text)]">Tell us about your space</p>
+        <p className="mt-2 text-sm leading-6 text-[var(--brand-muted)]">
+          Prepare your enquiry here, then send it to our team through WhatsApp.
+        </p>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2">
         <label className="block">
-          <span className="mb-2 block text-sm font-semibold text-[#102A43]">
-            Name
-          </span>
+          <span className="mb-2 block text-sm font-semibold text-[var(--brand-text)]">Name</span>
           <input
             required
             name="name"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
+            autoComplete="name"
+            maxLength={100}
+            onInput={(event) => event.currentTarget.setCustomValidity("")}
+            className={inputClass}
             placeholder="Your name"
           />
         </label>
 
         <label className="block">
-          <span className="mb-2 block text-sm font-semibold text-[#102A43]">
-            Mobile number
-          </span>
+          <span className="mb-2 block text-sm font-semibold text-[var(--brand-text)]">Mobile number</span>
           <input
             required
+            type="tel"
             name="mobile"
+            autoComplete="tel"
             inputMode="tel"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/72 px-4 text-sm outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
-            placeholder="Your mobile number"
+            maxLength={20}
+            onInput={(event) => event.currentTarget.setCustomValidity("")}
+            className={inputClass}
+            placeholder="10-digit mobile number"
           />
         </label>
 
         <label className="block">
-          <span className="mb-2 block text-sm font-semibold text-[#102A43]">
-            Service
-          </span>
-          <select
-            required
-            name="service"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/70 backdrop-blur-xl px-4 text-sm outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select service
-            </option>
+          <span className="mb-2 block text-sm font-semibold text-[var(--brand-text)]">Service</span>
+          <select required name="service" className={inputClass} defaultValue="">
+            <option value="" disabled>Select service</option>
             {services.map((service) => (
-              <option key={service.slug} value={service.slug}>
-                {service.name}
-              </option>
+              <option key={service.slug} value={service.slug}>{service.name}</option>
             ))}
           </select>
         </label>
 
         <label className="block">
-          <span className="mb-2 block text-sm font-semibold text-[#102A43]">
-            Area
-          </span>
-          <select
-            required
-            name="area"
-            className="h-12 w-full rounded-lg border border-white/70 bg-white/70 backdrop-blur-xl px-4 text-sm outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select area
-            </option>
+          <span className="mb-2 block text-sm font-semibold text-[var(--brand-text)]">Area</span>
+          <select required name="area" className={inputClass} defaultValue="">
+            <option value="" disabled>Select area</option>
             {areas.map((area) => (
-              <option key={area.slug} value={area.slug}>
-                {area.name}
-              </option>
+              <option key={area.slug} value={area.slug}>{area.name}</option>
             ))}
           </select>
         </label>
       </div>
 
       <label className="mt-4 block">
-        <span className="mb-2 block text-sm font-semibold text-[#102A43]">
-          Requirement
-        </span>
+        <span className="mb-2 block text-sm font-semibold text-[var(--brand-text)]">Requirement</span>
         <textarea
           required
           name="requirement"
-          rows={5}
-          className="w-full rounded-lg border border-white/70 bg-white/72 px-4 py-3 text-sm outline-none transition focus:border-[#0369A1] focus:ring-2 focus:ring-[#0369A1]/15"
-          placeholder="Tell us about the balcony, window, duct, terrace, or utility area."
+          rows={4}
+          maxLength={1500}
+          onInput={(event) => event.currentTarget.setCustomValidity("")}
+          className="w-full rounded-xl border border-[var(--brand-border)] bg-white px-4 py-3 text-sm text-[var(--brand-text)] outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/15"
+          placeholder="Tell us about your balcony, window, terrace, or utility area."
         />
       </label>
 
       <button
         type="submit"
-        className="mt-5 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#0369A1] px-5 py-2 text-sm font-semibold text-white shadow-[0_10px_35px_rgba(14,165,233,0.12)] transition hover:bg-[#075985]"
+        className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--brand-primary-dark)]"
       >
-        <Send className="size-4" />
-        Prepare Enquiry
+        <Send className="size-4" aria-hidden="true" />
+        Prepare WhatsApp enquiry
       </button>
 
-      {submitted ? (
-        <div className="mt-4 flex items-start gap-3 rounded-lg border border-[#0369A1]/20 bg-[#EAF6FF] p-4 text-sm text-[#075985]">
-          <CheckCircle2 className="mt-0.5 size-5 shrink-0" />
-          <p>
-            Your request details are ready. Keep photos of the balcony, window,
-            duct, terrace, or utility space ready for the site check.
-          </p>
-        </div>
-      ) : null}
+      <div aria-live="polite" aria-atomic="true">
+        {draft ? (
+          <div className="mt-5 rounded-2xl border border-[var(--brand-border)] bg-white p-4">
+            <p className="flex items-center gap-2 text-sm font-semibold text-[var(--brand-primary)]">
+              <CheckCircle2 className="size-5 shrink-0" aria-hidden="true" />
+              Your enquiry is ready to review
+            </p>
+            <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-[var(--brand-muted)]">{draft.message}</p>
+            <a
+              href={draft.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[var(--brand-primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--brand-primary-dark)]"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+              Continue to WhatsApp
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </a>
+            <p className="mt-3 text-xs leading-5 text-[var(--brand-muted)]">
+              WhatsApp opens in a new tab. Review your message and press Send there to contact us.
+            </p>
+          </div>
+        ) : null}
+      </div>
     </form>
   );
 }

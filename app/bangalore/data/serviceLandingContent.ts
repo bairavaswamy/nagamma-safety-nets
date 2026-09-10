@@ -367,7 +367,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on stainless-steel cable grade, spacing, drilling, warranty questions, and price range",
       ],
       image: {
-        src: "/home-generated/cards/invisible-grills.webp",
+        src: "/images/invisible-grills-premium.webp",
         alt: "Invisible grill installed on a Bangalore apartment balcony",
       },
     },
@@ -696,7 +696,7 @@ export const serviceLandingContent: Partial<
         caption: "Open area protection",
       },
       {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Balcony safety net work planned around railing and side openings",
         caption: "Balcony edge planning",
       },
@@ -923,7 +923,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on mesh strength, fixing method, edge finish, maintenance, and price range",
       ],
       image: {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Children safety net installed on a Bangalore apartment balcony",
       },
     },
@@ -964,12 +964,12 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Child safety net fitted on an apartment balcony",
         caption: "Balcony protection",
       },
       {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Safety net fitted over a stair opening",
         caption: "Stair opening safety",
       },
@@ -1530,7 +1530,7 @@ export const serviceLandingContent: Partial<
         caption: "Compact planning",
       },
       {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Balcony space where cloth hanger placement must avoid movement paths",
         caption: "Balcony use",
       },
@@ -1759,7 +1759,7 @@ export const serviceLandingContent: Partial<
         "Clear notes on mesh, rope, fixing method, price range, and after-care",
       ],
       image: {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Balcony safety net fitted across a Bangalore apartment balcony",
       },
     },
@@ -1800,7 +1800,7 @@ export const serviceLandingContent: Partial<
     ],
     imageStrip: [
       {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Balcony net covering the open face of an apartment balcony",
         caption: "Open balcony face",
       },
@@ -1810,7 +1810,7 @@ export const serviceLandingContent: Partial<
         caption: "Apartment planning",
       },
       {
-        src: "/home-generated/cards/balcony-safety-nets.webp",
+        src: "/images/balcony-premium.webp",
         alt: "Balcony corner where safety net fixing must follow the railing and side wall",
         caption: "Corner finishing",
       },

@@ -1,99 +1,19 @@
 export const cardsData = [
-  {
-    image: "/home-generated/cards/pigeon-safety-nets.webp",
-    title: "Pigeon Safety Nets",
-    description:
-      "Balcony, window, duct, and utility-area netting planned to reduce bird entry and keep homes cleaner.",
-    href: "/bangalore/pigeon-safety-nets/",
-    badge: "Bird Control",
-    tags: ["Pigeon", "Balcony", "Clean Home"],
-  },
-  {
-    image: "/home-generated/cards/invisible-grills.webp",
-    title: "Invisible Grills",
-    description:
-      "One of our most installed balcony and window safety upgrades, made to keep the view open with a neat finish.",
-    href: "/bangalore/invisible-grills/",
-    badge: "Most Popular",
-    tags: ["Popular", "Open View", "Balcony"],
-    highlight: true,
-  },
-  {
-    image: "/home-generated/cards/monkey-safety-nets.webp",
-    title: "Monkey Safety Nets",
-    description:
-      "Heavy-duty netting for balconies, terraces, and open edges where stronger entry protection is needed.",
-    href: "/bangalore/monkey-safety-nets/",
-    badge: "Heavy Duty",
-    tags: ["Balcony", "Terrace", "Protection"],
-  },
-  {
-    image: "/home-generated/cards/children-safety-nets.webp",
-    title: "Children Safety Nets",
-    description:
-      "Protective netting for balconies, windows, stair openings, and indoor void areas in family homes.",
-    href: "/bangalore/children-safety-nets/",
-    badge: "Family Safety",
-    tags: ["Children", "Windows", "Balcony"],
-  },
-  {
-    image: "/home-generated/cards/sports-nets.webp",
-    title: "Sports Nets",
-    description:
-      "Practice and play-area netting for apartments, schools, terraces, and sports activity zones.",
-    href: "/bangalore/sports-nets/",
-    badge: "Play Areas",
-    tags: ["Sports", "Cricket", "Practice"],
-  },
-  {
-    image: "/home-generated/cards/cloth-hangers.webp",
-    title: "Cloth Hangers",
-    description:
-      "Ceiling, pulley, fixed, and utility-area drying setups planned around usable space and reach.",
-    href: "/bangalore/cloth-hangers/",
-    badge: "Utility Setup",
-    tags: ["Balcony", "Utility", "Drying"],
-  },
-  {
-    image: "/home-generated/cards/balcony-safety-nets.webp",
-    title: "Balcony Safety Nets",
-    description:
-      "Measured balcony net installation for apartments, homes, and high-rise safety needs.",
-    href: "/bangalore/balcony-safety-nets/",
-    badge: "Core Service",
-    tags: ["Balcony", "Safety", "High Rise"],
-  },
+  { image: "/images/balcony-premium.webp", title: "Balcony Safety Nets", description: "Made-to-measure netting that adds protection while keeping your balcony bright and open.", href: "/bangalore/balcony-safety-nets/", badge: "Everyday protection" },
+  { image: "/images/invisible-grills-premium.webp", title: "Invisible Grills", description: "Slim, neatly finished safety cables for balconies and windows, with more of the view you love.", href: "/bangalore/invisible-grills/", badge: "An open view" },
+  { image: "/home-generated/cards/pigeon-safety-nets.webp", title: "Pigeon Safety Nets", description: "Help keep birds out of balconies, ducts and utility openings, for a cleaner space.", href: "/bangalore/pigeon-safety-nets/", badge: "A cleaner home" },
+  { image: "/home-generated/cards/children-safety-nets.webp", title: "Children Safety Nets", description: "Thoughtful netting for balcony edges, windows and stair openings in family homes.", href: "/bangalore/children-safety-nets/", badge: "Family spaces" },
+  { image: "/home-generated/cards/cloth-hangers.webp", title: "Cloth Hangers", description: "Space-saving ceiling and pulley drying systems that make the everyday a little easier.", href: "/bangalore/cloth-hangers/", badge: "Home essentials" },
+  { image: "/home-generated/cards/sports-nets.webp", title: "Sports Nets", description: "Purpose-fitted netting for cricket practice, terraces, schools and shared play spaces.", href: "/bangalore/sports-nets/", badge: "Room to play" },
+  { image: "/home-generated/cards/monkey-safety-nets.webp", title: "Monkey Safety Nets", description: "Stronger netting for exposed balconies and terraces where extra entry protection is needed.", href: "/bangalore/monkey-safety-nets/", badge: "Stronger protection" },
 ];
 
+// These supplied generated assets illustrate service types; they are not verified project photographs.
 export const galleryData = [
-  {
-    image: "/home-generated/carousel/slide-1-balcony-safety.webp",
-    title: "High-Rise Balcony Safety Net",
-    location: "Marathahalli",
-    service: "Balcony Safety Nets",
-  },
-  {
-    image: "/home-generated/carousel/slide-2-invisible-grills.webp",
-    title: "Invisible Grill View Protection",
-    location: "Whitefield",
-    service: "Invisible Grills",
-  },
-  {
-    image: "/home-generated/carousel/slide-3-pigeon-safety.webp",
-    title: "Pigeon Net for Utility Openings",
-    location: "Bellandur",
-    service: "Pigeon Safety Nets",
-  },
-  {
-    image: "/home-generated/carousel/slide-4-cloth-hangers.webp",
-    title: "Utility Cloth Hanger Setup",
-    location: "Kalyan Nagar",
-    service: "Cloth Hangers",
-  },
-  {
-    image: "/home-generated/carousel/slide-5-sports-nets.webp",
-    title: "Terrace Sports Net Bay",
-    location: "Electronic City",
-    service: "Sports Nets",
-  },
+  { image: "/images/balcony-premium.webp", title: "An open balcony, thoughtfully protected", service: "Balcony Safety Nets", alt: "Illustrative balcony with white safety netting, a railing and an open city view" },
+  { image: "/images/invisible-grills-premium.webp", title: "Slim cables, a clear view", service: "Invisible Grills", alt: "Illustrative balcony with slim vertical invisible grill cables" },
+  { image: "/home-generated/carousel/slide-4-cloth-hangers.webp", title: "A little more room for everyday life", service: "Cloth Hangers", alt: "Illustrative ceiling-mounted clothes drying system in a bright utility area" },
+  { image: "/home-generated/carousel/slide-3-pigeon-safety.webp", title: "A cleaner utility opening", service: "Pigeon Safety Nets", alt: "Illustrative mesh netting across an apartment utility opening" },
+  { image: "/home-generated/carousel/slide-5-sports-nets.webp", title: "Space to practise and play", service: "Sports Nets", alt: "Illustrative rooftop cricket practice bay enclosed in sports netting" },
+  { image: "/home-generated/gallery/invisible-grill-detail.webp", title: "Care in every fixing", service: "Invisible Grills", alt: "Illustrative close-up of invisible grill cable hardware and balcony fixing details" },
 ];
